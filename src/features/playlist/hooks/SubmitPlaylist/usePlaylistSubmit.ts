@@ -35,7 +35,8 @@ export function usePlaylistSubmit() {
     setShowChart(true);
     setError(null);
   };
-
+  console.log(`Playlist ID: ${playlistId}`);
+  console.log(`Submit URL: ${submitUrl}`);
   return {
     submitUrl,
     setSubmitUrl,

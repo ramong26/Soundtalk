@@ -26,6 +26,7 @@ export async function getTrackList({
 // 사용법:   const tracksList = await getTrackList();
 
 export const useTrackList = (playlistId: string, offset = 0, limit = 50) => {
+  console.log(`Fetching tracks for playlistId: ${playlistId}, offset: ${offset}, limit: ${limit}`);
   return useQuery({
     queryKey: ['track-list', playlistId, offset, limit],
     queryFn: () => getTopTrackPlaylist({ playlistId, offset, limit }),
@@ -35,6 +36,7 @@ export const useTrackList = (playlistId: string, offset = 0, limit = 50) => {
 };
 
 export const useAllTracks = (playlistId?: string, select?: (data: TrackItem[]) => TrackItem[]) => {
+  console.log(`Fetching all tracks for playlistId: ${playlistId}`);
   return useQuery({
     queryKey: ['all-tracks', playlistId],
     enabled: !!playlistId,

@@ -64,7 +64,7 @@ export default function TodayMusic() {
           Recommended Playlists
         </h3>
 
-        <div style={{ width: 1238, minHeight: 4000, position: 'relative' }}>
+        <div style={{ maxWidth: 1400, minHeight: 4000, position: 'relative' }}>
           <Suspense
             fallback={
               <div className="flex items-center justify-center w-full h-[400px] bg-gray-200 " />

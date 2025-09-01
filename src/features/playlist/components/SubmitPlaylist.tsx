@@ -110,10 +110,7 @@ export default function SubmitPlaylist() {
             </div>
 
             {/* 아티스트 인터뷰 리스트 */}
-            <PlaylistInterviewList
-              key={topTracks.map((track) => track.track.id).join('-')}
-              trackData={topTracks}
-            />
+            <PlaylistInterviewList key={playlistId} trackData={topTracks} />
           </div>
         )}
       </div>

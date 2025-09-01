@@ -79,23 +79,17 @@ export function useFetchArtistInterviews(props: PlaylistInterviewListProps) {
       if (!currentChunk) return;
 
       const newInterviews: ArtistInterviewMap = {};
-      const results = await Promise.allSettled(
-        currentChunk.map(async (artist) => {
-          if (!artistInterviews[artist]) {
+      for (const artist of currentChunk) {
+        if (!artistInterviews[artist]) {
+          try {
             const result = await getCombinedInterviews(artist);
             newInterviews[artist] = result.results;
+          } catch (error) {
+            console.error(`Failed to fetch interviews for artist: ${artist}`, error);
           }
-        })
-      );
-
-      results.forEach((result, index) => {
-        if (result.status === 'rejected') {
-          console.error(
-            `Failed to fetch interviews for artist: ${currentChunk[index]}`,
-            result.reason
-          );
+          await delay(100);
         }
-      });
+      }
 
       setArtistInterviews((prev) => ({ ...prev, ...newInterviews }));
 
@@ -104,7 +98,7 @@ export function useFetchArtistInterviews(props: PlaylistInterviewListProps) {
       isScrollLoadingRef.current = false;
     };
     fetchChunkedInterviews();
-  }, [visibleChunks, artists, artistInterviews]);
+  }, [visibleChunks, artists]);
 
   return {
     artistInterviews,
