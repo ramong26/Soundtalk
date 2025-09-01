@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
+import jwt from 'jsonwebtoken';
+import { z } from 'zod';
+
 import { loginSchema } from '@/features/auth/schema/loginSchema';
 import connectToDB from '@/lib/mongo/mongo';
 import { UserModel } from '@/lib/mongo/models/UserModel';
-import jwt from 'jsonwebtoken';
-import { z } from 'zod';
 
 export async function POST(request: NextRequest) {
   try {

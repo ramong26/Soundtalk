@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import RecommendCard from '@/features/recommend/components/RecommendCard';
 import { getTrackList } from '@/shared/hooks/getTrackList';
 import { TrackItem } from '@/shared/types/spotifyTrack';
+
 interface MoodTagProps {
   tag: string;
 }
@@ -36,15 +37,19 @@ export default function RecommendList({ tag }: MoodTagProps) {
   }, [tag]);
 
   return (
-    <div className="flex flex-col gap-4 pb-10">
-      <div className="text-2xl font-bold ">
-        <span className="inline-block mx-2">Recommended for You</span>
-        <span className="text-[#c2b59a] text-3xl">{tag}</span>
+    <div className="pb-10">
+      <div className="flex items-center justify-between bg-[#FFD460] border-y-4 border-black px-6 py-3 mb-8">
+        <h2 className="lg:text-2xl md:text-lg text-md font-extrabold uppercase text-black tracking-tight">
+          Recommended For You
+        </h2>
+        <span className="lg:text-3xl md:text-2xl text-xl font-extrabold text-[#d43c3c] uppercase">
+          {tag}
+        </span>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {tracks.map((track, index) => (
-          <RecommendCard key={index} track={track} />
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        {tracks.map((track) => (
+          <RecommendCard key={track.track.id} track={track} />
         ))}
       </div>
     </div>
