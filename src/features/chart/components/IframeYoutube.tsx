@@ -1,5 +1,5 @@
 'use client';
-
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { TrackItem } from '@/shared/types/spotifyTrack';
 
@@ -46,7 +46,7 @@ export default function IframeYoutube({ tracksList }: Props) {
     return (
       <div>
         ⚠️ 유튜브에서 영상이 재생되지 않습니다. <br />
-        <a
+        <Link
           href={`https://www.youtube.com/results?search_query=${encodeURIComponent(
             tracksList[0].track.artists[0].name +
               ' ' +
@@ -58,7 +58,7 @@ export default function IframeYoutube({ tracksList }: Props) {
           className="text-blue-500 underline"
         >
           YouTube에서 직접 보기
-        </a>
+        </Link>
       </div>
     );
   }
