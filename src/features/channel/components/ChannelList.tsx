@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { YouTubeChannel } from '@/shared/types/youtube';
 import { getYoutubeChannelInfo } from '@/features/tracks/hooks/getYoutubeMongo';
@@ -50,14 +51,14 @@ export default async function ChannelList({ title }: { title: string }) {
             <p className="text-gray-600 text-xl font-semibold mt-2 line-clamp-3 w-[600px]">
               {data.snippet?.description}
             </p>
-            <a
+            <Link
               href={`https://www.youtube.com/@${handle}`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 underline inline-block mt-4 text-md"
             >
               채널 방문하기 →
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

@@ -9,10 +9,8 @@ export const revalidate = 86400;
 
 export default function Recommend() {
   return (
-    <div className="h-screen ">
-      <main className="flex flex-col mt-[200px] gap-4 h-screen w-[1043px] mx-auto">
-        <TodayMusic />
-      </main>
+    <div className="flex flex-col mt-24 max-w-[1286px] gap-4 h-screen mx-auto">
+      <TodayMusic />
     </div>
   );
 }
