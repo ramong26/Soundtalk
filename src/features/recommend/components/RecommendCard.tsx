@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 
 import { TrackItem } from '@/shared/types/spotifyTrack';
 
@@ -16,7 +15,7 @@ export default function RecommendCard({ track }: RecommendCardProps) {
   }
 
   return (
-    <Link
+    <a
       href={albumUrl}
       className="border-4 border-black bg-white shadow-[6px_6px_0px_#000] hover:shadow-[10px_10px_0px_#000] transition-all duration-200 cursor-pointer flex flex-col"
     >
@@ -33,6 +32,6 @@ export default function RecommendCard({ track }: RecommendCardProps) {
           {actualTrack?.artists[0]?.name}
         </p>
       </div>
-    </Link>
+    </a>
   );
 }

@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { CustomSearchResult } from '@/features/tracks/types/custom-search';
 
 interface ArtistInterviewListProps {
@@ -19,14 +18,14 @@ export default function PlaylistArtistInterviewList({
         ) : interviews && interviews.length > 0 ? (
           interviews.slice(0, 5).map((result) => (
             <li key={result.link}>
-              <Link
+              <a
                 href={result.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 underline hover:bg-gray-100 transition"
               >
                 {result.title}
-              </Link>
+              </a>
             </li>
           ))
         ) : (

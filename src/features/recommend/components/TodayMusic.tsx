@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef, useState, Suspense } from 'react';
 
 import RecommandList from '@/features/recommend/components/RecommendList';
 import useUserStore from '@/stores/userStore';
@@ -17,7 +17,7 @@ export default function TodayMusic() {
     setChoicedTag(tag);
   };
   return (
-    <section className="w-fit bg-[#f0ebdf] py-12 px-6">
+    <section className="w-fit py-12 px-6">
       <div className="text-center mb-10">
         {!isLoggedIn ? (
           <div className="flex flex-row items-center justify-center lg:text-[56px] text-[40px] font-extrabold leading-tight">
@@ -59,11 +59,20 @@ export default function TodayMusic() {
         ))}
       </div>
 
-      <div className="mt-12 h-[4900px] border-4 border-black bg-white shadow-[8px_8px_0px_#000] p-8">
+      <div className="mt-12 min-h-screen border-4 border-black bg-white shadow-[8px_8px_0px_#000] p-8">
         <h3 className="lg:text-2xl md:text-xl text-lg font-extrabold uppercase border-b-2 border-black pb-2 mb-6">
           Recommended Playlists
         </h3>
-        <RecommandList tag={choicedTag} />
+
+        <div style={{ width: 1238, minHeight: 4000, position: 'relative' }}>
+          <Suspense
+            fallback={
+              <div className="flex items-center justify-center w-full h-[400px] bg-gray-200 " />
+            }
+          >
+            <RecommandList tag={choicedTag} />
+          </Suspense>
+        </div>
       </div>
     </section>
   );

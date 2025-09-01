@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import jwt from 'jsonwebtoken';
 import { z } from 'zod';
+import bcrypt from 'bcryptjs';
 
 import { signupSchema } from '@/features/auth/schema/signupSchema';
 import connectToDB from '@/lib/mongo/mongo';
@@ -13,7 +14,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
 
     const parsedData = signupSchema.parse(body);
-    const { email, username } = parsedData;
+    const { email, username, password } = parsedData;
 
     const existingUser = await UserModel.findOne({ email });
 
@@ -21,10 +22,12 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: '이미 가입된 이메일입니다.' }, { status: 409 });
     }
 
+    const hashedPassword = await bcrypt.hash(password, 10); // 해시된 비밀번호 생성
+
     const user = new UserModel({
       displayName: username,
       email,
-      password: parsedData.password,
+      password: hashedPassword,
 
       accessToken: '',
       refreshToken: '',
