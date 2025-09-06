@@ -65,13 +65,14 @@ export default function IframeYoutube({ tracksList }: Props) {
 
   return (
     <iframe
-      width="950"
-      height="500"
+      width="100%"
+      height="600"
       src={`https://www.youtube.com/embed/${videoId}?autoplay=1&modestbranding=1`}
       title="YouTube video player"
       frameBorder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowFullScreen
+      className="lg:h-[600px] md:h-[300px] h-[200px]  "
     />
   );
 }
