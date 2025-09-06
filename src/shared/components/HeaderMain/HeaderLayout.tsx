@@ -36,13 +36,18 @@ export default function HeaderLayout({
   // 로그인 전 버튼 렌더링
   const renderAuthButtons = () => (
     <div className="lg:text-xl md:text-lg text-sm font-bold flex lg:gap-[30px] md:gap-[15px] gap-[10px] items-center justify-between h-full ">
-      <SortDown label={signInLabel} onSelect={handleAuthSelect} title="Login" />
+      <SortDown
+        label={signInLabel}
+        onSelect={handleAuthSelect}
+        title="Login"
+        className="lg:left-[-32px] md:left-[-14px] left-[-2px]"
+      />
     </div>
   );
   // 로그인 후 프로필 렌더링
   const renderProfile = () =>
     profile && (
-      <div className="flex items-center gap-2 text-lg font-semibold h-full">
+      <div className="flex items-center md:gap-2 gap-0.5 lg:text-xl md:text-lg text-sm font-bold  h-full">
         <Link href="/profile" className="flex items-center gap-2">
           {profile.profileImageUrl && (
             <Image
@@ -64,7 +69,7 @@ export default function HeaderLayout({
   return (
     <div className="lg:px-[30px] md:px-[20px] px-[15px] flex w-full justify-between  h-[70px] bg-white">
       <div className="lg:text-xl md:text-lg text-sm font-bold flex lg:gap-[20px] md:gap-[15px] gap-[10px] items-center justify-between">
-        <SortDown label={menuLabel} link={menuLink} title="Menu" />
+        <SortDown label={menuLabel} link={menuLink} title="Menu" dropdownPosition="right-[-60px]" />
       </div>
 
       <Link href="/" className="lg:text-2xl md:text-lg font-extrabold flex items-center">
