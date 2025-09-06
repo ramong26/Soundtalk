@@ -79,30 +79,35 @@ export default function Miniplayer({ track }: { track: Track }) {
       }
     };
   }, [player]);
+
   return (
-    <div className="w-full bg-black text-white p-4 flex items-center justify-between">
+    <div className="w-full flex items-center justify-between bg-[#F0EADC] border-[2px] border-[#111] shadow-[2px_2px_0_#e2c781] px-5 py-4">
       <div className="flex items-center">
-        <Image
-          src={currentTrack?.album?.images[1]?.url}
-          alt="Album Art"
-          className="mr-4"
-          width={50}
-          height={50}
-        />
-        <div className="flex flex-row items-center space-x-2 justify-center gap-5">
-          <h3 className="text-2xl font-semibold">{currentTrack?.name}</h3>
-          <p className="text-xl text-gray-400">{currentTrack?.artists[0]?.name}</p>
+        <div className="rounded-[6px] border-[2px] border-[#111] bg-white mr-3 overflow-hidden w-[50px] h-[44px] flex items-center justify-center">
+          <Image
+            src={currentTrack?.album?.images[1]?.url}
+            alt="Album Art"
+            width={50}
+            height={50}
+            className="object-cover"
+          />
+        </div>
+        <div className="flex flex-col justify-center ml-2">
+          <span className="text-[1.06rem] font-extrabold uppercase tracking-wide leading-tight text-[#111] font-['Oswald','Arial','sans-serif']">
+            {currentTrack?.name}
+          </span>
+          <span className="text-[0.93rem] text-[#c9a13a] font-semibold leading-tight font-['Oswald','Arial','sans-serif']">
+            {currentTrack?.artists[0]?.name}
+          </span>
         </div>
       </div>
-
-      <div className="flex items-center space-x-4">
-        <button
-          onClick={handlePlayClick}
-          className="cursor-pointer w-12 h-12 flex items-center justify-center text-white bg-green-500 p-2 rounded-full hover:bg-green-600"
-        >
-          {paused ? <FaPlay className="w-6 h-6" /> : <FaPause className="w-6 h-6" />}
-        </button>
-      </div>
+      <button
+        onClick={handlePlayClick}
+        className="mr-[8px] cursor-pointer w-10 h-10 flex items-center justify-center text-[#111] bg-[#FFD460] border-[2px] border-[#111] rounded-full shadow-[1px_1px_0_#e2c781] hover:bg-[#d5ac3d] transition-all"
+        aria-label={paused ? '재생' : '일시정지'}
+      >
+        {paused ? <FaPlay className="w-5 h-5" /> : <FaPause className="w-5 h-5" />}
+      </button>
     </div>
   );
 }

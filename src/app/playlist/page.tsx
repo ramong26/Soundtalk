@@ -1,4 +1,3 @@
-import HeaderMain from '@/shared/components/HeaderMain/HeaderMain';
 import HowPlaylist from '@/features/playlist/components/HowPlaylist';
 import SubmitPlaylist from '@/features/playlist/components/SubmitPlaylist';
 
@@ -9,14 +8,11 @@ export const metadata = {
 
 export default function PlaylistPage() {
   return (
-    <div className="h-screen ">
-      <HeaderMain />
-      <main className="flex mt-[188px] gap-4 h-[617px] w-[1043px] mx-auto">
-        <div className="flex flex-col gap-10 w-full">
-          <HowPlaylist />
-          <SubmitPlaylist />
-        </div>
-      </main>
-    </div>
+    <main className="flex mt-[188px] gap-4 h-[617px] w-[1043px] mx-auto">
+      <div className="flex flex-col gap-10 w-full">
+        <HowPlaylist />
+        <SubmitPlaylist />
+      </div>
+    </main>
   );
 }
