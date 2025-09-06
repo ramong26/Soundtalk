@@ -9,7 +9,7 @@ interface ChartComponentProps {
   className?: string;
 }
 
-export default function ChartComponent({ tracksList, title, className }: ChartComponentProps) {
+export default function ChartComponent({ tracksList, title, className = '' }: ChartComponentProps) {
   return (
     <div
       className={`relative lg:p-8 md:p-6 p-4 border-4 border-black bg-[#fdfbf7] shadow-[6px_6px_0px_#000000]  mt-20 w-full max-w-[572px] ${className}
@@ -21,7 +21,7 @@ export default function ChartComponent({ tracksList, title, className }: ChartCo
       <div className="flex flex-col gap-6 mt-4">
         {tracksList.map((item, index) => (
           <Link
-            key={index}
+            key={item.track.id}
             href={`/tracks/${item.track.id}`}
             className={`flex items-center gap-6 mb-2 p-4 bg-white border-3 border-black shadow-[4px_4px_0px_#000] cursor-pointer transition-transform hover:-translate-y-1 hover:scale-[1.03] last:border-b-0`}
           >

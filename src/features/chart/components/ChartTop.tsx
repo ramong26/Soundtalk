@@ -50,12 +50,12 @@ export default async function ChartTop({ tracksList }: { tracksList: TrackItem[]
               <h1 className="lg:text-[56px] text-[40px] font-extrabold leading-tight text-black uppercase tracking-wide drop-shadow-[3px_3px_0px_#FFD460]">
                 {topArtistName}
               </h1>
-              <p className="lg:text-[22px] text-16px font-medium md:pb-0 pb-4 text-gray-800 italic">
+              <p className="lg:text-[22px] text-[16px] font-medium md:pb-0 pb-4 text-gray-800 italic">
                 {tracksList[0]?.track.artists.map((artist) => artist.name).join(', ')}
               </p>
             </div>
             <div className="lg:p-4 p-2 border-2 border-black  bg-white shadow-[4px_4px_0px_#000] w-full">
-              <InterviewList className="w-full" slice={3} />
+              <InterviewList className="w-full" slice={3} artistName={topArtistName} />
             </div>
           </div>
         </div>
