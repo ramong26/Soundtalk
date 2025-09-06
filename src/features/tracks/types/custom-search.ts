@@ -28,6 +28,11 @@ export interface CustomSearchResult {
     cse_image?: {
       src: string;
     };
+    cse_thumbnail?: {
+      src: string;
+      width: string;
+      height: string;
+    }[];
     metatags?: {
       'article:published_time'?: string | Date;
       'og:image'?: string;

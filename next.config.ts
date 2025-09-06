@@ -16,6 +16,8 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'yt3.ggpht.com', pathname: '/**' },
       { protocol: 'https', hostname: 'open.spotify.com', pathname: '/**' },
       { protocol: 'https', hostname: 'lh3.googleusercontent.com', pathname: '/**' },
+      { protocol: 'https', hostname: 'encrypted-tbn0.gstatic.com', pathname: '/**' },
+      { protocol: 'https', hostname: 'www.billboard.com', pathname: '/**' },
     ],
   },
 
