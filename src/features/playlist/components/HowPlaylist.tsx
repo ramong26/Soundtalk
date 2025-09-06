@@ -6,8 +6,8 @@ import HowPlaylist2 from '@/public/image/how-playlist2.png';
 export default function HowPlaylist() {
   return (
     <>
-      <section className=" lg:mt-24 md:mt-16 mt-12 lg:gap-12 gap-8 lg:p-8 md:p-6 p-4 flex  flex-col items-center justify-between bg-[#fdfbf7] border-4 border-black shadow-[6px_6px_0px_#000] ">
-        <h1 className="lg:text-[56px] text-[40px] font-extrabold leading-tight text-black uppercase tracking-wide drop-shadow-[3px_3px_0px_#FFD460]">
+      <section className=" w-[1272px] mx-auto lg:mt-24 md:mt-16 mt-12 lg:gap-12 gap-8 lg:p-8 md:p-6 p-4 flex  flex-col items-center justify-between bg-[#fdfbf7] border-4 border-black shadow-[6px_6px_0px_#000] ">
+        <h1 className="lg:text-[56px] text-[40px] font-extrabold leading-tight text-black uppercase tracking-wide drop-shadow-[3px_3px_0px_#FFD460] underline">
           How to Submit Playlist
         </h1>
         <div className="flex items-center justify-between w-full">

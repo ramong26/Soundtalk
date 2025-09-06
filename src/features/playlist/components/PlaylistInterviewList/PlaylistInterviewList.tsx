@@ -19,7 +19,7 @@ function PlaylistInterviewList({ trackData }: PlaylistInterviewListProps) {
   }
 
   return (
-    <div className="pb-16 mt-12 w-full">
+    <div className="pb-16 mt-12 w-full flex gap-4 flex-col">
       {artists.slice(0, visibleChunks * chunkSize).map((artist) => (
         <PlaylistArtistInterviewList
           key={artist}
@@ -27,6 +27,8 @@ function PlaylistInterviewList({ trackData }: PlaylistInterviewListProps) {
           interviews={artistInterviews[artist]}
         />
       ))}
+      {isScrollLoading && <div className="text-center text-gray-500">로딩 중...</div>}
+      {visibleChunks * chunkSize < artists.length && <div ref={observerRef} className="h-10" />}
     </div>
   );
 }

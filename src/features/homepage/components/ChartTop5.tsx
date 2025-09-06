@@ -8,7 +8,6 @@ export default function ChartTop5({ tracksList }: { tracksList: TrackItem[] }) {
   // console.log(tracksList);
   return (
     <section className="w-full mt-16">
-      {/* 헤더 */}
       <div className="lg:text-3xl md:text-2xl text-lg font-extrabold md:px-[50px] px-[15px] h-[70px] flex items-center text-black  bg-[#FFD460] border-t-4 border-b-4 border-black justify-between shadow-[0_4px_0_#000] uppercase tracking-wide">
         <div>🔥 TOP 5 TRACKS</div>
         <Link

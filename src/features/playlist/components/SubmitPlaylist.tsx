@@ -11,10 +11,6 @@ const ImportTrack = dynamic(() => import('@/features/playlist/components/Importt
   ssr: false,
 });
 
-// const TrackComponent = dynamic(() => import('@/features/playlist/components/TrackComponent'), {
-//   ssr: false,
-// });
-
 const PlaylistInterviewList = dynamic(
   () => import('@/features/playlist/components/PlaylistInterviewList/PlaylistInterviewList'),
   { ssr: false }
@@ -40,14 +36,14 @@ export default function SubmitPlaylist() {
   const isValidData = Array.isArray(pageTracks) && pageTracks.length > 0;
 
   return (
-    <section className="w-full mt-16 min-h-[30vh]  flex flex-col">
+    <section className=" mt-16 min-h-[30vh]  flex flex-col">
       <h1 className="flex items-center justify-center mb-5 lg:text-[56px] text-[40px] font-extrabold leading-tight text-black uppercase tracking-wide drop-shadow-[3px_3px_0px_#FFD460]">
-        Submit Your Playlist
+        Submit Your Playlist !
       </h1>
 
       {/* 입력 박스 */}
       <div className=" flex flex-col items-center justify-center">
-        <div className="w-full bg-white border-2 border-black p-6 md:p-8 rounded-xl shadow-md flex flex-col gap-4">
+        <div className="w-[1272px] bg-white border-2 border-black p-6 md:p-8 rounded-xl shadow-md flex flex-col gap-4">
           <SubmitInput
             placeholder="Spotify 플레이리스트 링크를 넣어주세요!"
             value={submitUrl}
@@ -61,7 +57,7 @@ export default function SubmitPlaylist() {
 
         {/* 트랙 카드 리스트 */}
         {showChart && (
-          <div className="mt-10 w-full">
+          <div className=" mt-10 w-full">
             {isLoading && <ImportTrack isLoading />}
             {error && <p className="text-red-600 text-center font-bold">❌ 오류 발생: {error}</p>}
 

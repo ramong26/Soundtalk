@@ -39,7 +39,7 @@ export default function ImportTrack({ tracksList, className, isLoading, link }: 
       return link ? (
         <Link href={`/tracks/${item.track.id}`} key={key}>
           <div
-            className={`w-[150px] md:pr-5 px-2 flex flex-col items-center gap-4 cursor-pointer hover:rotate-1 hover:-translate-y-2 transition-transform duration-300 ${
+            className={`w-[150px] h-[200px] md:pr-5 px-2 flex flex-col items-center gap-4 cursor-pointer hover:rotate-1 hover:-translate-y-2 transition-transform duration-300 ${
               tracksList.length - 1 === index ? '' : 'border-r-2 border-dashed border-black/50'
             }`}
           >
@@ -89,16 +89,37 @@ export default function ImportTrack({ tracksList, className, isLoading, link }: 
   };
 
   return (
-    <div
-      className={`relative border-2 border-black py-6 mt-12 bg-white rounded-xl shadow-md ${className}`}
+    <section
+      className={`relative border-2 border-black py-6 mt-12 bg-white  shadow-md ${className}`}
     >
-      <span className="absolute -top-5 left-1/2 -translate-x-1/2 bg-black text-white px-5 py-1 rounded-md border-2 border-black font-bold text-xl">
-        트랙 미리보기
-      </span>
-
-      <div className="h-[230px] pl-3 flex flex-row flex-nowrap items-center gap-4 mt-3 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
-        {isLoading ? renderSkeletonItems() : renderTrackItems()}
+      <div className="relative top-[-24px] lg:text-3xl md:text-2xl text-lg font-extrabold md:px-[50px] px-[15px] h-[70px] flex items-center text-black  bg-[#FFD460] border-t-4 border-b-4 border-black justify-between shadow-[0_4px_0_#000] uppercase tracking-wide">
+        <div>🔥 트랙 미리보기</div>
       </div>
-    </div>
+
+      {/* 자동 스크롤 + 수동 스크롤  */}
+      <div className="relative w-full pt-[13px] overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400">
+        <div className="flex gap-6 animate-scroll">
+          {isLoading ? renderSkeletonItems() : renderTrackItems()}
+          {/* 무한 반복 효과 위해 한 번 더 */}
+          {isLoading ? renderSkeletonItems() : renderTrackItems()}
+        </div>
+      </div>
+
+      <style jsx>{`
+        @keyframes scroll {
+          0% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(-40%);
+          }
+        }
+        .animate-scroll {
+          width: max-content;
+          display: flex;
+          animation: scroll 60s linear infinite;
+        }
+      `}</style>
+    </section>
   );
 }
