@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import SortDown from '@/shared/components/SortDown';
 
 interface Profile {
   displayName: string;
@@ -19,17 +20,26 @@ export default function HeaderLayout({
   profile,
   isLogin,
 }: HeaderLayoutProps) {
+  // SignIn / SignUp 라벨
+  const signInLabel = ['SIGNIN', 'SIGNUP'];
+  // 로그인 인증 모달 열기 핸들러
+  const handleAuthSelect = (type: string) => {
+    if (type === 'SIGNIN') handleOpenModal('login');
+    else if (type === 'SIGNUP') handleOpenModal('signup');
+  };
+
+  // 메뉴 라벨
+  const menuLabel = ['CHART', 'PLAYLIST', 'CHANNEL', 'RECOMMEND'];
+  // 메뉴 링크
+  const menuLink = ['/charts', '/playlist', '/channel', '/recommend'];
+
+  // 로그인 전 버튼 렌더링
   const renderAuthButtons = () => (
     <div className="lg:text-xl md:text-lg text-sm font-bold flex lg:gap-[30px] md:gap-[15px] gap-[10px] items-center justify-between h-full ">
-      <button className="cursor-pointer" onClick={() => handleOpenModal('login')}>
-        SIGNIN
-      </button>
-      <button className="cursor-pointer" onClick={() => handleOpenModal('signup')}>
-        SIGNUP
-      </button>
+      <SortDown label={signInLabel} onSelect={handleAuthSelect} title="Login" />
     </div>
   );
-
+  // 로그인 후 프로필 렌더링
   const renderProfile = () =>
     profile && (
       <div className="flex items-center gap-2 text-lg font-semibold h-full">
@@ -52,12 +62,9 @@ export default function HeaderLayout({
     );
 
   return (
-    <div className="flex w-full justify-between px-[30px] h-[70px] bg-white">
+    <div className="lg:px-[30px] md:px-[20px] px-[15px] flex w-full justify-between  h-[70px] bg-white">
       <div className="lg:text-xl md:text-lg text-sm font-bold flex lg:gap-[20px] md:gap-[15px] gap-[10px] items-center justify-between">
-        <Link href="/charts">CHART</Link>
-        <Link href="/playlist">PLAYLIST</Link>
-        <Link href="/channel">CHANNEL</Link>
-        <Link href="/recommend">RECOMMEND</Link>
+        <SortDown label={menuLabel} link={menuLink} title="Menu" />
       </div>
 
       <Link href="/" className="lg:text-2xl md:text-lg font-extrabold flex items-center">
