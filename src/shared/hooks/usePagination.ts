@@ -9,7 +9,7 @@ export default function usePagination(limit: number) {
 
   const prevPage = () => setPage((prev) => Math.max(prev - 1, 0));
   const nextPage = () => setPage((prev) => prev + 1);
-  console.log(`page:${page}`);
+
   return {
     page,
     setPage,

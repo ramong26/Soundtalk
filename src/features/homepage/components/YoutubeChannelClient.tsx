@@ -73,7 +73,7 @@ export default function YoutubeChannelClient({ channels }: { channels: YouTubeCh
     return () => cancelAnimationFrame(animationFrame);
   }, [activeCenter]);
   if (!channels || channels.length === 0) {
-    return <div className="h-[700px] bg-rose-500"></div>;
+    return null;
   }
   return (
     <section

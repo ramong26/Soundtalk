@@ -33,9 +33,7 @@ export default function ChartTop1({ tracksList }: { tracksList: TrackItem[] }) {
             {track.name}
           </h1>
           <p className="lg:text-[22px] text-16px font-medium md:pb-0 pb-4 text-gray-800 italic">
-            {track.artists?.length > 0
-              ? track.artists.map((artist) => artist.name).join(', ')
-              : `${track.artists[0]?.name}`}
+            {track.artists?.map((artist) => artist.name).join(', ')}
           </p>
         </div>
         <div className="lg:p-4 p-2 border-2 border-black  bg-white shadow-[4px_4px_0px_#000] w-full">
