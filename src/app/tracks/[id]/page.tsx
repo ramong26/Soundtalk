@@ -1,5 +1,4 @@
 import { getBaseUrl } from '@/lib/utils/baseUrl';
-import HeaderMain from '@/shared/components/HeaderMain/HeaderMain';
 import TrackDescription from '@/features/tracks/components/TrackDescription/TrackDescription';
 
 import TrackClient from '@/features/tracks/components/TrackClient';
@@ -26,7 +25,6 @@ export default async function TrackPage({ params }: PageProps) {
 
   return (
     <div className="h-screen ">
-      <HeaderMain />
       <main className="flex flex-col mt-[250px] gap-4 h-[617px] w-[1043px] mx-auto">
         {album && <TrackDescription album={album} />}
         {album && <TrackClient trackId={track.id} album={album} track={track} />}

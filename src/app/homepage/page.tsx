@@ -3,12 +3,13 @@ import { Suspense } from 'react';
 
 import ChartTop5 from '@/features/homepage/components/ChartTop5';
 import ChartTop1 from '@/features/homepage/components/ChartTop1';
-import HomepageFooter from '@/features/homepage/components/HomepageFooter';
+
 import { getTrackList } from '@/shared/hooks/getTrackList';
 
 const YoutubePlaylist = dynamic(
   () => import('@/features/homepage/components/YoutubeChannelsContainer')
 );
+const HomepageFooter = dynamic(() => import('@/features/homepage/components/HomepageFooter'));
 
 export const metadata = {
   title: 'SoundTalk - 음악 차트 & 플레이리스트',

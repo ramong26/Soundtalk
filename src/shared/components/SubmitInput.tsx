@@ -27,7 +27,7 @@ export default function SubmitInput({
           }
         }}
         value={value}
-        className="w-full outline-none"
+        className="w-full outline-none lg:text-lg md:text-md text-sm font-medium placeholder-gray-400"
       />
     </div>
   );

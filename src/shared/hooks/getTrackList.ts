@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import getTopTrackPlaylist from '@/features/chart/hooks/getTopTrackPlaylist';
 import getAllTracks from '@/shared/hooks/getAllTracks';
+import { TrackItem } from '@/shared/types/spotifyTrack';
 
 const ONE_HOUR = 1000 * 60 * 60;
 
@@ -34,10 +35,11 @@ export const useTrackList = (playlistId: string, offset = 0, limit = 50) => {
   });
 };
 
-export const useAllTracks = (playlistId?: string) => {
+export const useAllTracks = (playlistId?: string, select?: (data: TrackItem[]) => TrackItem[]) => {
   return useQuery({
     queryKey: ['all-tracks', playlistId],
     enabled: !!playlistId,
-    queryFn: () => getAllTracks(playlistId!),
+    queryFn: () => getAllTracks(playlistId!, 50),
+    select,
   });
 };

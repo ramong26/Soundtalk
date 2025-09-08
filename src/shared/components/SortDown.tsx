@@ -94,7 +94,7 @@ export default function SortDown({
               {Array.isArray(link) && link[idx] ? (
                 <Link
                   href={link[idx]}
-                  className="w-fit px-6 py-2 text-left hover:bg-gray-100 block"
+                  className="w-full px-6 py-2 text-left hover:bg-gray-100 block"
                   onClick={() => setOpen(false)}
                 >
                   {item}

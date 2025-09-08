@@ -2,7 +2,6 @@ import { Suspense } from 'react';
 import getTrackId from '@/features/tracks/hooks/getTrackId';
 import getArtist from '@/features/tracks/hooks/getArtist';
 
-import HeaderMain from '@/shared/components/HeaderMain/HeaderMain';
 import ArtistProfile from '@/features/tracks/interview/components/ArtistProfile';
 import ArtistInterview from '@/features/tracks/interview/components/ArtistInterview';
 
@@ -32,7 +31,6 @@ export default async function InterviewPage({ params }: PageProps) {
 
   return (
     <div className="h-screen ">
-      <HeaderMain />
       <main className="flex mt-[188px] gap-4 h-fit w-[1043px] items-center justify-center mx-auto">
         <div className="flex flex-col gap-10 ">
           <Suspense fallback={<div className="h-40 w-full bg-gray-200 animate-pulse mt-10" />}>

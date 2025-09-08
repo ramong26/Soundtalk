@@ -72,7 +72,9 @@ export default function YoutubeChannelClient({ channels }: { channels: YouTubeCh
     update();
     return () => cancelAnimationFrame(animationFrame);
   }, [activeCenter]);
-
+  if (!channels || channels.length === 0) {
+    return null;
+  }
   return (
     <section
       ref={containerRef}

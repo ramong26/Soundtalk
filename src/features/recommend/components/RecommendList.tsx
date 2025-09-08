@@ -20,8 +20,6 @@ const moodTagMap: Record<string, string> = {
 export default function RecommendList({ tag }: MoodTagProps) {
   const [tracks, setTracks] = useState<TrackItem[]>([]);
 
-  // 각 태그에 맞는 플레이리스트 ID 매핑
-
   // 플레이리스트 ID에 따라 트랙 리스트를 가져오는 함수
   useEffect(() => {
     const playlistId = moodTagMap[tag];
