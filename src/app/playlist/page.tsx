@@ -8,9 +8,9 @@ export const metadata = {
 
 export default function PlaylistPage() {
   return (
-    <>
+    <div className="w-auto max-w-[1286px] lg:mx-auto mx-4">
       <HowPlaylist />
       <SubmitPlaylist />
-    </>
+    </div>
   );
 }

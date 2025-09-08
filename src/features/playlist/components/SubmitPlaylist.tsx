@@ -17,33 +17,25 @@ const PlaylistInterviewList = dynamic(
 );
 
 export default function SubmitPlaylist() {
-  // 플레이리스트 제출 훅
   const { submitUrl, setSubmitUrl, playlistId, showChart, handleSubmit, error } =
     usePlaylistSubmit();
 
-  // 페이지네이션 훅
-
-  // 트랙 목록 가져오기
   const { data: pageTracks, isLoading } = useTrackList(playlistId);
   const { data: allTracks = [] } = useAllTracks(playlistId);
 
-  // 상위 트랙 메모로 저장
-  const topTracks = useMemo(() => {
-    return allTracks.slice(0, 100);
-  }, [allTracks]);
+  const topTracks = useMemo(() => allTracks.slice(0, 100), [allTracks]);
 
-  // 유효성 검사
   const isValidData = Array.isArray(pageTracks) && pageTracks.length > 0;
 
   return (
-    <section className=" mt-16 min-h-[30vh]  flex flex-col">
-      <h1 className="flex items-center justify-center mb-5 lg:text-[56px] text-[40px] font-extrabold leading-tight text-black uppercase tracking-wide drop-shadow-[3px_3px_0px_#FFD460]">
+    <section className="w-full max-w-[1280px] mx-auto mt-12 min-h-[30vh] flex flex-col items-center mb-10">
+      <h1 className="flex items-center justify-center mb-5 text-center lg:text-5xl md:text-4xl text-3xl font-extrabold leading-tight text-black uppercase tracking-wide drop-shadow-[3px_3px_0px_#FFD460]">
         Submit Your Playlist !
       </h1>
 
       {/* 입력 박스 */}
-      <div className=" flex flex-col items-center justify-center">
-        <div className="w-[1272px] bg-white border-2 border-black p-6 md:p-8 rounded-xl shadow-md flex flex-col gap-4">
+      <div className="w-full flex flex-col items-center justify-center">
+        <div className="w-full  bg-white border-2 border-black p-4 md:p-8 rounded-xl shadow-md flex flex-col gap-4">
           <SubmitInput
             placeholder="Spotify 플레이리스트 링크를 넣어주세요!"
             value={submitUrl}
@@ -57,11 +49,15 @@ export default function SubmitPlaylist() {
 
         {/* 트랙 카드 리스트 */}
         {showChart && (
-          <div className=" mt-10 w-full">
+          <div className="mt-10 w-full flex flex-col items-center">
             {isLoading && <ImportTrack isLoading />}
             {error && <p className="text-red-600 text-center font-bold">❌ 오류 발생: {error}</p>}
 
-            {isValidData && <ImportTrack link tracksList={pageTracks} />}
+            {isValidData && (
+              <div className="w-full ">
+                <ImportTrack link tracksList={pageTracks} />
+              </div>
+            )}
 
             {!isValidData && !isLoading && !error && (
               <p className="text-center text-gray-700 font-semibold">
@@ -71,14 +67,15 @@ export default function SubmitPlaylist() {
             )}
 
             {/* 아티스트 인터뷰 리스트 */}
-            <PlaylistInterviewList key={playlistId} trackData={topTracks} />
+            <div className="w-full mt-8">
+              <PlaylistInterviewList key={playlistId} trackData={topTracks} />
+            </div>
           </div>
         )}
       </div>
     </section>
   );
 }
-
 // 'use client';
 
 // import dynamic from 'next/dynamic';
