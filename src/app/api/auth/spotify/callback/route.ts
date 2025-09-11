@@ -81,23 +81,21 @@ export async function GET(request: NextRequest) {
 
     // DB 연결
     await connectToDB();
-
     // 사용자 정보 저장 (upsert)
     const user = await UserModel.findOneAndUpdate(
+      { spotifyId: profileData.id },
       {
-        $or: [
-          { spotifyId: profileData.id },
-          { email: profileData.email || `${profileData.id}@example.com` },
-        ],
-      },
-      {
-        spotifyId: profileData.id,
-        displayName: profileData.display_name || 'No Name',
-        email: profileData.email || `${profileData.id}@example.com`,
-        profileImageUrl: profileData.images?.[0]?.url || '',
-        lastLogin: new Date(),
-        accessToken,
-        refreshToken,
+        $set: {
+          accessToken,
+          refreshToken,
+          lastLogin: new Date(),
+        },
+        $setOnInsert: {
+          spotifyId: profileData.id,
+          displayName: profileData.display_name || 'No Name',
+          email: profileData.email ? profileData.email : `${profileData.id}@example.com`,
+          profileImageUrl: profileData.images?.[0]?.url || '',
+        },
       },
       { upsert: true, new: true }
     );

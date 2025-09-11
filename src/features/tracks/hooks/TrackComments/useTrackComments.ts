@@ -6,6 +6,8 @@ import { Comment } from '@/shared/types/comment';
 export default function useTrackComments(trackId: string) {
   const [comments, setComments] = useState<Comment[] | null>(null);
   const [submitComment, setSubmitComment] = useState('');
+
+  // 트랙 ID가 바뀔 때마다 댓글 목록을 불러옴
   useEffect(() => {
     (async () => {
       try {
@@ -22,6 +24,7 @@ export default function useTrackComments(trackId: string) {
     })();
   }, [trackId]);
 
+  // 댓글 제출 핸들러
   const handleSubmit = async (value: string) => {
     if (!value.trim()) {
       console.error('댓글 내용이 비어있습니다');
@@ -36,7 +39,7 @@ export default function useTrackComments(trackId: string) {
       updatedAt: new Date().toISOString(),
       userId: {
         _id: 'temp-user',
-        displayName: 'Anonymous',
+        displayName: '익명',
         profileImageUrl: '',
       },
     };

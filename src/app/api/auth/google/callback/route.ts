@@ -94,19 +94,23 @@ export async function GET(request: NextRequest) {
 
     const profileData: GoogleUserProfile = await profileRes.json();
 
-    // 데이터베이스 연결
+    // DB 연결
     await connectToDB();
 
     const user = await UserModel.findOneAndUpdate(
       { googleId: profileData.sub },
       {
-        googleId: profileData.sub,
-        displayName: profileData.name || 'No Name',
-        email: profileData.email || `${profileData.sub}@example.com`,
-        profileImageUrl: profileData.picture || '',
-        lastLogin: new Date(),
-        accessToken,
-        refreshToken,
+        $set: {
+          accessToken,
+          refreshToken,
+          lastLogin: new Date(),
+        },
+        $setOnInsert: {
+          googleId: profileData.sub,
+          displayName: profileData.name || 'No Name',
+          email: profileData.email ? profileData.email : `${profileData.sub}@example.com`,
+          profileImageUrl: profileData.picture || '',
+        },
       },
       { upsert: true, new: true }
     );

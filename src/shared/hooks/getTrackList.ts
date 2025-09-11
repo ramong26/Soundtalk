@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { UseQueryResult, useQuery } from '@tanstack/react-query';
 
 import getTopTrackPlaylist from '@/features/chart/hooks/getTopTrackPlaylist';
 import getAllTracks from '@/shared/hooks/getAllTracks';
@@ -14,7 +14,7 @@ export async function getTrackList({
   playlistId?: string;
   offset?: number;
   limit?: number;
-} = {}) {
+} = {}): Promise<TrackItem[]> {
   const finalPlaylistId = playlistId || '1Gg5BI7b5xljyHnGXXrX0E';
   const tracksList = await getTopTrackPlaylist({
     playlistId: finalPlaylistId,
@@ -26,8 +26,12 @@ export async function getTrackList({
 }
 // 사용법:   const tracksList = await getTrackList();
 
-export const useTrackList = (playlistId: string, offset = 0, limit = 50) => {
-  return useQuery({
+export const useTrackList = (
+  playlistId: string,
+  offset = 0,
+  limit = 50
+): UseQueryResult<TrackItem[]> => {
+  return useQuery<TrackItem[]>({
     queryKey: ['track-list', playlistId, offset, limit],
     queryFn: () => getTopTrackPlaylist({ playlistId, offset, limit }),
     enabled: !!playlistId,

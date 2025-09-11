@@ -1,4 +1,7 @@
 'use client';
+import Image from 'next/image';
+
+import ShareIcon from '@/public/image/share-icon.png';
 
 export default function TrackPageShare() {
   const handleCopyLink = () => {
@@ -16,7 +19,13 @@ export default function TrackPageShare() {
 
   return (
     <div className="cursor-pointer" onClick={handleCopyLink}>
-      공유
+      <Image
+        src={ShareIcon}
+        alt="Share"
+        width={36}
+        height={36}
+        className="lg:w-[36px] md:w-[30px] w-[24px] lg:h-[36px] md:h-[30px] h-[24px] "
+      />
     </div>
   );
 }
