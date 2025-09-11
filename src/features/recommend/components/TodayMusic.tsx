@@ -16,6 +16,7 @@ export default function TodayMusic() {
   const handleTagClick = (tag: string) => {
     setChoicedTag(tag);
   };
+
   return (
     <section className="w-fit py-12 px-6">
       <div className="text-center mb-10">
