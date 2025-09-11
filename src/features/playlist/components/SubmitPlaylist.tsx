@@ -4,10 +4,11 @@ import dynamic from 'next/dynamic';
 import { useMemo } from 'react';
 
 import SubmitInput from '@/shared/components/SubmitInput';
+import { TrackItem } from '@/shared/types/spotifyTrack';
 import { useTrackList, useAllTracks } from '@/shared/hooks/getTrackList';
 import { usePlaylistSubmit } from '@/features/playlist/hooks/SubmitPlaylist/usePlaylistSubmit';
 
-const ImportTrack = dynamic(() => import('@/features/playlist/components/ImporttTrack'), {
+const ImportTrack = dynamic(() => import('@/features/playlist/components/ImportTrack'), {
   ssr: false,
 });
 
@@ -25,17 +26,33 @@ export default function SubmitPlaylist() {
 
   const topTracks = useMemo(() => allTracks.slice(0, 100), [allTracks]);
 
-  const isValidData = Array.isArray(pageTracks) && pageTracks.length > 0;
+  // 트랙 데이터를 공통 포맷으로 변환
+  const mappedTracks = useMemo(
+    () =>
+      (pageTracks ?? []).map((item) => {
+        const track = item as TrackItem;
+        return {
+          id: track?.track?.id ?? '',
+          imageUrl: track?.track?.album?.images?.[1]?.url ?? '/images/placeholder.png',
+          title: track?.track?.name ?? '',
+          subtitle: track?.track?.artists?.map((a) => a.name).join(', ') ?? '',
+          href: track?.track?.id ? `/tracks/${track.track.id}` : null,
+        };
+      }),
+    [pageTracks]
+  );
+
+  const isValidData = mappedTracks.length > 0;
 
   return (
     <section className="w-full max-w-[1280px] mx-auto mt-12 min-h-[30vh] flex flex-col items-center mb-10">
-      <h1 className="flex items-center justify-center mb-5 text-center lg:text-5xl md:text-4xl text-3xl font-extrabold leading-tight text-black uppercase tracking-wide drop-shadow-[3px_3px_0px_#FFD460]">
+      <h1 className="mb-5 text-center lg:text-5xl md:text-4xl text-3xl font-extrabold leading-tight text-black uppercase tracking-wide drop-shadow-[3px_3px_0px_#FFD460]">
         Submit Your Playlist !
       </h1>
 
       {/* 입력 박스 */}
-      <div className="w-full flex flex-col items-center justify-center">
-        <div className="w-full  bg-white border-2 border-black p-4 md:p-8 rounded-xl shadow-md flex flex-col gap-4">
+      <div className="w-full flex flex-col items-center">
+        <div className="w-full bg-white border-2 border-black p-4 md:p-8 rounded-xl shadow-md flex flex-col gap-4">
           <SubmitInput
             placeholder="Spotify 플레이리스트 링크를 넣어주세요!"
             value={submitUrl}
@@ -47,17 +64,12 @@ export default function SubmitPlaylist() {
           </p>
         </div>
 
-        {/* 트랙 카드 리스트 */}
         {showChart && (
           <div className="mt-10 w-full flex flex-col items-center">
             {isLoading && <ImportTrack isLoading />}
             {error && <p className="text-red-600 text-center font-bold">❌ 오류 발생: {error}</p>}
 
-            {isValidData && (
-              <div className="w-full ">
-                <ImportTrack link tracksList={pageTracks} />
-              </div>
-            )}
+            {isValidData && <ImportTrack tracksList={mappedTracks} link />}
 
             {!isValidData && !isLoading && !error && (
               <p className="text-center text-gray-700 font-semibold">
@@ -66,7 +78,6 @@ export default function SubmitPlaylist() {
               </p>
             )}
 
-            {/* 아티스트 인터뷰 리스트 */}
             <div className="w-full mt-8">
               <PlaylistInterviewList key={playlistId} trackData={topTracks} />
             </div>

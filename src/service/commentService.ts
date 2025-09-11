@@ -46,6 +46,7 @@ const getComments = async (
 
     if (res.ok) {
       const data = await res.json();
+      console.log('getComments data', data);
       return data;
     }
   } catch (err) {

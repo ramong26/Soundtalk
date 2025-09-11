@@ -35,17 +35,19 @@ export default function ChartTop5({ tracksList }: { tracksList: TrackItem[] }) {
                   alt={track?.track?.name}
                   width={150}
                   height={150}
-                  className="md:w-[150px] max-w-[60px] md:h-[150px] max-h-[60px] rounded-lg border-4 border-black shadow-[5px_5px_0px_#D65361] hover:scale-105 transition-transform"
+                  sizes="(max-width: 640px) 80vw, (max-width: 1024px) 40vw, 150px"
+                  className=" w-[50px] h-[50px] sm:w-[100px] sm:h-[100px] md:w-[120px] md:h-[120px] lg:w-[150px] lg:h-[150px] max-w-full max-h-full rounded-lg border-4 border-black shadow-[5px_5px_0px_#D65361] hover:scale-105 transition-transform"
                 />
                 <div className=" lg:h-8 h-6 lg:w-8 w-6  absolute -top-3 -left-3 bg-black text-white rounded-full flex items-center justify-center text-sm font-bold shadow-[2px_2px_0px_#FFD460]">
                   {index + 1}
                 </div>
               </div>
               <div className="flex flex-col items-center text-black gap-1 text-center">
-                <div className="md:text-base text-sm md:max-w-[140px] max-w-[100px] font-bold truncate uppercase">
+                <div className="text-xs sm:text-sm md:text-base lg:text-lg max-w-[60px] sm:max-w-[60px] md:max-w-[140px] lg:max-w-[180px] font-bold truncate uppercase">
                   {track?.track?.name}
                 </div>
-                <div className="lg:text-lg md:text-md text-xs md:max-w-[140px] max-w-[100px] text-gray-700 truncate  italic">
+
+                <div className=" text-xs sm:text-sm md:text-md lg:text-lg max-w-[60px] sm:max-w-[60px] md:max-w-[140px] lg:max-w-[180px] text-gray-700 truncate italic">
                   {track?.track?.artists?.map((artist) => artist.name).join(', ')}
                 </div>
               </div>

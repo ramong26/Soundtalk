@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Comment } from '@/shared/types/comment';
 
 import { formatDate } from '@/lib/utils/date';
-import CommentEditInput from './CommentEditInput';
+import CommentEditInput from '@/features/tracks/components/CommentEditInput';
 import useUserStore from '@/stores/userStore';
 
 interface Props {
@@ -24,29 +24,29 @@ export default function CommentItem({ comment, onDelete, onEdit }: Props) {
   };
 
   const commentUserId = typeof comment.userId === 'string' ? comment.userId : comment.userId?._id;
-
   const isMyComment = user?._id === commentUserId;
+
   return (
-    <li className="border-b border-gray-200 py-2">
-      <div className="flex items-center gap-2">
+    <li className="border-2 border-black rounded-lg bg-white shadow-[4px_4px_0px_#FFD460] p-4 mb-4 hover:scale-[1.01] transition-transform">
+      {/* 유저 영역 */}
+      <div className="flex items-center gap-3 border-b-2 border-black/20 pb-2">
         <Image
-          width={32}
-          height={32}
+          width={40}
+          height={40}
           src={
             typeof comment.userId === 'object' && comment.userId?.profileImageUrl
               ? comment.userId.profileImageUrl
               : user?.profileImageUrl || '/default-profile.png'
           }
           alt="사용자 프로필 이미지"
-          className="w-8 h-8 rounded-full"
+          className="w-10 h-10 rounded-full border-2 border-black"
         />
-        <span className="font-semibold">
-          {typeof comment.userId === 'string' ? undefined : comment?.userId?.displayName}
-        </span>
+        <span className="font-bold text-lg">{comment?.userId?.displayName || 'Anonymous'}</span>
       </div>
 
+      {/* 댓글 내용 */}
       {!isEditing ? (
-        <p className="mt-1">{comment.text}</p>
+        <p className="mt-3 text-gray-800">{comment.text}</p>
       ) : (
         <CommentEditInput
           initialValue={comment.text}
@@ -55,19 +55,20 @@ export default function CommentItem({ comment, onDelete, onEdit }: Props) {
         />
       )}
 
-      <div className="text-sm text-gray-500 mt-1 flex items-center justify-between">
+      {/* 푸터 */}
+      <div className="text-sm text-gray-600 mt-3 flex items-center justify-between">
         <span>{formatDate(comment.createdAt)}</span>
         {isMyComment && !isEditing && (
-          <div className="flex gap-2">
+          <div className="flex gap-3">
             <button
               onClick={() => setIsEditing(true)}
-              className="text-blue-500 hover:underline cursor-pointer"
+              className="px-2 py-1 rounded-md bg-[#FFD460] text-black font-bold hover:bg-black hover:text-white transition"
             >
               수정
             </button>
             <button
               onClick={() => onDelete(comment._id)}
-              className="text-red-500 hover:underline cursor-pointer"
+              className="px-2 py-1 rounded-md bg-[#D65361] text-white font-bold hover:bg-black hover:text-white transition"
             >
               삭제
             </button>

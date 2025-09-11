@@ -21,14 +21,13 @@ export default async function TrackPage({ params }: PageProps) {
   const res = await fetch(`${baseUrl}/api/tracks/${id}`, {
     cache: 'no-store',
   });
+
   const { track, album } = await res.json();
 
   return (
-    <div className="h-screen ">
-      <main className="flex flex-col mt-[250px] gap-4 h-[617px] w-[1043px] mx-auto">
-        {album && <TrackDescription album={album} />}
-        {album && <TrackClient trackId={track.id} album={album} track={track} />}
-      </main>
+    <div className="w-auto max-w-[1286px] lg:mx-auto mx-4 lg:mt-24 md:mt-16 mt-12 mb-16">
+      {album && <TrackDescription album={album} />}
+      {album && <TrackClient trackId={track.id} album={album} />}
     </div>
   );
 }

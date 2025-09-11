@@ -17,7 +17,9 @@ export default function CommentList({
     <div className="mt-4">
       <h3 className="text-lg font-semibold mb-4">댓글 목록</h3>
       {comments?.length === 0 ? (
-        <p>댓글이 없습니다.</p>
+        <p className="text-center text-gray-600 text-4xl h-40 flex items-center justify-center">
+          No Comments
+        </p>
       ) : (
         <ul className="border-2 p-3 mb-10 space-y-4">
           {comments?.map((comment) => (

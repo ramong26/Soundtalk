@@ -14,20 +14,40 @@ export default async function TrackDescription({ album }: { album: Album }) {
     return <TrackCommentsSkeleton />;
   }
   return (
-    <div>
-      <div className="flex gap-10">
-        <Image src={album.images[0].url} priority alt={album.name} width={400} height={400} />
-        <div>
-          <div className="flex gap-2 items-center">
-            <div className="font-bold text-xl">{album.name}</div>
-            <TrackPageShare />
-            {/* <div className="cursor-pointer" onClick={handleCopyLink}>
-              공유
-            </div> */}
+    <section>
+      <h1 className="flex items-center justify-center mb-5 text-center lg:text-5xl md:text-4xl text-3xl font-extrabold leading-tight text-black uppercase tracking-wide drop-shadow-[3px_3px_0px_#FFD460]">
+        TRACK INFO !
+      </h1>
+
+      <div className="lg:gap-12 gap-8 lg:mx-auto mx-4 lg:w-fit lg:p-8 md:p-6 p-4 flex md:flex-row flex-col mb-12 items-center justify-between bg-[#fdfbf7] border-4 border-black shadow-[6px_6px_0px_#000]">
+        {/* 앨범 이미지 */}
+        <div className=" relative">
+          <div className="rounded-full border-8 border-black shadow-[8px_8px_0px_#D65361] overflow-hidden">
+            <Image
+              width={500}
+              height={500}
+              src={album?.images?.[0]?.url}
+              alt={`Album cover of ${album?.name}`}
+              priority
+              className="rounded-full "
+            />
           </div>
-          <div>{summary}</div>
+        </div>
+
+        {/* 설명 영역 */}
+        <div className="flex flex-col gap-10 max-w-2xl h-[478px]">
+          <div className="flex justify-between items-center">
+            <h2
+              className="font-extrabold text-3xl uppercase max-w-[600px] overflow-hidden whitespace-nowrap text-ellipsis"
+              title={album.name}
+            >
+              {album.name}
+            </h2>
+            <TrackPageShare />
+          </div>
+          <p className="text-lg leading-relaxed italic text-gray-800">{summary}</p>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

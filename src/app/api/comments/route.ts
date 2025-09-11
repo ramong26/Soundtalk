@@ -32,6 +32,8 @@ export async function POST(request: NextRequest) {
       text,
     });
 
+    await newComment.populate('userId', 'displayName profileImageUrl');
+
     return NextResponse.json(newComment, {
       status: 201,
       headers: { 'Content-Type': 'application/json' },
