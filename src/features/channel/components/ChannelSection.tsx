@@ -13,7 +13,7 @@ export default function ChannelSection() {
   };
 
   return (
-    <section className="w-fit py-12 px-6">
+    <section className=" py-12 px-6 w-[1285px] h-[950px]">
       {/* 상단 타이틀 */}
       <div className="text-center mb-10">
         <div className="flex flex-row items-center justify-center lg:text-[56px] text-[40px] font-extrabold leading-tight">
@@ -57,7 +57,7 @@ export default function ChannelSection() {
         <div className="max-w-[1400px] relative">
           <Suspense
             fallback={
-              <div className="flex items-center justify-center w-full h-[400px] bg-gray-200 " />
+              <div className="flex items-center justify-center w-[1285px] h-[400px] bg-gray-200 " />
             }
           >
             <ChannelListWrapper title={choicedTag} />

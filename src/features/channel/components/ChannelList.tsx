@@ -2,8 +2,12 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+
 import { YouTubeChannel } from '@/shared/types/youtube';
 
+import ChannelListSkeltone from '@/features/channel/components/ChannelListSkeltone';
+
+// 채널 핸들 매핑
 const channelHandleMap: Record<string, string[]> = {
   '믹스 채널 추천': ['RAPHAEL_MIXES', 'retapestudios', 'HumanoStudios'],
   'Jazz 채널 추천': ['ICYFOG', 'midnightradio2', 'RetroCafeRadio'],
@@ -14,6 +18,7 @@ const channelHandleMap: Record<string, string[]> = {
 export default function ChannelList({ title }: { title: string }) {
   const [channels, setChannels] = useState<YouTubeChannel[]>([]);
 
+  // title이 바뀔 때마다 채널 정보 불러오기 mongoDB API 사용
   useEffect(() => {
     if (!title) return;
 
@@ -35,7 +40,7 @@ export default function ChannelList({ title }: { title: string }) {
     fetchChannels();
   }, [title]);
 
-  if (!channels.length) return <p>채널 정보를 불러오는 중...</p>;
+  if (!channels.length) return <ChannelListSkeltone />;
 
   return (
     <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -44,7 +49,7 @@ export default function ChannelList({ title }: { title: string }) {
           key={ch.id}
           className="border-[3px] border-black bg-[#fff8e7] rounded-lg p-6 flex flex-col md:flex-row items-center gap-6"
         >
-          <div className="flex flex-col items-center text-center w-full md:w-[180px]">
+          <div className="flex flex-col items-center text-center w-full md:w-[100px]">
             <Image
               src={ch.snippet?.thumbnails?.high?.url || '/default-profile.png'}
               alt={ch.snippet?.title || 'Default Channel Profile'}
@@ -55,19 +60,25 @@ export default function ChannelList({ title }: { title: string }) {
             <h3 className="text-lg font-bold mt-3">{ch.snippet?.title}</h3>
           </div>
 
-          <div className="flex flex-col justify-between flex-1 text-center md:text-left">
-            <p className="text-gray-800 text-sm font-medium leading-relaxed line-clamp-3">
-              {ch.snippet?.description || '채널 설명이 없습니다.'}
-            </p>
-            <Link
-              href={`https://www.youtube.com/@${ch.handle}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-block px-4 py-2 bg-yellow-300 border-2 border-black rounded-md font-semibold text-sm hover:bg-yellow-400 transition-colors"
-            >
-              채널 방문하기 →
-            </Link>
+          <div className="flex justify-between flex-1 text-center md:text-left">
+            <div className="flex items-center flex-col gap-5">
+              <p className="text-center text-gray-800 text-sm font-medium leading-relaxed line-clamp-3">
+                {ch.snippet?.description || '채널 설명이 없습니다.'}
+              </p>
+              <p>
+                구독자 {ch.statistics?.subscriberCount || '0'}명 · 영상{' '}
+                {ch.statistics?.videoCount || '0'}개
+              </p>
+            </div>
           </div>
+          <Link
+            href={`https://www.youtube.com/@${ch.handle}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="md:text-lg text-xs  font-extrabold hover:underline hover:text-blue-800 line-clamp-2"
+          >
+            채널 방문하기 →
+          </Link>
         </li>
       ))}
     </ul>
