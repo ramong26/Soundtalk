@@ -1,4 +1,5 @@
 import React from 'react';
+
 export default function WikiRow({
   label,
   value,
@@ -9,12 +10,16 @@ export default function WikiRow({
   isLoading: boolean;
 }) {
   return (
-    <tr className={isLoading ? 'animate-pulse' : ''}>
-      <th className="text-left px-4 py-3 font-semibold text-gray-700 border-r-1 border-b border-gray-300 bg-neutral-100 w-1/4 whitespace-nowrap">
+    <tr className="border-b-2 border-black">
+      <th className="px-4 py-3 font-bold text-black bg-[#FFD460] border-r-2 border-black w-1/4 uppercasetext-sm">
         {label}
       </th>
-      <td className="px-4 py-3 text-gray-900 border-b border-gray-300">
-        {isLoading ? <div className="w-full h-4 bg-gray-300 rounded" /> : value || '정보 없음'}
+      <td className="px-4 py-3 text-black">
+        {isLoading ? (
+          <div className="w-full h-4 bg-neutral-300 rounded animate-pulse" />
+        ) : (
+          value || <span className="italic text-gray-600">정보 없음</span>
+        )}
       </td>
     </tr>
   );

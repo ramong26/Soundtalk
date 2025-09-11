@@ -55,34 +55,49 @@ export default function ArtistInterviewComponent({
         setInterviewPageName(null);
     }
   }, [interviewLogo]);
+
   if (!artistInterview) {
-    return <div className="text-center mt-10">인터뷰 정보를 찾을 수 없습니다.</div>;
+    return (
+      <div className="text-center mt-8 p-4 border-4 border-black bg-[#fff8e1] font-bold text-red-600">
+        인터뷰 정보를 찾을 수 없습니다.
+      </div>
+    );
   }
+
   return (
-    <div className="flex items-center justify-center h-[150px] gap-4 mb-4 p-4 bg-white rounded-lg shadow-md ">
-      <div className="flex items-center flex-col justify-center text-center gap-2 w-[90px] h-[90px]">
+    <section className="flex items-center gap-6 mb-6 p-6 bg-[#fffaf0] border-4 border-black rounded-md shadow-[4px_4px_0px_#000]">
+      {/* 로고 + 출처 */}
+
+      <div className="flex flex-col items-center justify-center text-center w-[100px]">
         <Image
           src={interviewPageLogo || '/default-logo.png'}
           alt="Artist Interview Logo"
-          width={60}
-          height={60}
-          className="rounded-full object-cover w-[60px] h-[60px]"
+          width={70}
+          height={70}
+          className="lg:w-[70px] w-[50px] lg:h-[70px] h-[50px] rounded-full border-2 border-black object-cover"
         />
-        <div className="w-[130px]">{interviewPageName}</div>
-      </div>
-      <p className="flex-1 text-center text-lg font-semibold">{artistInterview?.title}</p>
-      <div className="flex flex-col items-center">
-        <Link href={artistInterview?.link || '#'} className="text-blue-500 hover:underline">
-          인터뷰 전문 보기{' '}
-        </Link>
-        <div>
-          {publishedTime ? (
-            <span className="text-gray-500 text-sm">{formatDate(publishedTime)}</span>
-          ) : (
-            <span className="text-gray-500 text-sm">날짜 정보 없음</span>
-          )}
+        <div className="mt-2 text-xs font-bold uppercase tracking-wide text-white bg-[#D43C3C] border border-black px-2 py-1">
+          {interviewPageName || 'Unknown'}
         </div>
       </div>
-    </div>
+
+      {/* 인터뷰 제목 */}
+      <p className="lg:text-xl md:text-lg text-base flex-1  font-extrabold text-black text-center leading-snug">
+        {artistInterview?.title}
+      </p>
+
+      {/* 링크 + 날짜 */}
+      <div className="flex flex-col items-center text-sm md:w-full w-[0px]">
+        <Link
+          href={artistInterview?.link || '#'}
+          className="lg:text-md md:text-sm text-xs font-bold text-black hover:underline hover:text-blue-800 uppercase border-2 border-black px-3 py-1 bg-[#FFD460] shadow-[2px_2px_0px_#000]"
+        >
+          인터뷰 보기
+        </Link>
+        <span className="lg:text-md md:text-sm text-xs mt-2 text-gray-700 italic">
+          {publishedTime ? formatDate(publishedTime) : '날짜 정보 없음'}
+        </span>
+      </div>
+    </section>
   );
 }
