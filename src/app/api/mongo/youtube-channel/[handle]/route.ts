@@ -1,7 +1,12 @@
 import { NextResponse, NextRequest } from 'next/server';
 import { getYoutubeChannelInfo } from '@/features/tracks/hooks/getYoutubeMongo';
 
-export async function GET(req: NextRequest, { params }: { params: { handle: string } }) {
-  const data = await getYoutubeChannelInfo(params.handle);
+interface PageProps {
+  params: Promise<{ handle: string }>;
+}
+
+export async function GET(request: NextRequest, { params }: PageProps) {
+  const { handle } = await params;
+  const data = await getYoutubeChannelInfo(handle);
   return NextResponse.json(data);
 }

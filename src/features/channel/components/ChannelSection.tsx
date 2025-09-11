@@ -1,19 +1,19 @@
 'use client';
-import { Suspense, useRef, useState } from 'react';
+import { Suspense, useState } from 'react';
 
 import ChannelListWrapper from '@/features/channel/components/ChannelListWrapper';
 
+const moodTags = ['믹스 채널 추천', 'Jazz 채널 추천', 'Hiphop 채널 추천', 'Rock 채널 추천'];
+
 export default function ChannelSection() {
-  const moodTags = ['믹스 채널 추천', 'Jazz 채널 추천', 'Hiphop 채널 추천', 'Rock 채널 추천'];
   const [choicedTag, setChoicedTag] = useState(moodTags[0]);
-  const moodTagRef = useRef<HTMLDivElement>(null);
 
   const handleTagClick = (tag: string) => {
     setChoicedTag(tag);
   };
 
   return (
-    <section className=" py-12 px-6 w-[1285px] h-[950px]">
+    <section className=" py-12 px-6 w-full">
       {/* 상단 타이틀 */}
       <div className="text-center mb-10">
         <div className="flex flex-row items-center justify-center lg:text-[56px] text-[40px] font-extrabold leading-tight">
@@ -31,7 +31,7 @@ export default function ChannelSection() {
       </div>
 
       {/* 태그 버튼 */}
-      <div ref={moodTagRef} className="flex flex-wrap gap-2 justify-between pb-4">
+      <div className="flex flex-wrap gap-2 justify-between pb-4">
         {moodTags.map((tag) => (
           <button
             key={tag}

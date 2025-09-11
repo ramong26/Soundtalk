@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 import { YouTubeChannel } from '@/shared/types/youtube';
 
-import ChannelListSkeltone from '@/features/channel/components/ChannelListSkeltone';
+import ChannelListSkeleton from '@/features/channel/components/ChannelListSkeleton';
 
 // 채널 핸들 매핑
 const channelHandleMap: Record<string, string[]> = {
@@ -22,11 +22,19 @@ export default function ChannelList({ title }: { title: string }) {
   useEffect(() => {
     if (!title) return;
 
+    const controller = new AbortController();
+
     const fetchChannels = async () => {
       const handles = channelHandleMap[title] ?? [];
       const results = await Promise.allSettled(
-        handles.map((h) => fetch(`/api/mongo/youtube-channel/${h}`).then((res) => res.json()))
+        handles.map((h) =>
+          fetch(`/api/mongo/youtube-channel/${h}`, { signal: controller.signal }).then((res) =>
+            res.json()
+          )
+        )
       );
+
+      if (controller.signal.aborted) return;
 
       const data = results
         .map((res, i) =>
@@ -38,9 +46,14 @@ export default function ChannelList({ title }: { title: string }) {
     };
 
     fetchChannels();
+
+    // 컴포넌트 언마운트 시 fetch 취소
+    return () => {
+      controller.abort();
+    };
   }, [title]);
 
-  if (!channels.length) return <ChannelListSkeltone />;
+  if (!channels.length) return <ChannelListSkeleton />;
 
   return (
     <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -84,79 +97,3 @@ export default function ChannelList({ title }: { title: string }) {
     </ul>
   );
 }
-
-// import Image from 'next/image';
-// import Link from 'next/link';
-
-// import { YouTubeChannel } from '@/shared/types/youtube';
-// import { getYoutubeChannelInfo } from '@/features/tracks/hooks/getYoutubeMongo';
-
-// export default async function ChannelList({ title }: { title: string }) {
-//   if (!title) {
-//     return null;
-//   }
-
-//   const channelHandleMap: Record<string, string[]> = {
-//     '믹스 채널 추천': ['RAPHAEL_MIXES', 'retapestudios', 'HumanoStudios'],
-//     'Jazz 채널 추천': ['ICYFOG', 'midnightradio2', 'RetroCafeRadio'],
-//     'Hiphop 채널 추천': ['peddlermusic'],
-//     'Rock 채널 추천': ['On8ight'],
-//   };
-//   const channelHandles = channelHandleMap[title] ?? [];
-
-//   const channelResults = await Promise.allSettled(
-//     channelHandles.map((handle) => getYoutubeChannelInfo(handle))
-//   );
-
-//   const channelInfos = channelResults
-//     .map((res, idx) =>
-//       res.status === 'fulfilled' ? { data: res.value, handle: channelHandles[idx] } : null
-//     )
-//     .filter(Boolean) as { data: YouTubeChannel; handle: string }[];
-
-//   return (
-//     <div className="flex flex-col gap-6">
-//       {/* 섹션 타이틀 */}
-//       <h2 className="text-2xl font-bold">{title}</h2>
-
-//       {/* 카드 리스트 */}
-//       <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
-//         {channelInfos.map(({ data, handle }) => (
-//           <li
-//             key={data.id}
-//             className="border-[3px] border-black bg-[#fff8e7] rounded-lg p-6 flex flex-col md:flex-row items-center gap-6"
-//           >
-//             {/* 썸네일 */}
-//             <div className="flex flex-col items-center text-center w-full md:w-[180px]">
-//               <Image
-//                 src={data.snippet?.thumbnails?.high?.url || '/default-profile.png'}
-//                 alt={
-//                   data.snippet?.title ? `${data.snippet.title} Profile` : 'Default Channel Profile'
-//                 }
-//                 width={100}
-//                 height={100}
-//                 className="rounded-full border-2 border-black"
-//               />
-//               <h3 className="text-lg font-bold mt-3">{data.snippet?.title}</h3>
-//             </div>
-
-//             {/* 설명 + 버튼 */}
-//             <div className="flex flex-col justify-between flex-1 text-center md:text-left">
-//               <p className="text-gray-800 text-sm font-medium leading-relaxed line-clamp-3">
-//                 {data.snippet?.description || '채널 설명이 없습니다.'}
-//               </p>
-//               <Link
-//                 href={`https://www.youtube.com/@${handle}`}
-//                 target="_blank"
-//                 rel="noopener noreferrer"
-//                 className="mt-4 inline-block px-4 py-2 bg-yellow-300 border-2 border-black rounded-md font-semibold text-sm hover:bg-yellow-400 transition-colors"
-//               >
-//                 채널 방문하기 →
-//               </Link>
-//             </div>
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   );
-// }
