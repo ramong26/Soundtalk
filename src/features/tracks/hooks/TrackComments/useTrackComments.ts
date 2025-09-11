@@ -24,8 +24,6 @@ export default function useTrackComments(trackId: string) {
     })();
   }, [trackId]);
 
-  console.log('useTrackComments comments', comments);
-
   // 댓글 제출 핸들러
   const handleSubmit = async (value: string) => {
     if (!value.trim()) {

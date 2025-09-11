@@ -41,12 +41,14 @@ export default function CommentItem({ comment, onDelete, onEdit }: Props) {
           alt="사용자 프로필 이미지"
           className="w-10 h-10 rounded-full border-2 border-black"
         />
-        <span className="font-bold text-lg">{comment?.userId?.displayName || 'Anonymous'}</span>
+        <span className="lg:text-lg md:text-md text-base font-bold ">
+          {comment?.userId?.displayName || 'Anonymous'}
+        </span>
       </div>
 
       {/* 댓글 내용 */}
       {!isEditing ? (
-        <p className="mt-3 text-gray-800">{comment.text}</p>
+        <p className="lg:text-base md:text-sm text-xs mt-3 text-gray-800">{comment.text}</p>
       ) : (
         <CommentEditInput
           initialValue={comment.text}
@@ -56,7 +58,7 @@ export default function CommentItem({ comment, onDelete, onEdit }: Props) {
       )}
 
       {/* 푸터 */}
-      <div className="text-sm text-gray-600 mt-3 flex items-center justify-between">
+      <div className="md:text-sm text-xs text-gray-600 mt-3 flex items-center justify-between">
         <span>{formatDate(comment.createdAt)}</span>
         {isMyComment && !isEditing && (
           <div className="flex gap-3">

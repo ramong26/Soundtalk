@@ -21,18 +21,17 @@ export default function TrackComments() {
   return (
     <div className="relative border-4 border-black bg-[#FFFDF6] rounded-xl shadow-[6px_6px_0px_#D65361] p-6 mt-12">
       {/* 플로팅 라벨 */}
-      <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-black text-white px-6 py-1 rounded-md border-2 border-white font-bold text-xl shadow-[3px_3px_0px_#FFD460]">
+      <span className="lg:text-xl md:text-lg text-base lg:w-[250px] md:w-[200px] w-[180px] flex items-center justify-center absolute -top-6 left-1/2 -translate-x-1/2 bg-black text-white px-6 py-1 rounded-md border-2 border-white font-bold shadow-[3px_3px_0px_#FFD460]">
         TRACK COMMENTS
       </span>
 
       {/* 헤더 */}
       <div className="flex flex-col gap-2 mb-6 text-center">
-        <h2 className="text-2xl font-extrabold uppercase">트랙 댓글</h2>
         <Link
           href={`/tracks/${trackId}/interview`}
-          className="text-[#D65361] hover:underline font-bold"
+          className="lg:text-lg md:text-md text-sm text-[#D65361] hover:underline font-bold"
         >
-          🎤 인터뷰 페이지로 이동
+          🎤 해당 아티스트 인터뷰 페이지로 이동
         </Link>
       </div>
 
@@ -47,7 +46,7 @@ export default function TrackComments() {
       </div>
 
       {/* 댓글 리스트 */}
-      <div className="border-t-2 border-black pt-4">
+      <div className="border-t-2 border-black">
         {!comments ? (
           <TrackCommentsSkeleton />
         ) : (

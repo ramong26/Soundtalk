@@ -19,7 +19,13 @@ export default function TrackPageShare() {
 
   return (
     <div className="cursor-pointer" onClick={handleCopyLink}>
-      <Image src={ShareIcon} alt="Share" width={36} height={36} />
+      <Image
+        src={ShareIcon}
+        alt="Share"
+        width={36}
+        height={36}
+        className="lg:w-[36px] md:w-[30px] w-[24px] lg:h-[36px] md:h-[30px] h-[24px] "
+      />
     </div>
   );
 }

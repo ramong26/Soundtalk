@@ -35,17 +35,19 @@ export default async function TrackDescription({ album }: { album: Album }) {
         </div>
 
         {/* 설명 영역 */}
-        <div className="flex flex-col gap-10 max-w-2xl h-[478px]">
+        <div className="lg:h-[478px] md:h-[300px] h-[200px] flex flex-col gap-10 max-w-2xl ">
           <div className="flex justify-between items-center">
             <h2
-              className="font-extrabold text-3xl uppercase max-w-[600px] overflow-hidden whitespace-nowrap text-ellipsis"
+              className="lg:text-3xl md:text-2xl text-xl font-extrabold  uppercase max-w-[600px] overflow-hidden whitespace-nowrap text-ellipsis"
               title={album.name}
             >
               {album.name}
             </h2>
             <TrackPageShare />
           </div>
-          <p className="text-lg leading-relaxed italic text-gray-800">{summary}</p>
+          <p className="lg:text-lg md:text-sm text-xs leading-relaxed italic text-gray-800">
+            {summary}
+          </p>
         </div>
       </div>
     </section>
