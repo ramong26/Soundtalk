@@ -27,7 +27,7 @@ export default function CommentItem({ comment, onDelete, onEdit }: Props) {
   const isMyComment = user?._id === commentUserId;
 
   return (
-    <li className="border-2 border-black rounded-lg bg-white shadow-[4px_4px_0px_#FFD460] p-4 mb-4 hover:scale-[1.01] transition-transform">
+    <li className="border-2 border-black rounded-lg bg-white shadow-[4px_4px_0px_#FFD460] p-4 mb-4 ">
       {/* 유저 영역 */}
       <div className="flex items-center gap-3 border-b-2 border-black/20 pb-2">
         <Image
