@@ -34,7 +34,7 @@ function ImportTrack({
         <div
           key={`skeleton-${index}`}
           className={`md:px-3 px-1 flex flex-col items-center gap-3 md:gap-4 cursor-pointer hover:rotate-1 hover:-translate-y-2 transition-transform duration-300 ${
-            (index + 1) % 5 !== 0 ? 'border-r-2 border-dashed border-black/30' : ''
+            tracksList.length - 1 === index ? '' : 'border-r-2 border-dashed border-black/30'
           }`}
           style={{ minWidth: '90px', maxWidth: '150px', width: '100%' }}
           aria-hidden
@@ -46,7 +46,7 @@ function ImportTrack({
           </div>
         </div>
       )),
-    [skeletonItemsCount]
+    [skeletonItemsCount, tracksList.length]
   );
 
   const renderedTracks = useMemo(

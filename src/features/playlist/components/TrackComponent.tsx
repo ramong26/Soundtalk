@@ -52,7 +52,7 @@ export default function TrackComponent({
       return link ? (
         // 카드형
         <Link href={`/tracks/${item.track.id}`} key={key}>
-          <div className="... hover 효과 포함">
+          <div className="flex flex-col items-center p-4 rounded-lg shadow-md transition-transform hover:scale-105 hover:shadow-lg cursor-pointer">
             <div className="relative">
               <Image
                 src={item.track.album.images[0].url}
@@ -60,7 +60,9 @@ export default function TrackComponent({
                 width={150}
                 height={150}
               />
-              <div className="absolute -top-3 -left-3 ...">{page * limit + index + 1}</div>
+              <div className="absolute -top-3 -left-3 bg-black text-white rounded-full px-2 py-1 text-xs font-bold shadow">
+                {page * limit + index + 1}
+              </div>
             </div>
             <div className="flex flex-col items-center">
               <div className="font-bold">{item.track.name}</div>
@@ -94,9 +96,11 @@ export default function TrackComponent({
   };
 
   return (
-    <div className={`relative border-4 border-black bg-[#FFFDF6] rounded-xl ... ${className}`}>
+    <div className={`relative border-4 border-black bg-[#FFFDF6] rounded-xl  ${className}`}>
       {/* 제목 */}
-      <span className="absolute -top-6 left-1/2 ...">{title}</span>
+      <span className="absolute -top-6 left-1/2 -translate-x-1/2 px-4 py-1 bg-white rounded font-bold text-lg shadow">
+        {title}
+      </span>
 
       {/* 그리드 */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-8">

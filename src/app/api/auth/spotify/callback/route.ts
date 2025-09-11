@@ -81,7 +81,6 @@ export async function GET(request: NextRequest) {
 
     // DB 연결
     await connectToDB();
-
     // 사용자 정보 저장 (upsert)
     const user = await UserModel.findOneAndUpdate(
       { spotifyId: profileData.id },
@@ -94,28 +93,12 @@ export async function GET(request: NextRequest) {
         $setOnInsert: {
           spotifyId: profileData.id,
           displayName: profileData.display_name || 'No Name',
-          email: profileData.email
-            ? `${profileData.email.split('@')[0]}@spotify.com`
-            : `${profileData.id}@spotify.com`,
+          email: profileData.email ? profileData.email : `${profileData.id}@example.com`,
           profileImageUrl: profileData.images?.[0]?.url || '',
         },
       },
       { upsert: true, new: true }
     );
-
-    // const user = await UserModel.findOneAndUpdate(
-    //   { spotifyId: profileData.id },
-    //   {
-    //     spotifyId: profileData.id,
-    //     displayName: profileData.display_name || 'No Name',
-    //     email: profileData.email || `${profileData.id}@example.com`,
-    //     profileImageUrl: profileData.images?.[0]?.url || '',
-    //     lastLogin: new Date(),
-    //     accessToken,
-    //     refreshToken,
-    //   },
-    //   { upsert: true, new: true }
-    // );
 
     const payload = {
       userId: user._id.toString(),

@@ -108,9 +108,7 @@ export async function GET(request: NextRequest) {
         $setOnInsert: {
           googleId: profileData.sub,
           displayName: profileData.name || 'No Name',
-          email: profileData.email
-            ? `${profileData.email.split('@')[0]}@google.com`
-            : `${profileData.sub}@google.com`,
+          email: profileData.email ? profileData.email : `${profileData.sub}@example.com`,
           profileImageUrl: profileData.picture || '',
         },
       },

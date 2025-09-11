@@ -35,7 +35,12 @@ export default function TrackClient({ album, trackId }: { album: Album; trackId:
     [album, albumImages]
   );
 
-  if (!album) return <div>Loading...</div>;
+  if (!album)
+    return (
+      <>
+        <ImportTrack isLoading />
+      </>
+    );
   return (
     <>
       <ImportTrack tracksList={mappedTracks} link={true} />
