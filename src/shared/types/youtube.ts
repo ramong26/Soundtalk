@@ -80,6 +80,7 @@ export interface YouTubeVideoResponse {
 
 // YouTube 채널 정보
 export interface YouTubeChannel {
+  handle?: string;
   kind: string;
   etag: string;
   id: string;
