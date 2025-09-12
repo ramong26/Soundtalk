@@ -53,7 +53,6 @@ Next.js, TypeScript, MongoDB, Redis, GPT-4o API 등을 활용해
 ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=flat&logo=githubactions&logoColor=white) – CI/CD 파이프라인 자동화 <br>
 
 ### 🤖 AI / External API
-![OpenAI](https://img.shields.io/badge/OpenAI%20(GPT--4o)-412991?style=flat&logo=openai&logoColor=white) – 앨범 정보 추출 자동화 <br>
 ![Google Gemini](https://img.shields.io/badge/Gemini%202.5%20Flash-4285F4?style=flat&logo=google&logoColor=white) – AI 기반 데이터 처리 <br>
 ![Spotify](https://img.shields.io/badge/Spotify%20API-1DB954?style=flat&logo=spotify&logoColor=white) – 음악 트랙/앨범 정보 제공 <br>
 ![YouTube](https://img.shields.io/badge/YouTube%20API-FF0000?style=flat&logo=youtube&logoColor=white) – 영상 및 인터뷰 데이터 제공 <br>
