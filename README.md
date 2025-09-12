@@ -8,7 +8,7 @@ Next.js, TypeScript, MongoDB, Redis 등을 활용해
 ---
 ## 🔗 배포 주소
 
-[https://pickly-one.vercel.app  ](https://music-charts.vercel.app/)
+https://music-charts.vercel.app/
 
 ---
 ## 🚀 주요 기능
