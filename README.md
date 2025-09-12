@@ -16,8 +16,10 @@ https://music-charts.vercel.app/
 - **트랙/앨범 상세 페이지**
   - Spotify API 기반 음악 정보 조회
   - Redis 캐싱으로 응답 속도 개선 (600ms → 120ms, **약 80% 성능 향상**)
-- **YouTube API 최적화**
-  - MongoDB를 1차 데이터 소스로 활용하여 할당량 초과 문제 해결
+- **아티스트 인터뷰 검색**
+  - **Google Custom Search API**를 활용해 아티스트 관련 인터뷰 목록 제공
+  - MongoDB에 검색 결과를 캐싱하여 API 호출을 최소화
+  - 인터뷰 데이터는 아티스트 상세 페이지에서 확인 가능
 - **댓글 및 인증 시스템**
   - Next.js API Routes + MongoDB
   - JWT 인증 & bcrypt 해싱 처리 → 보안 강화
