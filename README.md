@@ -56,11 +56,8 @@ Next.js, TypeScript, MongoDB, Redis, GPT-4o API 등을 활용해
 
 ## 📈 성과
 
-- Redis 캐시 도입으로 **페이지 로딩 속도 5배 향상**
-- GPT-4o 기반 자동화로 **앨범 정보 추출 정확도 92% 달성**
-- YouTube API 요청 **60% 감소**, 할당량 초과 문제 해결
-- SEO 최적화로 **Lighthouse SEO 100점** 달성
-
+- Redis 캐시 도입으로 **트랙 상세 페이지 로딩 속도 5배 향상**
+  
 ---
 
 ## 📷 미리보기
