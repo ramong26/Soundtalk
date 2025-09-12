@@ -16,18 +16,12 @@ Next.js, TypeScript, MongoDB, Redis, GPT-4o API 등을 활용해
 - **트랙/앨범 상세 페이지**
   - Spotify API 기반 음악 정보 조회
   - Redis 캐싱으로 응답 속도 개선 (600ms → 120ms, **약 80% 성능 향상**)
-- **GPT-4o 기반 앨범 정보 추출**
-  - 상품명·설명을 기반으로 아티스트/앨범명 자동 추출
-  - 반복적인 수작업 데이터 정제 제거
-  - 샘플 검증 결과 **정확도 92% (23/25)** 달성
 - **YouTube API 최적화**
   - MongoDB를 1차 데이터 소스로 활용하여 API 호출 60% 감소
   - 할당량 초과 문제 해결
 - **댓글 및 인증 시스템**
   - Next.js API Routes + MongoDB
   - JWT 인증 & bcrypt 해싱 처리 → 보안 강화
-- **SEO 최적화**
-  - CSR 대신 SSR 구조 설계 → Lighthouse SEO 점수 **100점 달성**
 
 ---
 
