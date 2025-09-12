@@ -17,8 +17,7 @@ https://music-charts.vercel.app/
   - Spotify API 기반 음악 정보 조회
   - Redis 캐싱으로 응답 속도 개선 (600ms → 120ms, **약 80% 성능 향상**)
 - **YouTube API 최적화**
-  - MongoDB를 1차 데이터 소스로 활용하여 API 호출 60% 감소
-  - 할당량 초과 문제 해결
+  - MongoDB를 1차 데이터 소스로 활용하여 할당량 초과 문제 해결
 - **댓글 및 인증 시스템**
   - Next.js API Routes + MongoDB
   - JWT 인증 & bcrypt 해싱 처리 → 보안 강화
@@ -36,7 +35,7 @@ https://music-charts.vercel.app/
 
 ### 🔧 Backend
 ![Next.js API](https://img.shields.io/badge/Next.js%20API%20Routes-000000?style=flat&logo=next.js&logoColor=white) – 서버리스 백엔드 <br>
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white) – 댓글 CRUD, 유튜브, 스포티파이, Gemini API 등 검색 결과 저장 <br>
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white) – 댓글 CRUD, 유저 정보, 스포티파이, Gemini API 등 검색 결과 저장 <br>
 ![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat&logo=redis&logoColor=white) – API 응답 캐싱 및 TTL 기반 데이터 만료 처리 <br>
 ![JWT](https://img.shields.io/badge/JWT-000000?style=flat&logo=jsonwebtokens&logoColor=white) – 토큰 기반 인증 및 권한 관리 <br>
 ![Auth](https://img.shields.io/badge/Cookie--based%20Auth-FFCC00?style=flat&logo=cookiecutter&logoColor=black) – 로그인 시 토큰을 HTTP-only 쿠키에 저장 <br>
