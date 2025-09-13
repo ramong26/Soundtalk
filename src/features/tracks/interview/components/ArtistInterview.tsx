@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 
+import ArtisyInterviewSkelton from '@/features/tracks/interview/components/ArtisyInterviewSkelton';
 import ArtistInterviewComponent from '@/features/tracks/interview/components/ArtistInterviewComponent';
 
 import { Artist } from '@/shared/types/spotifyTrack';
@@ -35,23 +36,23 @@ export default function ArtistInterview({ artist }: { artist: Artist }) {
 
   return (
     <>
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <ArtisyInterviewSkelton />}
       {interviews.map((interview) => (
         <ArtistInterviewComponent key={interview.link} artistInterview={interview} />
       ))}
-      <div className="flex pb-10 justify-center items-center">
+      <div className="flex pb-10 justify-center items-center gap-4">
         <button
-          className="cursor-pointer text-black"
+          className="px-3 py-1 border-2 border-black bg-white hover:bg-black hover:text-white disabled:opacity-40"
           disabled={offset === 0}
           onClick={() => setOffset((prev) => Math.max(prev - limit, 0))}
         >
           이전
         </button>
-        <span className="mx-4">
+        <span className="mx-2 font-bold text-black">
           {Math.ceil((offset + 1) / limit)} / {Math.ceil(totalCount / limit)}
         </span>
         <button
-          className="cursor-pointer text-black "
+          className="px-3 py-1 border-2 border-black bg-white hover:bg-black hover:text-white disabled:opacity-40"
           disabled={offset + limit >= totalCount}
           onClick={() => setOffset((prev) => prev + limit)}
         >
