@@ -38,7 +38,7 @@ export default async function InterviewPage({ params }: PageProps) {
 
       <ArtistProfile artist={artist} />
 
-      <div className="text-xl mt-30 relative top-[-24px] lg:text-2xl md:text-xl text-base font-extrabold px-[10px] h-[54px] flex items-center text-black bg-[#FFD460] border-t-6 border-b-4 border-black shadow-[0_4px_0_#000] uppercase tracking-wide">
+      <div className="text-xl mt-32 relative top-[-24px] lg:text-2xl md:text-xl font-extrabold px-[10px] h-[54px] flex items-center text-black bg-[#FFD460] border-t-[6px] border-b-4 border-black shadow-[0_4px_0_#000] uppercase tracking-wide">
         <div>Interview List 🔥</div>
       </div>
       <Suspense fallback={<div className="h-40 w-full bg-gray-200 animate-pulse mt-10" />}>
