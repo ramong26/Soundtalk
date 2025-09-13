@@ -11,7 +11,7 @@ export default function WikiRow({
 }) {
   return (
     <tr className="border-b-2 border-black">
-      <th className="px-4 py-3 font-bold text-black bg-[#FFD460] border-r-2 border-black w-1/4 uppercasetext-sm">
+      <th className="md:px-4 md:py-3 px-1 py-2 md:text-md text-sm font-bold text-black bg-[#FFD460] border-r-2 border-black w-1/4 uppercasetext-sm">
         {label}
       </th>
       <td className="px-4 py-3 text-black">

@@ -22,10 +22,10 @@ export default function ArtistProfileWiki({ artistName }: Props) {
   });
 
   return (
-    <div className="w-full mx-auto mt-10 px-6 py-6 bg-[#fdfbf7] font-serif text-gray-900 leading-relaxed tracking-wide border-4 border-black rounded-md shadow-[5px_5px_0px_#000] min-h-[300px]">
+    <div className="md:px-6 md:py-6 px-3 py-3 w-full mx-auto mt-10  bg-[#fdfbf7] font-serif text-gray-900 leading-relaxed tracking-wide border-4 border-black rounded-md shadow-[5px_5px_0px_#000] min-h-[300px]">
       {/* 헤더 */}
       <div className="flex items-center justify-between border-b-4 border-black pb-2 mb-6">
-        <div className=" w-full flex items-center justify-between bg-[#FFD460] border-y-4 border-black px-6 py-3 mb-8">
+        <div className="md:px-6 md:py-3 px-2 py-2 md:mb-8 mb-4 text-center w-full flex items-center justify-between bg-[#FFD460] border-y-4 border-black  ">
           <h2 className=" lg:text-2xl md:text-lg text-md font-extrabold uppercase text-black tracking-tight">
             Artist Information
           </h2>

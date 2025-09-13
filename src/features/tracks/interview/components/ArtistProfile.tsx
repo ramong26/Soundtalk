@@ -19,7 +19,7 @@ export default function ArtistProfile({ artist }: { artist: Artist | null }) {
             className="rounded-full group-hover:rotate-6 transition-transform duration-500"
           />
         </div>
-        <div className="font-bold lg:text-xl md:text-sm text-xl lg:px-6 md:px-4 px-[12px] lg:py-2 py-1 absolute -bottom-6 left-1/2 -translate-x-1/2 bg-[#FFD460] text-black border-2 border-black shadow-[3px_3px_0px_#000]">
+        <div className="font-bold lg:text-xl text-md  lg:px-6 md:px-4 px-[12px] lg:py-2 py-1 absolute -bottom-6 left-1/2 -translate-x-1/2 bg-[#FFD460] text-black border-2 border-black shadow-[3px_3px_0px_#000]">
           {artist?.name || 'Unknown Artist'}
         </div>
       </div>
