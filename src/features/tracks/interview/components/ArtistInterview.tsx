@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 
+import ArtisyInterviewSkelton from '@/features/tracks/interview/components/ArtisyInterviewSkelton';
 import ArtistInterviewComponent from '@/features/tracks/interview/components/ArtistInterviewComponent';
 
 import { Artist } from '@/shared/types/spotifyTrack';
@@ -35,7 +36,7 @@ export default function ArtistInterview({ artist }: { artist: Artist }) {
 
   return (
     <>
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <ArtisyInterviewSkelton />}
       {interviews.map((interview) => (
         <ArtistInterviewComponent key={interview.link} artistInterview={interview} />
       ))}
