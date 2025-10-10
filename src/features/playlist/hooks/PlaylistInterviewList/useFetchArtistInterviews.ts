@@ -33,6 +33,8 @@ export function useFetchArtistInterviews(props: PlaylistInterviewListProps) {
   }, [trackData]);
 
   // 무한스크롤링을 위한 Intersection Observer 설정
+  // 호출 중에는 새로운 Observer 콜백이 실행되지 않음 → 빠른 스크롤에도 안전
+  // try/catch로 개별 아티스트 호출 실패 시 콘솔 로그로 기록
   useEffect(() => {
     if (!trackData || trackData.length === 0) return;
     if (isScrollLoading) return;
