@@ -1,7 +1,7 @@
 import { TrackItem } from '@/shared/types/spotifyTrack';
 import { getBaseUrl } from '@/lib/utils/baseUrl';
 
-export default async function getPlaylistTracks({
+export default async function getTopTrackPlaylist({
   playlistId,
   offset = 0,
   limit = 50,

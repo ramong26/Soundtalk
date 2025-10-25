@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "strict": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -13,9 +9,8 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"]
+      // "@ramong26/xp-components": ["src/shims/xp-components.tsx"]
     },
     "allowJs": true,
     "esModuleInterop": true,
@@ -30,13 +25,6 @@
       }
     ]
   },
-  "include": [
-    "next-env.d.ts",
-    "src",
-    "svgr.d.ts",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "src", "svgr.d.ts", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }

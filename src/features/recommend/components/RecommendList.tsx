@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+'use client';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import RecommendCard from '@/features/recommend/components/RecommendCard';
-import { getTrackList } from '@/shared/hooks/getTrackList';
-import { TrackItem } from '@/shared/types/spotifyTrack';
+import { usePaginatedTrackList } from '@/shared/hooks/getTrackList';
 
 interface MoodTagProps {
   tag: string;
@@ -18,21 +18,24 @@ const moodTagMap: Record<string, string> = {
 };
 
 export default function RecommendList({ tag }: MoodTagProps) {
-  const [tracks, setTracks] = useState<TrackItem[]>([]);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const currentPage = parseInt(searchParams.get('page') || '1', 10);
+  const playlistId = moodTagMap[tag];
 
-  // 플레이리스트 ID에 따라 트랙 리스트를 가져오는 함수
-  useEffect(() => {
-    const playlistId = moodTagMap[tag];
-    if (!playlistId) return;
+  const { data: tracks, isLoading, error } = usePaginatedTrackList(playlistId, currentPage, 16);
 
-    const fetchTracks = async () => {
-      const res = await getTrackList({ playlistId });
+  const goToPage = (page: number) => {
+    router.push(`${pathname}?page=${page}`);
+  };
 
-      setTracks(res);
-    };
-
-    fetchTracks();
-  }, [tag]);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
   return (
     <div className="pb-10">
@@ -46,9 +49,27 @@ export default function RecommendList({ tag }: MoodTagProps) {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {tracks.map((track) => (
+        {tracks?.map((track) => (
           <RecommendCard key={track.track.id} track={track} />
         ))}
+      </div>
+
+      <div className="flex items-center justify-center mt-10">
+        <button
+          onClick={() => goToPage(currentPage - 1)}
+          disabled={currentPage === 1}
+          className="px-4 py-2 bg-gray-800 text-white rounded disabled:opacity-50"
+        >
+          이전
+        </button>
+        <span className="px-4 py-2">Page {currentPage}</span>
+        <button
+          onClick={() => goToPage(currentPage + 1)}
+          disabled={!tracks || tracks.length < 16}
+          className="px-4 py-2 bg-gray-800 text-white rounded disabled:opacity-50"
+        >
+          다음
+        </button>
       </div>
     </div>
   );

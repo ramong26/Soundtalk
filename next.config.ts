@@ -10,6 +10,8 @@ const nextConfig: NextConfig = {
   experimental: {
     esmExternals: 'loose',
   },
+  // transpilePackages: ['@ramong26/xp-components'],
+
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'i.scdn.co', pathname: '/image/**' },
