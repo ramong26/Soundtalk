@@ -1,5 +1,5 @@
 'use client';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import RecommendCard from '@/features/recommend/components/RecommendCard';
 import { usePaginatedTrackList } from '@/shared/hooks/getTrackList';
@@ -20,13 +20,14 @@ const moodTagMap: Record<string, string> = {
 export default function RecommendList({ tag }: MoodTagProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const pathname = usePathname();
   const currentPage = parseInt(searchParams.get('page') || '1', 10);
   const playlistId = moodTagMap[tag];
 
   const { data: tracks, isLoading, error } = usePaginatedTrackList(playlistId, currentPage, 16);
 
   const goToPage = (page: number) => {
-    router.replace(`?page=${page}`);
+    router.push(`${pathname}?page=${page}`);
   };
 
   if (isLoading) {
