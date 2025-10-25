@@ -60,12 +60,12 @@ export default function TodayMusic() {
         ))}
       </div>
 
-      <div className="mt-12 min-h-screen border-4 border-black bg-white shadow-[8px_8px_0px_#000] p-8">
+      <div className="mt-12 min-h-screen border-4 border-black bg-white shadow-[8px_8px_0px_#000] p-8 ">
         <h3 className="lg:text-2xl md:text-xl text-lg font-extrabold uppercase border-b-2 border-black pb-2 mb-6">
           Recommended Playlists
         </h3>
 
-        <div style={{ maxWidth: 1400, minHeight: 4000, position: 'relative' }}>
+        <div style={{ maxWidth: 1400, position: 'relative' }}>
           <Suspense
             fallback={
               <div className="flex items-center justify-center w-full h-[400px] bg-gray-200 " />

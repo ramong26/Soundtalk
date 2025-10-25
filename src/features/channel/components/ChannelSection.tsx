@@ -54,7 +54,7 @@ export default function ChannelSection() {
           Recommended Channels
         </h3>
 
-        <div className="max-w-[1400px] relative">
+        <div className="max-w-[2000px] relative">
           <Suspense
             fallback={
               <div className="flex items-center justify-center w-[1285px] h-[400px] bg-gray-200 " />
