@@ -60,6 +60,5 @@ export const usePaginatedTrackList = (playlistId: string, page: number, limit = 
     queryFn: () => getTopTrackPlaylist({ playlistId, offset, limit }),
     enabled: !!playlistId,
     staleTime: ONE_HOUR,
-    // keepPreviousData: true,
   });
 };
