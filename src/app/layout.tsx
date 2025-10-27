@@ -57,7 +57,7 @@ export default function RootLayout({
           </>
         )}
 
-        <Analytics />
+        {isProduction && <Analytics />}
       </body>
     </html>
   );
