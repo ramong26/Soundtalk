@@ -3,6 +3,8 @@ import Script from 'next/script';
 import './globals.css';
 import QueryProvider from './providers/QueryProvider';
 import { Archivo_Black, Oswald } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/react';
+
 import HeaderMain from '@/shared/components/HeaderMain/HeaderMain';
 
 const archivoBlack = Archivo_Black({
@@ -54,6 +56,8 @@ export default function RootLayout({
             </Script>
           </>
         )}
+
+        <Analytics />
       </body>
     </html>
   );
