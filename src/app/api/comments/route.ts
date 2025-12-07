@@ -5,62 +5,107 @@ import mongoose from 'mongoose';
 import connectToDB from '@/lib/mongo/mongo';
 import { Comment } from '@/lib/mongo/models/Comment';
 
+interface JWTPayload {
+  userId: string;
+}
+
+interface CommentCreateRequest {
+  trackId: string;
+  text: string;
+}
+
 // 댓글 작성
 export async function POST(request: NextRequest) {
-  await connectToDB();
-
-  const token = request.cookies.get('jwt')?.value;
-
-  if (!token) {
-    return new Response('로그인이 필요합니다', { status: 401 });
-  }
   try {
+    await connectToDB();
+
+    const token = request.cookies.get('jwt')?.value;
+    if (!token) {
+      return NextResponse.json(
+        { error: 'Authentication required' },
+        { status: 401 }
+      );
+    }
+
     const jwtSecret = process.env.JWT_SECRET;
-    const decoded = jwt.verify(token, jwtSecret!) as {
-      userId: string;
-    };
+    if (!jwtSecret) {
+      console.error('JWT_SECRET is not configured');
+      return NextResponse.json(
+        { error: 'Server configuration error' },
+        { status: 500 }
+      );
+    }
+
+    const decoded = jwt.verify(token, jwtSecret) as JWTPayload;
     const userId = decoded.userId;
 
-    const { trackId, text } = await request.json();
+    const body: CommentCreateRequest = await request.json();
+    const { trackId, text } = body;
+
     if (!trackId || !text) {
-      return new Response('트랙 ID와 댓글 내용이 필요합니다', { status: 400 });
+      return NextResponse.json(
+        { error: 'trackId and text are required' },
+        { status: 400 }
+      );
+    }
+
+    if (text.trim().length === 0) {
+      return NextResponse.json(
+        { error: 'Comment text cannot be empty' },
+        { status: 400 }
+      );
     }
 
     const newComment = await Comment.create({
       userId: new mongoose.Types.ObjectId(userId),
       trackId,
-      text,
+      text: text.trim(),
     });
 
     await newComment.populate('userId', 'displayName profileImageUrl');
 
-    return NextResponse.json(newComment, {
-      status: 201,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    return NextResponse.json(newComment, { status: 201 });
   } catch (error) {
-    console.error('에러 발생 jwt 토큰이 없습니다:', error);
-    return new Response('Invalid JWT token', { status: 401 });
+    if (error instanceof jwt.JsonWebTokenError) {
+      return NextResponse.json(
+        { error: 'Invalid token' },
+        { status: 401 }
+      );
+    }
+
+    console.error('Comment creation error:', error);
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    );
   }
 }
 
 // 댓글 목록 가져오기
 export async function GET(request: NextRequest) {
-  await connectToDB();
+  try {
+    await connectToDB();
 
-  const url = request.nextUrl;
-  const trackId = url.searchParams.get('trackId');
-  if (!trackId) {
-    return new Response('트랙 ID가 필요합니다', { status: 400 });
+    const url = request.nextUrl;
+    const trackId = url.searchParams.get('trackId');
+
+    if (!trackId) {
+      return NextResponse.json(
+        { error: 'trackId parameter is required' },
+        { status: 400 }
+      );
+    }
+
+    const comments = await Comment.find({ trackId })
+      .sort({ createdAt: -1 })
+      .populate('userId', 'displayName profileImageUrl');
+
+    return NextResponse.json(comments);
+  } catch (error) {
+    console.error('Comments fetch error:', error);
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    );
   }
-
-  const comments = await Comment.find({ trackId })
-    .sort({ createdAt: -1 })
-    .populate('userId', 'displayName profileImageUrl');
-  return NextResponse.json(comments, {
-    status: 200,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
 }
