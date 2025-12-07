@@ -49,7 +49,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (text.trim().length === 0) {
+    const trimmedText = text.trim();
+    if (trimmedText.length === 0) {
       return NextResponse.json(
         { error: 'Comment text cannot be empty' },
         { status: 400 }
@@ -59,7 +60,7 @@ export async function POST(request: NextRequest) {
     const newComment = await Comment.create({
       userId: new mongoose.Types.ObjectId(userId),
       trackId,
-      text: text.trim(),
+      text: trimmedText,
     });
 
     await newComment.populate('userId', 'displayName profileImageUrl');

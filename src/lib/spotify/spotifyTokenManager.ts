@@ -13,6 +13,9 @@ interface TokenCache {
   expiresAt: number;
 }
 
+// 토큰 만료 전 버퍼 시간 (초)
+const TOKEN_BUFFER_SECONDS = 60;
+
 // 개선된 코드
 let tokenCache: TokenCache | null = null;
 
@@ -39,7 +42,7 @@ export async function getSpotifyAccessToken(): Promise<string> {
     // 토큰과 만료 시간을 캐시 (expires_in은 초 단위)
     tokenCache = {
       token: data.access_token,
-      expiresAt: Date.now() + (data.expires_in - 60) * 1000, // 60초 여유
+      expiresAt: Date.now() + (data.expires_in - TOKEN_BUFFER_SECONDS) * 1000,
     };
     
     return tokenCache.token;
