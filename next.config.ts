@@ -7,11 +7,8 @@ const withAnalyzer = withBundleAnalyzer({
 
 const nextConfig: NextConfig = {
   turbopack: {},
-  experimental: {
-    esmExternals: 'loose',
-  },
-  // transpilePackages: ['@ramong26/xp-components'],
 
+  // transpilePackages: ['@ramong26/xp-components'],
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'i.scdn.co', pathname: '/image/**' },
