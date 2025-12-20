@@ -1,12 +1,12 @@
 import type { NextConfig } from 'next';
 import withBundleAnalyzer from '@next/bundle-analyzer';
-import path from 'path';
 
 const withAnalyzer = withBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 });
 
 const nextConfig: NextConfig = {
+  turbopack: {},
   experimental: {
     esmExternals: 'loose',
   },
@@ -27,43 +27,43 @@ const nextConfig: NextConfig = {
     ],
   },
 
-  webpack(config) {
-    const fileLoaderRule = config.module?.rules?.find(
-      (rule: object) =>
-        typeof rule === 'object' &&
-        rule !== null &&
-        'test' in rule &&
-        (rule.test as RegExp)?.test?.('.svg')
-    );
+  // webpack(config) {
+  //   const fileLoaderRule = config.module?.rules?.find(
+  //     (rule: object) =>
+  //       typeof rule === 'object' &&
+  //       rule !== null &&
+  //       'test' in rule &&
+  //       (rule.test as RegExp)?.test?.('.svg')
+  //   );
 
-    if (fileLoaderRule && typeof fileLoaderRule === 'object') {
-      config.module?.rules?.push(
-        {
-          ...fileLoaderRule,
-          test: /\.svg$/i,
-          resourceQuery: /url/,
-        },
-        {
-          test: /\.svg$/i,
-          issuer: fileLoaderRule.issuer,
-          resourceQuery: { not: [/url/] },
-          use: ['@svgr/webpack'],
-        }
-      );
+  //   if (fileLoaderRule && typeof fileLoaderRule === 'object') {
+  //     config.module?.rules?.push(
+  //       {
+  //         ...fileLoaderRule,
+  //         test: /\.svg$/i,
+  //         resourceQuery: /url/,
+  //       },
+  //       {
+  //         test: /\.svg$/i,
+  //         issuer: fileLoaderRule.issuer,
+  //         resourceQuery: { not: [/url/] },
+  //         use: ['@svgr/webpack'],
+  //       }
+  //     );
 
-      if (Array.isArray(fileLoaderRule.exclude)) {
-        fileLoaderRule.exclude.push(/\.svg$/i);
-      } else {
-        fileLoaderRule.exclude = [/\.svg$/i];
-      }
-    }
+  //     if (Array.isArray(fileLoaderRule.exclude)) {
+  //       fileLoaderRule.exclude.push(/\.svg$/i);
+  //     } else {
+  //       fileLoaderRule.exclude = [/\.svg$/i];
+  //     }
+  //   }
 
-    if (!config.resolve) config.resolve = {};
-    if (!config.resolve.alias) config.resolve.alias = {};
-    config.resolve.alias['@'] = path.resolve(__dirname, 'src');
+  //   if (!config.resolve) config.resolve = {};
+  //   if (!config.resolve.alias) config.resolve.alias = {};
+  //   config.resolve.alias['@'] = path.resolve(__dirname, 'src');
 
-    return config;
-  },
+  //   return config;
+  // },
 };
 
 export default withAnalyzer(nextConfig);
