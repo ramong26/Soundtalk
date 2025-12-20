@@ -12,9 +12,7 @@ const postComments = async (body: CreateCommentBody): Promise<Comment | undefine
   try {
     const response = await callApi<Comment>(`${baseUrl}/api/comments`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+
       body: JSON.stringify(body),
     });
     return response;
@@ -52,10 +50,7 @@ const putComments = async (
   try {
     const response = await callApi<Comment>(`${baseUrl}/api/comments/${commentId}`, {
       method: 'PUT',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+
       body: JSON.stringify({ text: body.text }),
     });
     return response;
@@ -70,7 +65,6 @@ const deleteComments = async (commentId: number | string): Promise<void | undefi
   try {
     const response = await callApi<void>(`${baseUrl}/api/comments/${commentId}`, {
       method: 'DELETE',
-      credentials: 'include',
     });
 
     return response;

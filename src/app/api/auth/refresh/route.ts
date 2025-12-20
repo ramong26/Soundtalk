@@ -12,8 +12,12 @@ export async function POST(request: NextRequest) {
   }
 
   let payload;
+  const jwtRefreshSecret = process.env.JWT_REFRESH_SECRET;
   try {
-    const jwtRefreshSecret = process.env.JWT_REFRESH_SECRET!;
+    if (!jwtRefreshSecret) {
+      console.error('JWT_REFRESH_SECRET is not defined');
+      return NextResponse.json({ error: '서버 오류가 발생했습니다.' }, { status: 500 });
+    }
     payload = jwt.verify(refreshToken, jwtRefreshSecret) as { userId: string };
   } catch (error) {
     console.error('리프레시 토큰 처리 중 오류 발생:', error);
@@ -28,9 +32,18 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const accessToken = jwt.sign({ userId: user._id.toString() }, process.env.JWT_SECRET!, {
+  const accessToken = jwt.sign({ userId: user._id.toString() }, jwtRefreshSecret, {
     expiresIn: '1d',
   });
 
-  return NextResponse.json({ accessToken }, { status: 200 });
+  const response = NextResponse.json({ message: '토큰 갱신 성공', accessToken }, { status: 200 });
+  response.cookies.set('jwt', accessToken, {
+    httpOnly: true,
+    sameSite: 'strict',
+    path: '/',
+    secure: process.env.NODE_ENV === 'production',
+    maxAge: 86400,
+  });
+
+  return response;
 }

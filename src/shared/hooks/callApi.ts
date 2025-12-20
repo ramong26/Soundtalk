@@ -1,3 +1,5 @@
+let refreshPromise: Promise<Response> | null = null;
+
 export default async function callApi<T>(
   url: string,
   options?: RequestInit,
@@ -15,11 +17,18 @@ export default async function callApi<T>(
     const res = await fetch(url, fetchOption);
     if (!res.ok) {
       if (res.status === 401 && url !== '/api/auth/refresh') {
-        const refreshRes = await fetch('/api/auth/refresh', { method: 'POST' });
+        if (!refreshPromise) {
+          refreshPromise = fetch('/api/auth/refresh', {
+            method: 'POST',
+            credentials: 'include' as RequestCredentials,
+          });
+        }
+        const refreshRes = await refreshPromise;
+        refreshPromise = null;
         if (refreshRes.ok) {
           const retryRes = await fetch(url, fetchOption);
           if (!retryRes.ok) {
-            const errorText = await res.text();
+            const errorText = await retryRes.text();
             console.error('API 호출 실패:', res.status, res.statusText, errorText);
             throw new Error('API 호출 실패');
           }
