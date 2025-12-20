@@ -59,6 +59,14 @@ export async function POST(request: NextRequest) {
       maxAge: 86400,
     });
 
+    response.cookies.set('refreshToken', refreshToken, {
+      httpOnly: true,
+      sameSite: 'strict',
+      path: '/',
+      secure: process.env.NODE_ENV === 'production',
+      maxAge: 604800,
+    });
+
     return response;
   } catch (error) {
     if (error instanceof z.ZodError) {
