@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import jwt from 'jsonwebtoken';
 import { z } from 'zod';
-import bcrypt from 'bcryptjs';
 
 import { signupSchema } from '@/features/auth/schema/signupSchema';
 import connectToDB from '@/lib/mongo/mongo';
@@ -22,16 +21,12 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: '이미 가입된 이메일입니다.' }, { status: 409 });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10); // 해시된 비밀번호 생성
-
     const user = new UserModel({
       displayName: username,
       email,
-      password: hashedPassword,
-
+      password,
       accessToken: '',
       refreshToken: '',
-
       profileImageUrl: '',
       localSignup: true,
     });
