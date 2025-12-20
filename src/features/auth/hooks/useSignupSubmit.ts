@@ -2,7 +2,7 @@
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-
+import callApi from '@/shared/hooks/callApi';
 import { signupSchema, SignupFormData } from '@/features/auth/schema/signupSchema';
 
 export default function useSignupSubmit({ onClose }: { onClose: () => void }) {
@@ -18,17 +18,13 @@ export default function useSignupSubmit({ onClose }: { onClose: () => void }) {
   // 회원가입 처리 함수
   const onSubmit = async (data: SignupFormData) => {
     try {
-      const response = await fetch('/api/auth/signup', {
+      await callApi('/api/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
       });
-
-      if (!response.ok) {
-        throw new Error('회원가입 실패');
-      }
       router.push('/');
       onClose();
     } catch (error) {

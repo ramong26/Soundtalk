@@ -2,7 +2,7 @@
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-
+import callApi from '@/shared/hooks/callApi';
 import { loginSchema, LoginFormData } from '@/features/auth/schema/loginSchema';
 
 export default function useLoginSubmit({ onClose }: { onClose: () => void }) {
@@ -18,17 +18,13 @@ export default function useLoginSubmit({ onClose }: { onClose: () => void }) {
   // 로그인 처리 함수
   const onSubmit = async (data: LoginFormData) => {
     try {
-      const response = await fetch('/api/auth/login', {
+      await callApi('/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
       });
-
-      if (!response.ok) {
-        throw new Error('로그인 실패');
-      }
       router.push('/');
       onClose();
     } catch (error) {

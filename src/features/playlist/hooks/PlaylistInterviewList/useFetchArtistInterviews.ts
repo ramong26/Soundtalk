@@ -100,7 +100,7 @@ export function useFetchArtistInterviews(props: PlaylistInterviewListProps) {
       isScrollLoadingRef.current = false;
     };
     fetchChunkedInterviews();
-  }, [visibleChunks, artists]);
+  }, [visibleChunks, artists, artistInterviews]);
 
   return {
     artistInterviews,
