@@ -7,8 +7,7 @@ import { TrackItem } from '@/shared/types/spotifyTrack';
 const ONE_HOUR = 1000 * 60 * 60;
 
 // 서버에서 직접 호출
-
-// 사용법:   const tracksList = await getTrackList();
+// 사용법: const tracksList = await getTrackList();
 export async function getTrackList({
   playlistId,
   offset = 0,
@@ -29,7 +28,6 @@ export async function getTrackList({
 }
 
 // 클라이언트에서 호출
-
 export const useTrackList = (
   playlistId: string,
   offset = 0,
