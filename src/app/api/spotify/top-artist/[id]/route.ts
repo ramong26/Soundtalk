@@ -1,9 +1,13 @@
 import { NextResponse, NextRequest } from 'next/server';
 import { getSpotifyAccessToken } from '@/lib/spotify/spotifyTokenManager';
+import { SpotifyTopArtistsResponse } from '@/shared/types/spotifyTrack';
 
-export async function GET(request: NextRequest) {
-  const { searchParams } = request.nextUrl;
-  const id = searchParams.get('id');
+interface PageProps {
+  params: Promise<{ id: string }>;
+}
+
+export async function GET(request: NextRequest, { params }: PageProps) {
+  const { id } = await params;
 
   if (!id) {
     return NextResponse.json({ error: 'Missing id parameter' }, { status: 400 });
@@ -12,6 +16,7 @@ export async function GET(request: NextRequest) {
   try {
     const token = await getSpotifyAccessToken();
 
+    // TODO: 스포티파이 로그인자 / 로컬 로그인자 / 비로그인자 구분 필요
     const favoriteArtistRes = await fetch(`https://api.spotify.com/v1/me/top/artists`, {
       headers: { Authorization: `Bearer ${token}` },
       cache: 'no-store',
@@ -34,11 +39,28 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const favoriteArtists = await favoriteArtistRes.json().catch(async () => {
-      const body = await favoriteArtistRes.text().catch(() => '');
-      console.error('Spotify Favorite Artists JSON parse error. Body was:', body);
-      return null;
-    });
+    const favoriteArtistBody = await favoriteArtistRes.text().catch(() => '');
+    let favoriteArtists: SpotifyTopArtistsResponse | null = null;
+    if (favoriteArtistBody) {
+      try {
+        favoriteArtists = JSON.parse(favoriteArtistBody);
+      } catch (e) {
+        console.error(
+          'Spotify Favorite Artists JSON parse error. Body was:',
+          favoriteArtistBody,
+          e
+        );
+        return NextResponse.json(
+          { error: 'Failed to parse Spotify Favorite Artists JSON response.' },
+          { status: 502 }
+        );
+      }
+    } else {
+      return NextResponse.json(
+        { error: 'Empty Spotify Favorite Artists response body.' },
+        { status: 502 }
+      );
+    }
 
     if (!favoriteArtists) {
       return NextResponse.json(

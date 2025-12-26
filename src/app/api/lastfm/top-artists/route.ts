@@ -7,10 +7,7 @@ export async function GET(request: NextRequest) {
   const limit = searchParams.get('limit') || '10';
 
   if (!apiKey) {
-    return new Response(JSON.stringify({ error: 'Last.fm API key is not configured.' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    return NextResponse.json({ error: 'Last.fm API key is not configured.' }, { status: 500 });
   }
 
   const url = `https://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${apiKey}&format=json&page=${page}&limit=${limit}`;

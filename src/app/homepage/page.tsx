@@ -21,9 +21,6 @@ export const revalidate = 86400;
 export default async function HomePage() {
   const tracksList = await getTrackList({ playlistId: '1PcB3QM5sGbzFU5D9CbEGB', limit: 5 });
 
-  if (!tracksList) {
-    return null;
-  }
   return (
     <>
       <ChartTop1 tracksList={tracksList} />
