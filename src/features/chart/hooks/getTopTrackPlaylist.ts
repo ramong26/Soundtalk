@@ -28,6 +28,7 @@ export default async function getTopTrackPlaylist({
   );
 
   if (!playlistRes.ok) {
+    console.error('Error fetching playlist:', await playlistRes.text());
     throw new Error('Failed to fetch playlist');
   }
 
