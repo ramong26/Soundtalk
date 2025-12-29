@@ -2,35 +2,22 @@ import Link from 'next/link';
 import Image from 'next/image';
 import SortDown from '@/shared/components/SortDown';
 
-interface Profile {
-  displayName: string;
-  profileImageUrl?: string | null;
-}
-
 interface HeaderLayoutProps {
   handleOpenModal: (type: 'login' | 'signup') => void;
   handleLogout: () => void;
-  profile: Profile | null;
+  profile: User.Profile | null;
   isLogin: boolean;
 }
 
-export default function HeaderLayout({
-  handleOpenModal,
-  handleLogout,
-  profile,
-  isLogin,
-}: HeaderLayoutProps) {
-  // SignIn / SignUp 라벨
+export default function HeaderLayout({ handleOpenModal, handleLogout, profile, isLogin }: HeaderLayoutProps) {
   const signInLabel = ['SIGNIN', 'SIGNUP'];
-  // 로그인 인증 모달 열기 핸들러
+
   const handleAuthSelect = (type: string) => {
     if (type === 'SIGNIN') handleOpenModal('login');
     else if (type === 'SIGNUP') handleOpenModal('signup');
   };
 
-  // 메뉴 라벨
   const menuLabel = ['CHART', 'PLAYLIST', 'CHANNEL', 'RECOMMEND'];
-  // 메뉴 링크
   const menuLink = ['/charts', '/playlist', '/channel', '/recommend'];
 
   // 로그인 전 버튼 렌더링
@@ -50,13 +37,7 @@ export default function HeaderLayout({
       <div className="flex items-center md:gap-2 gap-0.5 lg:text-xl md:text-lg text-sm font-bold  h-full">
         <Link href="/profile" className="flex items-center gap-2">
           {profile.profileImageUrl && (
-            <Image
-              src={profile.profileImageUrl}
-              alt="Profile"
-              width={24}
-              height={24}
-              className="rounded-full"
-            />
+            <Image src={profile.profileImageUrl} alt="Profile" width={24} height={24} className="rounded-full" />
           )}
           {profile.displayName}
         </Link>

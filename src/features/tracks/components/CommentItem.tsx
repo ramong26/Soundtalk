@@ -50,11 +50,7 @@ export default function CommentItem({ comment, onDelete, onEdit }: Props) {
       {!isEditing ? (
         <p className="lg:text-base md:text-sm text-xs mt-3 text-gray-800">{comment.text}</p>
       ) : (
-        <CommentEditInput
-          initialValue={comment.text}
-          onSave={handleSave}
-          onCancel={() => setIsEditing(false)}
-        />
+        <CommentEditInput initialValue={comment.text} onSave={handleSave} onCancel={() => setIsEditing(false)} />
       )}
 
       {/* 푸터 */}

@@ -1,4 +1,10 @@
-export default async function TodayMusic() {
+'use client';
+
+import useUserStore from '@/stores/userStore';
+
+export default function TodayMusic() {
+  const { user } = useUserStore();
+  console.log('user', user);
   return <section className="w-fit py-12 px-6"></section>;
 }
 
