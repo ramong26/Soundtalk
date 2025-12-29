@@ -4,8 +4,8 @@ export async function GET() {
   const auth = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
 
   if (!clientId || !clientSecret) {
-    console.error('Spotify 환경 변수 누락!');
-    return new Response(JSON.stringify({ error: 'Missing Spotify env variables' }), {
+    console.error('Spotify 환경 변수 누락! clientId:', clientId, 'clientSecret:', clientSecret);
+    return new Response(JSON.stringify({ error: 'Missing Spotify env variables', clientId, clientSecret }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
     });
@@ -23,7 +23,7 @@ export async function GET() {
   });
 
   const data = await tokenRes.json();
-  console.log(` [Spotify Token] Fetched new token at `, data);
+
   return new Response(JSON.stringify(data), {
     status: 200,
     headers: { 'Content-Type': 'application/json' },
