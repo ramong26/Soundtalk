@@ -6,9 +6,7 @@ import ChartTop1 from '@/features/homepage/components/ChartTop1';
 
 import { getTrackList } from '@/shared/hooks/getTrackList';
 
-const YoutubePlaylist = dynamic(
-  () => import('@/features/homepage/components/YoutubeChannelsContainer')
-);
+const YoutubePlaylist = dynamic(() => import('@/features/homepage/components/YoutubeChannelsContainer'));
 const HomepageFooter = dynamic(() => import('@/features/homepage/components/HomepageFooter'));
 
 export const metadata = {
