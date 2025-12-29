@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 
@@ -25,19 +25,19 @@ export default function useHeaderAuth() {
     if (isSuccess && data) {
       const profileImage = data.profileImageUrl ?? DefaultProfile.src;
 
-      setUser({ ...data, id: data.id, profileImageUrl: profileImage, userType: data.userType });
+      setUser({ ...data, profileImageUrl: profileImage });
     }
   }, [isSuccess, data, setUser]);
 
   const isLogin = !!data;
   const profile = data ? { ...data, profileImageUrl: data.profileImageUrl ?? DefaultProfile.src } : null;
 
-  const handleLogout = async () => {
+  const handleLogout = useCallback(async () => {
     await fetch('/api/auth/logout', { credentials: 'include' });
     queryClient.removeQueries({ queryKey: ['user'] });
     setUser(null);
     router.push('/');
-  };
+  }, [queryClient, router, setUser]);
 
   return { isLogin, profile, handleLogout };
 }

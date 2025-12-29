@@ -15,7 +15,7 @@ export async function GET() {
   });
 
   const data = await tokenRes.json();
-
+  console.log(` [Spotify Token] Fetched new token at `, data);
   return new Response(JSON.stringify(data), {
     status: 200,
     headers: { 'Content-Type': 'application/json' },
