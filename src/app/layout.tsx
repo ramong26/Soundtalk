@@ -37,15 +37,14 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={`${oswald.variable} ${archivoBlack.variable}`}>
-        <HeaderMain />
-        <QueryProvider>{children}</QueryProvider>
+        <QueryProvider>
+          <HeaderMain />
+          {children}
+        </QueryProvider>
 
         {GA_ID && isProduction && (
           <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-              strategy="afterInteractive"
-            />
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
             <Script id="google-analytics" strategy="afterInteractive">
               {`
                 window.dataLayer = window.dataLayer || [];
