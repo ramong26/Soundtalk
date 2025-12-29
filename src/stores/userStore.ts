@@ -1,14 +1,8 @@
 import { create } from 'zustand';
 
-interface User {
-  _id: string;
-  displayName: string;
-  profileImageUrl: string;
-}
-
 export interface UserState {
-  user: User | null;
-  setUser: (user: User | null) => void;
+  user: User.Profile | null;
+  setUser: (user: User.Profile | null) => void;
   clearUser: () => void;
 }
 

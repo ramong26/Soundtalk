@@ -15,12 +15,7 @@ export default function HeaderMain() {
 
   return (
     <>
-      <HeaderLayout
-        handleOpenModal={handleOpenModal}
-        handleLogout={handleLogout}
-        profile={profile}
-        isLogin={isLogin}
-      />
+      <HeaderLayout handleOpenModal={handleOpenModal} handleLogout={handleLogout} profile={profile} isLogin={isLogin} />
       {/* 모달 */}
       {modalType && (
         <AuthModal

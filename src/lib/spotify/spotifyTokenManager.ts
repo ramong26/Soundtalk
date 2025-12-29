@@ -6,6 +6,11 @@ export async function getSpotifyAccessToken() {
   const baseUrl = getBaseUrl();
 
   const tokenRes = await fetch(`${baseUrl}/api/spotify/spotify-token`);
+
+  if (!tokenRes.ok) {
+    throw new Error('Failed to fetch Spotify token');
+  }
+
   const data = await tokenRes.json();
 
   cachedToken = data.access_token;

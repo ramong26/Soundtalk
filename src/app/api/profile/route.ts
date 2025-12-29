@@ -27,6 +27,7 @@ export async function GET(req: NextRequest) {
       displayName: user.displayName,
       profileImageUrl: user.profileImageUrl || null,
       id: user._id.toString(),
+      userType: user.spotifyId ? 'spotify' : user.googleId ? 'google' : 'local',
     });
   } catch (error) {
     console.error('JWT verification failed:', error);

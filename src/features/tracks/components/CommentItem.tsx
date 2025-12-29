@@ -24,7 +24,7 @@ export default function CommentItem({ comment, onDelete, onEdit }: Props) {
   };
 
   const commentUserId = typeof comment.userId === 'string' ? comment.userId : comment.userId?._id;
-  const isMyComment = user?._id === commentUserId;
+  const isMyComment = user?.id === commentUserId;
 
   return (
     <li className="border-2 border-black rounded-lg bg-white shadow-[4px_4px_0px_#FFD460] p-4 mb-4 ">
@@ -50,11 +50,7 @@ export default function CommentItem({ comment, onDelete, onEdit }: Props) {
       {!isEditing ? (
         <p className="lg:text-base md:text-sm text-xs mt-3 text-gray-800">{comment.text}</p>
       ) : (
-        <CommentEditInput
-          initialValue={comment.text}
-          onSave={handleSave}
-          onCancel={() => setIsEditing(false)}
-        />
+        <CommentEditInput initialValue={comment.text} onSave={handleSave} onCancel={() => setIsEditing(false)} />
       )}
 
       {/* 푸터 */}

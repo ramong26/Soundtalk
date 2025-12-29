@@ -6,9 +6,7 @@ import ChartTop1 from '@/features/homepage/components/ChartTop1';
 
 import { getTrackList } from '@/shared/hooks/getTrackList';
 
-const YoutubePlaylist = dynamic(
-  () => import('@/features/homepage/components/YoutubeChannelsContainer')
-);
+const YoutubePlaylist = dynamic(() => import('@/features/homepage/components/YoutubeChannelsContainer'));
 const HomepageFooter = dynamic(() => import('@/features/homepage/components/HomepageFooter'));
 
 export const metadata = {
@@ -20,7 +18,7 @@ export const revalidate = 86400;
 
 export default async function HomePage() {
   const tracksList = await getTrackList({ playlistId: '1PcB3QM5sGbzFU5D9CbEGB', limit: 5 });
-
+  console.log('Homepage tracksList:', tracksList);
   return (
     <>
       <ChartTop1 tracksList={tracksList} />

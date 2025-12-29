@@ -16,7 +16,7 @@ export default function AuthModal({ onClose, onChangeModal, type }: AuthModalPro
 
   // 로그인 일 때
   if (type === 'login') {
-    const { handleSubmit, errors, isSubmitting, onSubmit, loginField } = login;
+    const { handleSubmit, errors, isSubmitting, loginField } = login;
     const errorMessages = errors
       ? Object.fromEntries(Object.entries(errors).map(([key, value]) => [key, value?.message]))
       : undefined;
@@ -29,7 +29,7 @@ export default function AuthModal({ onClose, onChangeModal, type }: AuthModalPro
         submitLabel="Log in"
         fields={loginFields}
         onClose={onClose}
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit}
         isSubmitting={isSubmitting}
         errors={errorMessages}
         switchLabel="Create an account"
@@ -38,16 +38,11 @@ export default function AuthModal({ onClose, onChangeModal, type }: AuthModalPro
     );
   } else {
     // 회원가입 일 때
-    const { handleSubmit, errors, isSubmitting, onSubmit, signupField } = signup;
+    const { handleSubmit, errors, isSubmitting, signupField } = signup;
     const errorMessages = errors
       ? Object.fromEntries(Object.entries(errors).map(([key, value]) => [key, value?.message]))
       : undefined;
-    const signupFields = [
-      signupField.username,
-      signupField.email,
-      signupField.password,
-      signupField.confirmPassword,
-    ];
+    const signupFields = [signupField.username, signupField.email, signupField.password, signupField.confirmPassword];
 
     return (
       <LoginModalMain<SignupFormData>
@@ -56,7 +51,7 @@ export default function AuthModal({ onClose, onChangeModal, type }: AuthModalPro
         submitLabel="Sign Up"
         fields={signupFields}
         onClose={onClose}
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit}
         isSubmitting={isSubmitting}
         errors={errorMessages}
         switchLabel="Log in Here"
