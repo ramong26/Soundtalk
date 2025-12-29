@@ -1,3 +1,5 @@
+export const runtime = 'nodejs';
+
 export async function GET() {
   const clientId = process.env.SPOTIFY_CLIENT_ID;
   const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
@@ -10,7 +12,7 @@ export async function GET() {
       headers: { 'Content-Type': 'application/json' },
     });
   }
-
+  console.log('base64 auth:', auth);
   const tokenRes = await fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
     headers: {
