@@ -8,6 +8,7 @@ export default async function callApi<T>(
   transform?: (data: unknown) => T
 ): Promise<T> {
   const baseUrl = getBaseUrl();
+
   try {
     const fetchOption = {
       ...options,

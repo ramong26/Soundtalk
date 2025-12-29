@@ -1,6 +1,5 @@
 import { TrackItem } from '@/shared/types/spotifyTrack';
-// import { getBaseUrl } from '@/lib/utils/baseUrl';
-import { getSpotifyToken } from '@/lib/spotify/getSpotifyToken';
+import { getBaseUrl } from '@/lib/utils/baseUrl';
 
 export default async function getTopTrackPlaylist({
   playlistId,
@@ -11,9 +10,17 @@ export default async function getTopTrackPlaylist({
   offset?: number;
   limit?: number;
 }): Promise<TrackItem[]> {
-  // const baseUrl = getBaseUrl();
+  const baseUrl = getBaseUrl();
 
-  const access_token = await getSpotifyToken();
+  const tokenRes = await fetch(`${baseUrl}/api/spotify/spotify-token`, {
+    cache: 'no-store',
+  });
+
+  if (!tokenRes.ok) {
+    throw new Error('Failed to fetch Spotify token');
+  }
+
+  const { access_token } = await tokenRes.json();
 
   const playlistRes = await fetch(
     `https://api.spotify.com/v1/playlists/${playlistId}/tracks?offset=${offset}&limit=${limit}`,
