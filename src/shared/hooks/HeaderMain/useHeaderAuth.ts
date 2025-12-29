@@ -1,18 +1,19 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 import useUserStore from '@/stores/userStore';
 import DefaultProfile from '@/public/image/default-profile-image.avif';
 
 export default function useHeaderAuth() {
-  const { setUser, user } = useUserStore();
-  const [isLogin, setIsLogin] = useState(false);
-  const [profile, setProfile] = useState<User.Profile | null>(null);
+  const router = useRouter();
+  const { setUser } = useUserStore();
+  const queryClient = useQueryClient();
 
-  const { data, isSuccess, isError } = useQuery<User.Profile>({
-    queryKey: user ? ['user', user.id] : ['user'],
+  const { data, isSuccess } = useQuery<User.Profile>({
+    queryKey: ['user'],
     queryFn: async () => {
       const res = await fetch('/api/profile');
       if (!res.ok) throw new Error('로그인 안 됨');
@@ -24,21 +25,18 @@ export default function useHeaderAuth() {
     if (isSuccess && data) {
       const profileImage = data.profileImageUrl ?? DefaultProfile.src;
 
-      setProfile({ ...data, profileImageUrl: profileImage });
-      setIsLogin(true);
       setUser({ ...data, id: data.id, profileImageUrl: profileImage, userType: data.userType });
     }
   }, [isSuccess, data, setUser]);
 
-  useEffect(() => {
-    if (isError) {
-      setProfile(null);
-      setIsLogin(false);
-    }
-  }, [isError]);
+  const isLogin = !!data;
+  const profile = data ? { ...data, profileImageUrl: data.profileImageUrl ?? DefaultProfile.src } : null;
+
   const handleLogout = async () => {
     await fetch('/api/auth/logout', { credentials: 'include' });
-    window.location.href = '/';
+    queryClient.removeQueries({ queryKey: ['user'] });
+    setUser(null);
+    router.push('/');
   };
 
   return { isLogin, profile, handleLogout };
