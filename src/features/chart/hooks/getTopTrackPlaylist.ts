@@ -15,6 +15,11 @@ export default async function getTopTrackPlaylist({
   const tokenRes = await fetch(`${baseUrl}/api/spotify/spotify-token`, {
     cache: 'no-store',
   });
+
+  if (!tokenRes.ok) {
+    throw new Error('Failed to fetch Spotify token');
+  }
+
   const { access_token } = await tokenRes.json();
 
   const playlistRes = await fetch(

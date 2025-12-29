@@ -6,6 +6,11 @@ export default async function getTrackId(trackId?: string): Promise<Track> {
   const tokenRes = await fetch(`${baseUrl}/api/spotify/spotify-token`, {
     cache: 'no-store',
   });
+
+  if (!tokenRes.ok) {
+    throw new Error('Failed to fetch Spotify token');
+  }
+
   const { access_token } = await tokenRes.json();
 
   const trackRes = await fetch(`https://api.spotify.com/v1/tracks/${trackId}`, {
