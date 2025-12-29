@@ -1,9 +1,16 @@
 export async function GET() {
-  const clientId = process.env.SPOTIFY_CLIENT_ID!;
-  const clientSecret = process.env.SPOTIFY_CLIENT_SECRET!;
+  const clientId = process.env.SPOTIFY_CLIENT_ID;
+  const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
   const auth = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
-  console.log('SPOTIFY_CLIENT_ID:', process.env.SPOTIFY_CLIENT_ID);
-  console.log('SPOTIFY_CLIENT_SECRET:', process.env.SPOTIFY_CLIENT_SECRET);
+
+  if (!clientId || !clientSecret) {
+    console.error('Spotify 환경 변수 누락!');
+    return new Response(JSON.stringify({ error: 'Missing Spotify env variables' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
   const tokenRes = await fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
     headers: {
