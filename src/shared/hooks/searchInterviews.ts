@@ -18,6 +18,8 @@ function getDateYearsAgo(years: number): string {
 }
 // 검색어로 인터뷰를 검색하는 함수
 export async function searchInterviews(who: string): Promise<CustomSearchResult[]> {
+  if (!who) return [];
+
   const afterDate = getDateYearsAgo(4);
   const query = `${who} ("official interview" OR "interview with") (${INTERVIEW_SITES.join(
     ' OR '
@@ -69,6 +71,8 @@ export async function searchInterviewsWithGeminiAI(who: string): Promise<CustomS
 
 // 유튜브 인터뷰 검색
 export async function searchInterviewsWithYouTube(who: string): Promise<CustomSearchResult[]> {
+  if (!who) return [];
+
   const res = await fetch(`/api/google-api/youtube?q=${encodeURIComponent(who)}  ${who} interview`);
   if (!res.ok) throw new Error('API 호출 실패');
   const data = await res.json();
