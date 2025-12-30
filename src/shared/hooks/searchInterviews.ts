@@ -30,6 +30,7 @@ export async function searchInterviews(who: string): Promise<CustomSearchResult[
   if (!query) return [];
 
   const res = await fetch(`${baseUrl}/api/google-api/interviews?query=${encodeURIComponent(query)}`);
+  console.log('searchInterviews() 호출 URL:', res);
   if (!res.ok) throw new Error('API 호출 실패 in searchInterviews');
   const data = await res.json();
   return Array.isArray(data)
