@@ -8,7 +8,7 @@ export default async function getTrackId(trackId?: string): Promise<Track> {
   });
 
   if (!tokenRes.ok) {
-    throw new Error('Failed to fetch Spotify token');
+    throw new Error('Failed to fetch Spotify token in getTrackId');
   }
 
   const { access_token } = await tokenRes.json();
