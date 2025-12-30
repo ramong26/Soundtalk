@@ -22,16 +22,15 @@ export default async function callApi<T>(
     const fullUrl = url.startsWith('http') ? url : baseUrl + url;
 
     const res = await fetch(fullUrl, fetchOption);
-    console.log('callApi() 호출 URL:', res);
+
     if (!res.ok) {
       if (res.status === 401 && url !== '/api/auth/refresh') {
-        console.log('토큰 만료 감지, 토큰 갱신 시도 중...');
         if (!refreshPromise) {
           refreshPromise = fetch(baseUrl + '/api/auth/refresh', {
             method: 'POST',
             credentials: 'include' as RequestCredentials,
           });
-          console.log('refreshPromise 생성됨:', refreshPromise);
+
           if (!refreshPromise) {
             throw new Error('Failed to initiate token refresh in callApi');
           }

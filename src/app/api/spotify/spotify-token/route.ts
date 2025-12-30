@@ -9,7 +9,7 @@ export async function GET() {
   if (cachedToken && Date.now() < cachedToken.expiresAt) {
     return Response.json({ access_token: cachedToken.accessToken });
   }
-  console.log(process.env.SPOTIFY_CLIENT_ID, process.env.SPOTIFY_CLIENT_SECRET);
+
   const auth = Buffer.from(`${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`).toString('base64');
 
   const res = await fetch('https://accounts.spotify.com/api/token', {

@@ -11,12 +11,13 @@ interface InterviewProps {
 }
 
 export default async function InterviewList({ artistName, className = '', slice = 5 }: InterviewProps) {
-  // const LATEST_INTERVIEWS_QUERY = `${artistName} artist interview site:rollingstone.com OR site:billboard.com OR site:pitchfork.com OR site:complex.com`;
+  const LATEST_INTERVIEWS_QUERY = `${artistName} artist interview site:rollingstone.com OR site:billboard.com OR site:pitchfork.com OR site:complex.com`;
+  console.log(artistName);
   if (!artistName) {
     return null;
   }
-  console.log('InterviewList artistName:', artistName);
-  const interviews = await searchInterviews(artistName);
+
+  const interviews = await searchInterviews(LATEST_INTERVIEWS_QUERY);
 
   const sortedInterviews = interviews
     .filter((interview) => typeof interview.pagemap?.metatags?.[0]?.['article:published_time'] === 'string')

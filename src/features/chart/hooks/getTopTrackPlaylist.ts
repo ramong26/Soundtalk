@@ -11,7 +11,6 @@ export default async function getTopTrackPlaylist({
   limit?: number;
 }): Promise<TrackItem[]> {
   const { access_token } = await getSpotifyToken();
-  console.log('Access Token:', access_token);
 
   const playlistRes = await fetch(
     `https://api.spotify.com/v1/playlists/${playlistId}/tracks?offset=${offset}&limit=${limit}`,
