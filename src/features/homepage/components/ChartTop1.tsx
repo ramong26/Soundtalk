@@ -37,7 +37,11 @@ export default function ChartTop1({ tracksList }: { tracksList: TrackItem[] }) {
           </p>
         </div>
         <div className="lg:p-4 p-2 border-2 border-black  bg-white shadow-[4px_4px_0px_#000] w-full">
-          <InterviewList className="w-full" slice={3} />
+          <InterviewList
+            className="w-full"
+            slice={3}
+            artistName={track.artists?.map((artist) => artist.name).join(', ')}
+          />
         </div>
       </div>
     </section>
