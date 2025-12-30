@@ -11,11 +11,11 @@ export default async function getTopTrackPlaylist({
   limit?: number;
 }): Promise<TrackItem[]> {
   const baseUrl = getBaseUrl();
-
+  console.log('Base URL:', baseUrl);
   const tokenRes = await fetch(`${baseUrl}/api/spotify/spotify-token`, {
     cache: 'no-store',
   });
-
+  console.log('Token Response Status:', tokenRes);
   if (!tokenRes.ok) {
     throw new Error('Failed to fetch Spotify token in getTopTrackPlaylist');
   }
