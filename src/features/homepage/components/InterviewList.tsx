@@ -10,19 +10,16 @@ interface InterviewProps {
   slice?: number;
 }
 
-export default async function InterviewList({
-  artistName,
-  className = '',
-  slice = 5,
-}: InterviewProps) {
-  const LATEST_INTERVIEWS_QUERY = `${artistName} artist interview site:rollingstone.com OR site:billboard.com OR site:pitchfork.com OR site:complex.com`;
-  const interviews = await searchInterviews(LATEST_INTERVIEWS_QUERY);
+export default async function InterviewList({ artistName, className = '', slice = 5 }: InterviewProps) {
+  // const LATEST_INTERVIEWS_QUERY = `${artistName} artist interview site:rollingstone.com OR site:billboard.com OR site:pitchfork.com OR site:complex.com`;
+  if (!artistName) {
+    return null;
+  }
+
+  const interviews = await searchInterviews(artistName);
 
   const sortedInterviews = interviews
-    .filter(
-      (interview) =>
-        typeof interview.pagemap?.metatags?.[0]?.['article:published_time'] === 'string'
-    )
+    .filter((interview) => typeof interview.pagemap?.metatags?.[0]?.['article:published_time'] === 'string')
     .sort((a, b) => {
       const dateA = new Date(a.pagemap?.metatags?.[0]?.['article:published_time'] ?? '').getTime();
       const dateB = new Date(b.pagemap?.metatags?.[0]?.['article:published_time'] ?? '').getTime();
@@ -31,9 +28,7 @@ export default async function InterviewList({
 
   return (
     <div className={`pt-3 px-3  border-3 border-black ${className}`}>
-      <h1 className="lg:text-4xl text-3xl font-extrabold mb-3 text-black text-center">
-        Latest Interviews
-      </h1>
+      <h1 className="lg:text-4xl text-3xl font-extrabold mb-3 text-black text-center">Latest Interviews</h1>
       <ul>
         {sortedInterviews.slice(0, slice).map((interview) => (
           <li key={interview.link} className="lg:p-4 p-2 border-t border-black truncate">
