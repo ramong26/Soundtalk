@@ -7,7 +7,7 @@ export async function getSpotifyToken() {
   }
 
   const auth = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
-  console.log('Spotify auth string:', auth);
+
   const res = await fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
     headers: {
@@ -17,7 +17,7 @@ export async function getSpotifyToken() {
     body: 'grant_type=client_credentials',
     cache: 'no-store',
   });
-  console.log('Spotify token fetch response:', res);
+
   if (!res.ok) {
     console.error(await res.text());
     throw new Error('Failed to fetch Spotify token in getSpotifyToken');

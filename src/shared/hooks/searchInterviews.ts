@@ -1,7 +1,9 @@
 import { CustomSearchResult } from '@/features/tracks/types/custom-search';
+import { getBaseUrl } from '@/lib/utils/baseUrl';
 import { formatDate } from '@/lib/utils/date';
 import { YouTubeItem } from '@/shared/types/youtube';
-import callApi from '@/shared/hooks/callApi';
+
+const baseUrl = getBaseUrl();
 
 const INTERVIEW_SITES = [
   'site:rollingstone.com',
@@ -25,7 +27,9 @@ export async function searchInterviews(who: string): Promise<CustomSearchResult[
     ' OR '
   )}) after:${afterDate}`;
 
-  const res = await fetch(`/api/google-api/interviews?query=${encodeURIComponent(query)}`);
+  if (!query) return [];
+
+  const res = await fetch(`${baseUrl}/api/google-api/interviews?query=${encodeURIComponent(query)}`);
   if (!res.ok) throw new Error('API 호출 실패');
   const data = await res.json();
   return Array.isArray(data)
@@ -39,13 +43,18 @@ export async function searchInterviews(who: string): Promise<CustomSearchResult[
 
 // Google GeminiAi 사용하여 인터뷰 검색
 export async function searchInterviewsWithGeminiAI(who: string): Promise<CustomSearchResult[]> {
-  const response = await callApi<YouTubeItem[]>(`/api/gemini-api/getInterviews`, {
+  const response = await fetch(`${baseUrl}/api/gemini-api/getInterviews`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ query: who }),
   });
+
+  if (!response.ok) {
+    console.error('Gemini API 호출 실패:', await response.text());
+    throw new Error('Gemini API 호출 실패');
+  }
 
   const chunkSize = 10;
   const results: CustomSearchResult[] = [];
@@ -73,7 +82,7 @@ export async function searchInterviewsWithGeminiAI(who: string): Promise<CustomS
 export async function searchInterviewsWithYouTube(who: string): Promise<CustomSearchResult[]> {
   if (!who) return [];
 
-  const res = await fetch(`/api/google-api/youtube?q=${encodeURIComponent(who)}  ${who} interview`);
+  const res = await fetch(`${baseUrl}/api/google-api/youtube?q=${encodeURIComponent(who)}  ${who} interview`);
   if (!res.ok) throw new Error('API 호출 실패');
   const data = await res.json();
   return Array.isArray(data)
