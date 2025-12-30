@@ -23,17 +23,15 @@ export async function searchInterviews(who: string): Promise<CustomSearchResult[
     ' OR '
   )}) after:${afterDate}`;
 
-  return callApi<CustomSearchResult[]>(
-    `/api/google-api/interviews?query=${encodeURIComponent(query)}`,
-    undefined,
-    (data) =>
-      Array.isArray(data)
-        ? data.filter((item) => {
-            const title = item.title?.toLowerCase() || '';
-            return !title.includes('shorts') && !title.includes('reaction');
-          })
-        : []
-  );
+  const res = await fetch(`/api/google-api/interviews?query=${encodeURIComponent(query)}`);
+  if (!res.ok) throw new Error('API 호출 실패');
+  const data = await res.json();
+  return Array.isArray(data)
+    ? data.filter((item) => {
+        const title = item.title?.toLowerCase() || '';
+        return !title.includes('shorts') && !title.includes('reaction');
+      })
+    : [];
 }
 // 사용법:  const interviews = await getTrackIdInterview(who);
 
@@ -71,21 +69,19 @@ export async function searchInterviewsWithGeminiAI(who: string): Promise<CustomS
 
 // 유튜브 인터뷰 검색
 export async function searchInterviewsWithYouTube(who: string): Promise<CustomSearchResult[]> {
-  return callApi<CustomSearchResult[]>(
-    `/api/google-api/youtube?q=${encodeURIComponent(who)}  ${who} interview`,
-    undefined,
-    (data) =>
-      Array.isArray(data)
-        ? data.map((item: YouTubeItem) => ({
-            title: item?.snippet?.title,
-            link: `https://www.youtube.com/watch?v=${item?.id?.videoId}`,
-            thumbnail: item?.snippet?.thumbnails?.high?.url,
-            publishedAt: item?.snippet?.publishedAt,
-            description: item?.snippet?.description,
-            displayLink: 'www.youtube.com',
-          }))
-        : []
-  );
+  const res = await fetch(`/api/google-api/youtube?q=${encodeURIComponent(who)}  ${who} interview`);
+  if (!res.ok) throw new Error('API 호출 실패');
+  const data = await res.json();
+  return Array.isArray(data)
+    ? data.map((item: YouTubeItem) => ({
+        title: item?.snippet?.title,
+        link: `https://www.youtube.com/watch?v=${item?.id?.videoId}`,
+        thumbnail: item?.snippet?.thumbnails?.high?.url,
+        publishedAt: item?.snippet?.publishedAt,
+        description: item?.snippet?.description,
+        displayLink: 'www.youtube.com',
+      }))
+    : [];
 }
 
 // 아티스트별 인터뷰 검색 결과를 통합하여 반환하는 함수
