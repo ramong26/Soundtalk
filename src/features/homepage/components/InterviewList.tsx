@@ -15,7 +15,7 @@ export default async function InterviewList({ artistName, className = '', slice 
   if (!artistName) {
     return null;
   }
-
+  console.log('InterviewList artistName:', artistName);
   const interviews = await searchInterviews(artistName);
 
   const sortedInterviews = interviews
