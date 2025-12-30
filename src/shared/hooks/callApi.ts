@@ -5,6 +5,7 @@ export default async function callApi<T>(
 ): Promise<T> {
   try {
     const res = await fetch(url, options);
+    console.log(res);
     if (!res.ok) {
       const errorText = await res.text();
       console.error('API 호출 실패:', res.status, res.statusText, errorText);

@@ -20,7 +20,7 @@ export async function getSpotifyToken() {
 
   if (!res.ok) {
     console.error(await res.text());
-    throw new Error('Failed to fetch Spotify token');
+    throw new Error('Failed to fetch Spotify token in getSpotifyToken');
   }
 
   return res.json() as Promise<{ access_token: string }>;

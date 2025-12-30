@@ -3,6 +3,7 @@ import { getBaseUrl } from '@/lib/utils/baseUrl';
 
 export default async function getTrackId(trackId?: string): Promise<Track> {
   const baseUrl = getBaseUrl();
+
   const tokenRes = await fetch(`${baseUrl}/api/spotify/spotify-token`, {
     cache: 'no-store',
   });
