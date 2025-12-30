@@ -21,15 +21,15 @@ function getDateYearsAgo(years: number): string {
 // 검색어로 인터뷰를 검색하는 함수
 export async function searchInterviews(who: string): Promise<CustomSearchResult[]> {
   if (!who) return [];
+  const mainWho = who.split(',')[0].trim();
 
   const afterDate = getDateYearsAgo(4);
-  const query = `${who} (${INTERVIEW_SITES.join(' OR ')}) after:${afterDate}`;
-  console.log('searchInterviews query:', query);
+  const query = `${mainWho} (${INTERVIEW_SITES.join(' OR ')}) after:${afterDate}`;
+
   if (!query) return [];
 
   const res = await fetch(`${baseUrl}/api/google-api/interviews?query=${encodeURIComponent(query)}`);
 
-  console.log('searchInterviews response status:', res);
   if (!res.ok) throw new Error('API 호출 실패 in searchInterviews');
   const data = await res.json();
   return Array.isArray(data)
