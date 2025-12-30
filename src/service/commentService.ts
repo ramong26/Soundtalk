@@ -3,14 +3,10 @@ import callApi from '@/shared/hooks/callApi';
 
 import { Comment } from '@/shared/types/comment';
 
-import { getBaseUrl } from '@/lib/utils/baseUrl';
-
-const baseUrl = getBaseUrl();
-
 // POST: 댓글 생성
 const postComments = async (body: CreateCommentBody): Promise<Comment | undefined> => {
   try {
-    const response = await callApi<Comment>(`${baseUrl}/api/comments`, {
+    const response = await callApi<Comment>(`/api/comments`, {
       method: 'POST',
 
       body: JSON.stringify(body),
@@ -28,7 +24,7 @@ const getComments = async (
   nextCursorId?: number
 ): Promise<{ comments: Comment[]; nextCursorId?: number } | undefined> => {
   try {
-    let url = `${baseUrl}/api/comments?trackId=${trackId}`;
+    let url = `/api/comments?trackId=${trackId}`;
     if (nextCursorId) {
       url += `&nextCursorId=${nextCursorId}`;
     }
@@ -43,12 +39,9 @@ const getComments = async (
 };
 
 // PUT: 댓글 수정
-const putComments = async (
-  commentId: number | string,
-  body: UpdateCommentBody
-): Promise<Comment | undefined> => {
+const putComments = async (commentId: number | string, body: UpdateCommentBody): Promise<Comment | undefined> => {
   try {
-    const response = await callApi<Comment>(`${baseUrl}/api/comments/${commentId}`, {
+    const response = await callApi<Comment>(`/api/comments/${commentId}`, {
       method: 'PUT',
 
       body: JSON.stringify({ text: body.text }),
@@ -63,7 +56,7 @@ const putComments = async (
 // DELETE: 댓글 삭제
 const deleteComments = async (commentId: number | string): Promise<void | undefined> => {
   try {
-    const response = await callApi<void>(`${baseUrl}/api/comments/${commentId}`, {
+    const response = await callApi<void>(`/api/comments/${commentId}`, {
       method: 'DELETE',
     });
 

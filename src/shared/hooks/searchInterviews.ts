@@ -1,10 +1,7 @@
 import { CustomSearchResult } from '@/features/tracks/types/custom-search';
 import { formatDate } from '@/lib/utils/date';
 import { YouTubeItem } from '@/shared/types/youtube';
-import { getBaseUrl } from '@/lib/utils/baseUrl';
 import callApi from '@/shared/hooks/callApi';
-
-const baseUrl = getBaseUrl();
 
 const INTERVIEW_SITES = [
   'site:rollingstone.com',
@@ -27,7 +24,7 @@ export async function searchInterviews(who: string): Promise<CustomSearchResult[
   )}) after:${afterDate}`;
 
   return callApi<CustomSearchResult[]>(
-    `${baseUrl}/api/google-api/interviews?query=${encodeURIComponent(query)}`,
+    `/api/google-api/interviews?query=${encodeURIComponent(query)}`,
     undefined,
     (data) =>
       Array.isArray(data)
@@ -42,7 +39,7 @@ export async function searchInterviews(who: string): Promise<CustomSearchResult[
 
 // Google GeminiAi 사용하여 인터뷰 검색
 export async function searchInterviewsWithGeminiAI(who: string): Promise<CustomSearchResult[]> {
-  const response = await callApi<YouTubeItem[]>(`${baseUrl}/api/gemini-api/getInterviews`, {
+  const response = await callApi<YouTubeItem[]>(`/api/gemini-api/getInterviews`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -66,8 +63,7 @@ export async function searchInterviewsWithGeminiAI(who: string): Promise<CustomS
           displayLink: 'www.youtube.com',
         }))
       );
-      await ((globalThis as unknown as Global).scheduler?.yield?.() ||
-        new Promise((r) => setTimeout(r, 0)));
+      await ((globalThis as unknown as Global).scheduler?.yield?.() || new Promise((r) => setTimeout(r, 0)));
     }
   }
   return results;
@@ -76,7 +72,7 @@ export async function searchInterviewsWithGeminiAI(who: string): Promise<CustomS
 // 유튜브 인터뷰 검색
 export async function searchInterviewsWithYouTube(who: string): Promise<CustomSearchResult[]> {
   return callApi<CustomSearchResult[]>(
-    `${baseUrl}/api/google-api/youtube?q=${encodeURIComponent(who)}  ${who} interview`,
+    `/api/google-api/youtube?q=${encodeURIComponent(who)}  ${who} interview`,
     undefined,
     (data) =>
       Array.isArray(data)
@@ -101,10 +97,7 @@ export async function getCombinedInterviews(
   results: CustomSearchResult[];
   totalCount: number;
 }> {
-  const [googleResults, genAIResults] = await Promise.all([
-    searchInterviews(who),
-    searchInterviewsWithGeminiAI(who),
-  ]);
+  const [googleResults, genAIResults] = await Promise.all([searchInterviews(who), searchInterviewsWithGeminiAI(who)]);
 
   const combinedMap = new Map<string, CustomSearchResult>();
   [...googleResults, ...genAIResults].forEach((item) => {
