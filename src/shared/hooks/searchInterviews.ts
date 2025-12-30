@@ -30,7 +30,7 @@ export async function searchInterviews(who: string): Promise<CustomSearchResult[
   if (!query) return [];
 
   const res = await fetch(`${baseUrl}/api/google-api/interviews?query=${encodeURIComponent(query)}`);
-  if (!res.ok) throw new Error('API 호출 실패');
+  if (!res.ok) throw new Error('API 호출 실패 in searchInterviews');
   const data = await res.json();
   return Array.isArray(data)
     ? data.filter((item) => {
@@ -83,7 +83,7 @@ export async function searchInterviewsWithYouTube(who: string): Promise<CustomSe
   if (!who) return [];
 
   const res = await fetch(`${baseUrl}/api/google-api/youtube?q=${encodeURIComponent(who)}  ${who} interview`);
-  if (!res.ok) throw new Error('API 호출 실패');
+  if (!res.ok) throw new Error('API 호출 실패 in searchInterviewsWithYouTube');
   const data = await res.json();
   return Array.isArray(data)
     ? data.map((item: YouTubeItem) => ({
