@@ -25,18 +25,22 @@ export default async function callApi<T>(
     if (!res.ok) {
       if (res.status === 401 && url !== '/api/auth/refresh') {
         if (!refreshPromise) {
-          console.log('Refreshing token...');
           refreshPromise = fetch(baseUrl + '/api/auth/refresh', {
             method: 'POST',
             credentials: 'include' as RequestCredentials,
           });
+
+          if (!refreshPromise) {
+            console.log(refreshPromise);
+            throw new Error('Failed to initiate token refresh in callApi');
+          }
         }
+
         const refreshRes = await refreshPromise;
         refreshPromise = null;
         if (refreshRes.ok) {
           const retryRes = await fetch(fullUrl, fetchOption);
           if (!retryRes.ok) {
-            console.log('Retry after refresh failed');
             const errorText = await retryRes.text();
             console.error('API 호출 실패:', res.status, res.statusText, errorText);
             throw new Error('API 호출 실패');
