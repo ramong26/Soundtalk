@@ -68,7 +68,7 @@ export default async function Charts() {
     );
   };
 
-  if (!tracksList && !koreaTracksList && !usaTracksList) return null;
+  if (!tracksList || tracksList.length === 0 || !koreaTracksList || !usaTracksList) return null;
 
   return (
     <div className=" flex flex-col items-center justify-center  mx-4 ">
@@ -120,8 +120,8 @@ export default async function Charts() {
       </section>
 
       <section className="max-w-[1036px] flex lg:flex-row flex-col items-center justify-between  w-full gap-10 pb-10">
-        {renderChart({ tracksList: koreaTracksList, title: '#한국 Top 50' })}
-        {renderChart({ tracksList: usaTracksList, title: '#미국 Top 50' })}
+        {koreaTracksList && renderChart({ tracksList: koreaTracksList, title: '#한국 Top 50' })}
+        {usaTracksList && renderChart({ tracksList: usaTracksList, title: '#미국 Top 50' })}
       </section>
     </div>
   );
