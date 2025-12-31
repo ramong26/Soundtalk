@@ -1,48 +1,14 @@
 import { CustomSearchResult } from '@/features/tracks/types/custom-search';
 import { getBaseUrl } from '@/lib/utils/baseUrl';
-import { formatDate } from '@/lib/utils/date';
 import { YouTubeItem } from '@/shared/types/youtube';
+import { googleSearch } from '@/lib/google/googleSearch';
 
 const baseUrl = getBaseUrl();
 
-const INTERVIEW_SITES = [
-  'site:rollingstone.com',
-  'site:billboard.com',
-  'site:complex.com',
-  'site:pitchfork.com',
-  'site:koreanmusicjournal.com',
-];
-
-function getDateYearsAgo(years: number): string {
-  const today = new Date();
-  today.setFullYear(today.getFullYear() - years);
-  return formatDate(today);
-}
-
-// 키 만료 살펴보기
 // 검색어로 인터뷰를 검색하는 함수
 export async function searchInterviews(who: string): Promise<CustomSearchResult[]> {
-  if (!who) return [];
-  const mainWho = who.split(',')[0].trim();
-
-  const afterDate = getDateYearsAgo(4);
-  const query = `${mainWho} (${INTERVIEW_SITES.join(' OR ')}) after:${afterDate}`;
-  console.log('searchInterviews query:', query);
-
-  if (!query) return [];
-
-  const res = await fetch(`${baseUrl}/api/google-api/interviews?query=${encodeURIComponent(query)}`, {});
-  console.log('searchInterviews response status:', res);
-  if (!res.ok) throw new Error('API 호출 실패 in searchInterviews');
-  const data = await res.json();
-  return Array.isArray(data)
-    ? data.filter((item) => {
-        const title = item.title?.toLowerCase() || '';
-        return !title.includes('shorts') && !title.includes('reaction');
-      })
-    : [];
+  return googleSearch(who);
 }
-// 사용법:  const interviews = await getTrackIdInterview(who);
 
 // Google GeminiAi 사용하여 인터뷰 검색
 export async function searchInterviewsWithGeminiAI(who: string): Promise<CustomSearchResult[]> {
