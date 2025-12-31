@@ -4,6 +4,7 @@ const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 const GOOGLE_CSE_ID = process.env.GOOGLE_CSE_ID;
 
 export async function GET(request: Request) {
+  console.log('Entering Google API interview search route');
   if (!GOOGLE_API_KEY || !GOOGLE_CSE_ID) {
     console.error('Google API Key or CSE ID is not configured');
     return NextResponse.json({ error: 'Google API Key or CSE ID is not configured' }, { status: 500 });
