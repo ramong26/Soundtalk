@@ -1,23 +1,13 @@
 import Link from 'next/link';
 
-import { searchInterviews } from '@/shared/hooks/searchInterviews';
-
 import { formatDate } from '@/lib/utils/date';
+import { googleSearch } from '@/lib/google/googleSearch';
+import { InterviewListProps } from './type';
 
-interface InterviewProps {
-  artistName?: string;
-  className?: string;
-  slice?: number;
-}
+export default async function InterviewList({ artistName, className = '', slice = 5 }: InterviewListProps) {
+  const LATEST_INTERVIEWS_QUERY = `${artistName} artist interview site:rollingstone.com OR site:billboard.com OR site:pitchfork.com OR site:complex.com`;
 
-export default async function InterviewList({ artistName, className = '', slice = 5 }: InterviewProps) {
-  // const LATEST_INTERVIEWS_QUERY = `${artistName} artist interview site:rollingstone.com OR site:billboard.com OR site:pitchfork.com OR site:complex.com`;
-
-  if (!artistName) {
-    return null;
-  }
-
-  const interviews = await searchInterviews(artistName);
+  const interviews = await googleSearch(LATEST_INTERVIEWS_QUERY);
 
   const sortedInterviews = interviews
     .filter((interview) => typeof interview.pagemap?.metatags?.[0]?.['article:published_time'] === 'string')
@@ -26,6 +16,10 @@ export default async function InterviewList({ artistName, className = '', slice 
       const dateB = new Date(b.pagemap?.metatags?.[0]?.['article:published_time'] ?? '').getTime();
       return dateB - dateA;
     });
+
+  if (!artistName) {
+    return null;
+  }
 
   return (
     <div className={`pt-3 px-3  border-3 border-black ${className}`}>

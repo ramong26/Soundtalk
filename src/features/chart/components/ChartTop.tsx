@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import InterviewList from '@/features/homepage/components/InterviewList';
+import InterviewList from '@/features/homepage/components/InterviewList/InterviewList';
 import Miniplayer from '@/features/chart/components/Miniplayer';
 
 import { TrackItem } from '@/shared/types/spotifyTrack';
