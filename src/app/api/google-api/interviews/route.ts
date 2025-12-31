@@ -5,16 +5,15 @@ const GOOGLE_CSE_ID = process.env.GOOGLE_CSE_ID;
 
 export async function GET(request: Request) {
   if (!GOOGLE_API_KEY || !GOOGLE_CSE_ID) {
-    return NextResponse.json(
-      { error: 'Google API Key or CSE ID is not configured' },
-      { status: 500 }
-    );
+    console.error('Google API Key or CSE ID is not configured');
+    return NextResponse.json({ error: 'Google API Key or CSE ID is not configured' }, { status: 500 });
   }
   try {
     const { searchParams } = new URL(request.url);
     const query = searchParams.get('query');
 
     if (!query) {
+      console.error('Query parameter is missing');
       return NextResponse.json({ error: 'Query parameter is required' }, { status: 400 });
     }
 
@@ -30,10 +29,7 @@ export async function GET(request: Request) {
     if (!res.ok) {
       const errorText = await res.text();
       console.error('Google API 호출 실패:', res.status, errorText);
-      return NextResponse.json(
-        { error: 'Failed to fetch interview search results' },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: 'Failed to fetch interview search results' }, { status: 500 });
     }
 
     const data = await res.json();

@@ -18,6 +18,8 @@ function getDateYearsAgo(years: number): string {
   today.setFullYear(today.getFullYear() - years);
   return formatDate(today);
 }
+
+// 키 만료 살펴보기
 // 검색어로 인터뷰를 검색하는 함수
 export async function searchInterviews(who: string): Promise<CustomSearchResult[]> {
   if (!who) return [];
@@ -29,7 +31,7 @@ export async function searchInterviews(who: string): Promise<CustomSearchResult[
 
   if (!query) return [];
 
-  const res = await fetch(`${baseUrl}/api/google-api/interviews?query=${encodeURIComponent(query)}`);
+  const res = await fetch(`${baseUrl}/api/google-api/interviews?query=${encodeURIComponent(query)}`, {});
   console.log('searchInterviews response status:', res);
   if (!res.ok) throw new Error('API 호출 실패 in searchInterviews');
   const data = await res.json();
