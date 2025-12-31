@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { formatDate } from '@/lib/utils/date';
 import { googleSearch } from '@/lib/google/googleSearch';
-import { InterviewListProps } from './type';
+import { InterviewListProps } from './types';
 
 export default async function InterviewList({ artistName, className = '', slice = 5 }: InterviewListProps) {
   const LATEST_INTERVIEWS_QUERY = `${artistName} artist interview site:rollingstone.com OR site:billboard.com OR site:pitchfork.com OR site:complex.com`;

@@ -48,10 +48,7 @@ export default function IframeYoutube({ tracksList }: Props) {
         ⚠️ 유튜브에서 영상이 재생되지 않습니다. <br />
         <Link
           href={`https://www.youtube.com/results?search_query=${encodeURIComponent(
-            tracksList[0].track.artists[0].name +
-              ' ' +
-              tracksList[0].track.name +
-              ' official music video'
+            tracksList[0].track.artists[0].name + ' ' + tracksList[0].track.name + ' official music video'
           )}`}
           target="_blank"
           rel="noreferrer"

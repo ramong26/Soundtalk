@@ -36,6 +36,12 @@ export default function RootLayout({
 
   return (
     <html lang="ko">
+      {process.env.NODE_ENV === 'development' ? (
+        <head>
+          {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+          <script src="https://unpkg.com/react-scan/dist/auto.global.js" />
+        </head>
+      ) : null}
       <body className={`${oswald.variable} ${archivoBlack.variable}`}>
         <QueryProvider>
           <HeaderMain />
