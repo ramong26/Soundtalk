@@ -6,13 +6,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 import { YouTubeChannel } from '@/shared/types/youtube';
-
-interface Ball {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-}
+import { Ball } from './types';
 
 export default function YoutubeChannelClient({ channels }: { channels: YouTubeChannel[] }) {
   const [active, setActive] = useState<number | null>(null);

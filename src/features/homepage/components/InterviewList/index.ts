@@ -1,2 +1,2 @@
 export { default } from './InterviewList';
-export * from './type';
+export * from './types';

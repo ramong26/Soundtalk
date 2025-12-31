@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Suspense } from 'react';
@@ -6,7 +5,7 @@ import { Suspense } from 'react';
 import InterviewList from '@/features/homepage/components/InterviewList';
 import getTopTrackPlaylist from '@/features/chart/hooks/getTopTrackPlaylist';
 
-const YoutubePlaylist = dynamic(() => import('@/features/homepage/components/YoutubeChannelsContainer'));
+import YoutubePlaylist from '@/features/homepage/components/YoutubeChannel/YoutubeChannelsContainer';
 
 export const metadata = {
   title: 'SoundTalk - 음악 차트 & 플레이리스트',

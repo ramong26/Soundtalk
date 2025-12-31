@@ -36,6 +36,11 @@ export default function RootLayout({
 
   return (
     <html lang="ko">
+      <head>
+        {process.env.NODE_ENV === 'development' && (
+          <Script src="https://unpkg.com/react-scan/dist/auto.global.js" strategy="beforeInteractive" />
+        )}
+      </head>
       <body className={`${oswald.variable} ${archivoBlack.variable}`}>
         <QueryProvider>
           <HeaderMain />
