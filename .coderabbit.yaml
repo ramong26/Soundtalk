@@ -1,4 +1,4 @@
-review:
+reviews:
   tone: concise
   instructions: |
     모든 코드 리뷰는 반드시 한국어로 작성해주세요.
