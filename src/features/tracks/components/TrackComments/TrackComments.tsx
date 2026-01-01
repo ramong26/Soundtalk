@@ -14,9 +14,7 @@ const CommentList = dynamic(() => import('@/features/tracks/components/CommentLi
 
 export default function TrackComments() {
   const { trackId } = useTrackStore();
-  const { comments, setComments, submitComment, setSubmitComment, handleSubmit } = useTrackComments(
-    trackId ?? ''
-  );
+  const { comments, setComments, submitComment, setSubmitComment, handleSubmit } = useTrackComments(trackId ?? '');
 
   return (
     <div className="relative border-4 border-black bg-[#FFFDF6] rounded-xl shadow-[6px_6px_0px_#D65361] p-6 mt-12">
@@ -47,11 +45,7 @@ export default function TrackComments() {
 
       {/* 댓글 리스트 */}
       <div className="border-t-2 border-black">
-        {!comments ? (
-          <TrackCommentsSkeleton />
-        ) : (
-          <CommentList comments={comments} setComments={setComments} />
-        )}
+        {!comments ? <TrackCommentsSkeleton /> : <CommentList comments={comments} setComments={setComments} />}
       </div>
     </div>
   );

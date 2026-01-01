@@ -1,3 +1,5 @@
+'use server';
+
 import { CustomSearchResult } from '@/features/tracks/types/custom-search';
 import { getBaseUrl } from '@/lib/utils/baseUrl';
 import { YouTubeItem } from '@/shared/types/youtube';
