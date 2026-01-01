@@ -21,6 +21,7 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'images.complex.com', pathname: '/**' },
       { protocol: 'https', hostname: 'ca.billboard.com', pathname: '/**' },
       { protocol: 'https', hostname: 'images.thebrag.com', pathname: '/**' },
+      { protocol: 'https', hostname: 'media.pitchfork.com', pathname: '/**' },
     ],
   },
 

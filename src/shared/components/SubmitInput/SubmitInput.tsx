@@ -1,20 +1,9 @@
 'use client';
 
-interface SubmitInputProps {
-  className?: string;
-  onSubmit?: (value: string) => void;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  placeholder: string;
-  value?: string;
-}
+import { SubmitInputProps } from './types';
 
-export default function SubmitInput({
-  className,
-  onSubmit,
-  placeholder,
-  onChange,
-  value,
-}: SubmitInputProps) {
+// TODO: 추후 삭제 예정
+export default function SubmitInput({ className, onSubmit, placeholder, onChange, value }: SubmitInputProps) {
   return (
     <div className={`${className} w-full border-3  border-black p-2  hover:bg-gray-100 transition`}>
       <input

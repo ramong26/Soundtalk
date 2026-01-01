@@ -9,7 +9,9 @@ interface PlaylistInterviewListProps {
   trackData?: TrackItem[];
 }
 
-type ArtistInterviewMap = Record<string, CustomSearchResult[] | null>;
+interface ArtistInterviewMap {
+  [key: string]: CustomSearchResult[] | null;
+}
 
 export function useFetchArtistInterviews(props: PlaylistInterviewListProps) {
   const { trackData } = props;
@@ -100,7 +102,9 @@ export function useFetchArtistInterviews(props: PlaylistInterviewListProps) {
       isScrollLoadingRef.current = false;
     };
     fetchChunkedInterviews();
-  }, [visibleChunks, artists, artistInterviews]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [visibleChunks, artists]);
 
   return {
     artistInterviews,
