@@ -49,7 +49,12 @@ export default function SubmitPlaylist() {
     setError(null);
   };
 
-  const { data: pageTracks, isLoading } = useQuery<TrackItem[]>({
+  const {
+    data: pageTracks,
+    isLoading,
+    isError,
+    error: fetchError,
+  } = useQuery<TrackItem[]>({
     queryKey: ['track-list', playlistId, 0, 100],
     queryFn: () => getTopTrackPlaylist({ playlistId, offset: 0, limit: 100 }),
     enabled: !!playlistId,
@@ -80,6 +85,12 @@ export default function SubmitPlaylist() {
           </p>
         </div>
 
+        {isError && (
+          <p className="text-red-600 text-center font-bold">
+            ❌ 플레이리스트를 불러오는 중 오류가 발생했습니다:{' '}
+            {fetchError instanceof Error ? fetchError.message : '알 수 없는 오류'}
+          </p>
+        )}
         {showChart && (
           <div className="mt-10 w-full flex flex-col items-center">
             {isLoading && <ImportTrack isLoading />}

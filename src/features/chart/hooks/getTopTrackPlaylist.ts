@@ -1,6 +1,9 @@
 'use server';
 import { TrackItem } from '@/shared/types/spotifyTrack';
 
+let cachedToken: string | null = null;
+let tokenExpiresAt = 0;
+
 export default async function getTopTrackPlaylist({
   playlistId,
   offset = 0,
@@ -11,6 +14,15 @@ export default async function getTopTrackPlaylist({
   limit?: number;
 }): Promise<TrackItem[]> {
   const getAccessToken = async () => {
+    const now = Date.now();
+    if (cachedToken && tokenExpiresAt > now) {
+      return cachedToken;
+    }
+    if (!process.env.SPOTIFY_CLIENT_ID || !process.env.SPOTIFY_CLIENT_SECRET) {
+      console.error('Spotify environment variables are missing');
+      throw new Error('Spotify environment variables are missing');
+    }
+
     const auth = Buffer.from(`${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`).toString(
       'base64'
     );
@@ -36,7 +48,9 @@ export default async function getTopTrackPlaylist({
     }
 
     const data = await response.json();
-    return data.access_token;
+    cachedToken = data.access_token;
+    tokenExpiresAt = now + (data.expires_in - 60) * 1000;
+    return cachedToken;
   };
 
   const playlistRes = await fetch(
