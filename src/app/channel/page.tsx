@@ -1,4 +1,6 @@
-import ChannelSection from '@/features/channel/components/ChannelSection';
+import { Suspense } from 'react';
+
+import ChannelList from '@/features/channel/components/ChannelList';
 
 export const metadata = {
   title: 'Music Channel Recommendation',
@@ -9,8 +11,8 @@ export const revalidate = 86400;
 
 export default function ChannelPage() {
   return (
-    <div className="w-auto max-w-[1286px] lg:mx-auto mx-4 lg:mt-24 md:mt-16 mt-12 mb-16">
-      <ChannelSection />
-    </div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <ChannelList />
+    </Suspense>
   );
 }
