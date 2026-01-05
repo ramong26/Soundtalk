@@ -1,63 +1,52 @@
 'use client';
-import { useEffect, useState } from 'react';
+
+import { useQuery } from '@tanstack/react-query';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import ChannelListSkeleton from '@/features/channel/components/ChannelList/ChannelListSkeleton';
+
+import { ChannelListProps, ChannelMapping } from './types';
 import { YouTubeChannel } from '@/shared/types/youtube';
 
-import ChannelListSkeleton from '@/features/channel/components/ChannelListSkeleton';
-
-// 채널 핸들 매핑
-const channelHandleMap: Record<string, string[]> = {
+const channelHandleMap: ChannelMapping = {
   '믹스 채널 추천': ['RAPHAEL_MIXES', 'retapestudios', 'HumanoStudios'],
   'Jazz 채널 추천': ['ICYFOG', 'midnightradio2', 'RetroCafeRadio'],
   'Hiphop 채널 추천': ['peddlermusic'],
   'Rock 채널 추천': ['On8ight'],
 };
 
-export default function ChannelList({ title }: { title: string }) {
-  const [channels, setChannels] = useState<YouTubeChannel[]>([]);
-
-  // title이 바뀔 때마다 채널 정보 불러오기 mongoDB API 사용
-  useEffect(() => {
-    if (!title) return;
-
-    const controller = new AbortController();
-
-    const fetchChannels = async () => {
+export default function ChannelList({ title }: ChannelListProps) {
+  const {
+    data: channelData,
+    isLoading,
+    isError,
+  } = useQuery<YouTubeChannel[]>({
+    queryKey: ['youtube-channels', channelHandleMap[title]],
+    queryFn: async () => {
       const handles = channelHandleMap[title] ?? [];
       const results = await Promise.allSettled(
-        handles.map((h) =>
-          fetch(`/api/mongo/youtube-channel/${h}`, { signal: controller.signal }).then((res) =>
-            res.json()
-          )
-        )
+        handles.map((h) => fetch(`/api/mongo/youtube-channel/${h}`).then((res) => res.json()))
       );
 
-      if (controller.signal.aborted) return;
-
       const data = results
-        .map((res, i) =>
-          res.status === 'fulfilled' ? { data: res.value, handle: handles[i] } : null
-        )
+        .map((res, i) => (res.status === 'fulfilled' ? { data: res.value, handle: handles[i] } : null))
         .filter(Boolean) as { data: YouTubeChannel; handle: string }[];
 
-      setChannels(data.map((c) => ({ ...c.data, handle: c.handle })));
-    };
+      return data.map((c) => ({ ...c.data, handle: c.handle }));
+    },
+    enabled: !!title,
+  });
 
-    fetchChannels();
+  if (!channelData || isError || isLoading) return <ChannelListSkeleton />;
 
-    // 컴포넌트 언마운트 시 fetch 취소
-    return () => {
-      controller.abort();
-    };
-  }, [title]);
-
-  if (!channels.length) return <ChannelListSkeleton />;
+  if (channelData.length === 0) {
+    return <p className="text-center w-full">추천 채널이 없습니다.</p>;
+  }
 
   return (
     <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {channels.map((ch) => (
+      {channelData.map((ch) => (
         <li
           key={ch.id}
           className="border-[3px] border-black bg-[#fff8e7] rounded-lg p-6 flex flex-col md:flex-row items-center gap-6"
@@ -79,8 +68,7 @@ export default function ChannelList({ title }: { title: string }) {
                 {ch.snippet?.description || '채널 설명이 없습니다.'}
               </p>
               <p>
-                구독자 {ch.statistics?.subscriberCount || '0'}명 · 영상{' '}
-                {ch.statistics?.videoCount || '0'}개
+                구독자 {ch.statistics?.subscriberCount || '0'}명 · 영상 {ch.statistics?.videoCount || '0'}개
               </p>
             </div>
           </div>
