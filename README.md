@@ -3,7 +3,7 @@
 ![Hompage-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/480f4c3a-9398-4f02-a9f1-babf9b406a07)
 
 Next.js, TypeScript, MongoDB, Redis 등을 활용해  
-**음악 정보 조회, 인터뷰, 댓글 기능**을 제공하는 음악 웹 애플리케이션입니다.  
+**음악 정보 조회, 인터뷰, 댓글 기능**을 제공하는 음악 웹입니다.  
 
 ---
 ## 🔗 배포 주소
