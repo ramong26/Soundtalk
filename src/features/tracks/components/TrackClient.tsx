@@ -6,7 +6,7 @@ import { Album, TrackItem } from '@/shared/types/spotifyTrack';
 import { useTrackStore } from '@/stores/trackStore';
 import ImportTrack from '@/features/playlist/components/ImportTrack';
 
-const TrackComments = dynamic(() => import('@/features/tracks/components/TrackComments/TrackComments'), { ssr: false });
+const TrackComments = dynamic(() => import('@/features/tracks/components/TrackComments'), { ssr: false });
 
 export default function TrackClient({ album, trackId }: { album: Album; trackId: string }) {
   const { setAlbum, setTrackId } = useTrackStore();

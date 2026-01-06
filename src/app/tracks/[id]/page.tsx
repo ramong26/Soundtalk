@@ -17,13 +17,14 @@ interface PageProps {
 export default async function TrackPage({ params }: PageProps) {
   const baseUrl = getBaseUrl();
   const { id } = await params;
-
+  console.log('baseUrl:', baseUrl);
   const res = await fetch(`${baseUrl}/api/tracks/${id}`, {
     cache: 'no-store',
   });
 
   const { track, album } = await res.json();
-
+  console.log('TrackPage album:', album);
+  console.log('TrackPage track:', track);
   return (
     <div className="w-auto max-w-[1286px] lg:mx-auto mx-4 lg:mt-24 md:mt-16 mt-12 mb-16">
       {album && <TrackDescription album={album} />}
