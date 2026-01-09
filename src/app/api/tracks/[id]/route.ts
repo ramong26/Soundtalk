@@ -22,8 +22,8 @@ interface PageProps {
   params: Promise<{ id: string }>;
 }
 
-export async function GET(request: NextRequest, { params }: PageProps) {
-  const { id } = await params;
+export async function GET(request: NextRequest, context: PageProps) {
+  const { id } = await context.params;
   const cachedKey = `track:${id}:withAlbum`;
 
   if (!id) {
