@@ -26,6 +26,8 @@ export async function GET(request: NextRequest, context: PageProps) {
   const { id } = await context.params;
   const cachedKey = `track:${id}:withAlbum`;
 
+  console.log('GET /api/tracks/[id] called with id:', id);
+
   if (!id) {
     console.error('GET /api/tracks/[id] missing id parameter');
     return NextResponse.json({ error: 'Missing track ID' }, { status: 400 });
@@ -42,7 +44,7 @@ export async function GET(request: NextRequest, context: PageProps) {
 
     // 2) Spotify 토큰 발급
     const token = await getClientCredentialsToken();
-
+    console.log('token', token);
     if (!token) {
       console.error('Failed to obtain Spotify access token');
       return NextResponse.json({ error: 'Failed to obtain Spotify access token' }, { status: 500 });
