@@ -1,5 +1,5 @@
 import { NextResponse, NextRequest } from 'next/server';
-import { getSpotifyAccessToken } from '@/lib/spotify/spotifyTokenManager';
+import { getClientCredentialsToken } from '@/lib/spotify/spotifyTokenManager';
 import { SpotifyTopArtistsResponse } from '@/shared/types/spotifyTrack';
 
 interface PageProps {
@@ -14,7 +14,7 @@ export async function GET(request: NextRequest, { params }: PageProps) {
   }
 
   try {
-    const token = await getSpotifyAccessToken();
+    const token = await getClientCredentialsToken();
 
     // TODO: 스포티파이 로그인자 / 로컬 로그인자 / 비로그인자 구분 필요
     const favoriteArtistRes = await fetch(`https://api.spotify.com/v1/me/top/artists`, {
@@ -45,28 +45,15 @@ export async function GET(request: NextRequest, { params }: PageProps) {
       try {
         favoriteArtists = JSON.parse(favoriteArtistBody);
       } catch (e) {
-        console.error(
-          'Spotify Favorite Artists JSON parse error. Body was:',
-          favoriteArtistBody,
-          e
-        );
-        return NextResponse.json(
-          { error: 'Failed to parse Spotify Favorite Artists JSON response.' },
-          { status: 502 }
-        );
+        console.error('Spotify Favorite Artists JSON parse error. Body was:', favoriteArtistBody, e);
+        return NextResponse.json({ error: 'Failed to parse Spotify Favorite Artists JSON response.' }, { status: 502 });
       }
     } else {
-      return NextResponse.json(
-        { error: 'Empty Spotify Favorite Artists response body.' },
-        { status: 502 }
-      );
+      return NextResponse.json({ error: 'Empty Spotify Favorite Artists response body.' }, { status: 502 });
     }
 
     if (!favoriteArtists) {
-      return NextResponse.json(
-        { error: 'Failed to parse Spotify Favorite Artists JSON response.' },
-        { status: 502 }
-      );
+      return NextResponse.json({ error: 'Failed to parse Spotify Favorite Artists JSON response.' }, { status: 502 });
     }
 
     return NextResponse.json(favoriteArtists);

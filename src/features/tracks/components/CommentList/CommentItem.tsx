@@ -2,21 +2,14 @@
 import { useState } from 'react';
 import Image from 'next/image';
 
-import { Comment } from '@/shared/types/comment';
-
-import { formatDate } from '@/lib/utils/date';
-import CommentEditInput from '@/features/tracks/components/CommentEditInput';
 import useUserStore from '@/stores/userStore';
+import { CommentItemProps } from './types';
+import { formatDate } from '@/lib/utils/date';
 
-interface Props {
-  comment: Comment;
-  onDelete: (id: string) => void;
-  onEdit: (id: string, newText: string) => void;
-}
-
-export default function CommentItem({ comment, onDelete, onEdit }: Props) {
+export default function CommentItem({ comment, onDelete, onEdit }: CommentItemProps) {
   const { user } = useUserStore();
   const [isEditing, setIsEditing] = useState(false);
+  const [text, setText] = useState(comment.text);
 
   const handleSave = (newText: string) => {
     onEdit(comment._id, newText);
@@ -50,7 +43,20 @@ export default function CommentItem({ comment, onDelete, onEdit }: Props) {
       {!isEditing ? (
         <p className="lg:text-base md:text-sm text-xs mt-3 text-gray-800">{comment.text}</p>
       ) : (
-        <CommentEditInput initialValue={comment.text} onSave={handleSave} onCancel={() => setIsEditing(false)} />
+        <div className="flex gap-2 mt-2">
+          <input
+            type="text"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            className="border p-1 rounded flex-1"
+          />
+          <button onClick={() => handleSave(text)} className="text-blue-500 hover:underline cursor-pointer">
+            저장
+          </button>
+          <button onClick={() => setIsEditing(false)} className="text-gray-500 hover:underline cursor-pointer">
+            취소
+          </button>
+        </div>
       )}
 
       {/* 푸터 */}

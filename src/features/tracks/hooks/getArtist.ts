@@ -1,8 +1,8 @@
 import { Artist } from '@/shared/types/spotifyTrack';
-import { getSpotifyAccessToken } from '@/lib/spotify/spotifyTokenManager';
+import { getClientCredentialsToken } from '@/lib/spotify/spotifyTokenManager';
 
 export default async function getArtist(artistId?: string): Promise<Artist> {
-  const token = await getSpotifyAccessToken();
+  const token = await getClientCredentialsToken();
 
   const artistRes = await fetch(`https://api.spotify.com/v1/artists/${artistId}`, {
     headers: {

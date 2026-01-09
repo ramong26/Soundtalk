@@ -1,4 +1,5 @@
 'use client';
+
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
@@ -15,7 +16,7 @@ const CommentList = dynamic(() => import('@/features/tracks/components/CommentLi
 export default function TrackComments() {
   const { trackId } = useTrackStore();
   const { comments, setComments, submitComment, setSubmitComment, handleSubmit } = useTrackComments(trackId ?? '');
-
+  console.log('comments', comments);
   return (
     <div className="relative border-4 border-black bg-[#FFFDF6] rounded-xl shadow-[6px_6px_0px_#D65361] p-6 mt-12">
       {/* 플로팅 라벨 */}

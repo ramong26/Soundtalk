@@ -1,8 +1,11 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 
 import { commentsService } from '@/service/commentService';
 import { Comment } from '@/shared/types/comment';
 
+// TODO: 리액트쿼리로 전체적으로 변경 필요
 export default function useTrackComments(trackId: string) {
   const [comments, setComments] = useState<Comment[] | null>(null);
   const [submitComment, setSubmitComment] = useState('');

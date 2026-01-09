@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { getSpotifyAccessToken } from '@/lib/spotify/spotifyTokenManager';
+import { getClientCredentialsToken } from '@/lib/spotify/spotifyTokenManager';
 import { cacheGet, cacheSet, cacheDel } from '@/lib/redis/redis';
 import { Track, Album } from '@/shared/types/spotifyTrack';
+
 const ONE_DAY = 86400;
 
 function safeParseJSON<T = unknown>(raw: unknown): T | null {
@@ -13,18 +13,18 @@ function safeParseJSON<T = unknown>(raw: unknown): T | null {
     if (!s) return null;
     return JSON.parse(s) as T;
   } catch {
-    console.error('[tracks/[id]] Cached JSON parse failed. preview:', String(raw).slice(0, 200));
+    console.error('[getTrackData] Cached JSON parse failed. preview:', String(raw).slice(0, 200));
     return null;
   }
 }
 
-interface PageProps {
-  params: Promise<{ id: string }>;
-}
-
-export async function GET(request: NextRequest, { params }: PageProps) {
-  const { id } = await params;
+export async function getTrackData(id: string): Promise<{ track: Track | null; album: Album | null }> {
   const cachedKey = `track:${id}:withAlbum`;
+
+  if (!id) {
+    console.error('[getTrackData] missing id parameter');
+    throw new Error('Missing track ID');
+  }
 
   try {
     // 1) Redis 캐시 확인
@@ -32,11 +32,16 @@ export async function GET(request: NextRequest, { params }: PageProps) {
     const cached = safeParseJSON<{ track: Track; album: Album }>(cachedRaw);
 
     if (cached?.track) {
-      return NextResponse.json(cached, { headers: { 'x-cache': 'HIT' } });
+      return cached;
     }
 
     // 2) Spotify 토큰 발급
-    const token = await getSpotifyAccessToken();
+    const token = await getClientCredentialsToken();
+
+    if (!token) {
+      console.error('[getTrackData] Failed to obtain Spotify access token');
+      throw new Error('Failed to obtain Spotify access token');
+    }
 
     // 3) 트랙 정보 fetch
     const trackRes = await fetch(`https://api.spotify.com/v1/tracks/${id}`, {
@@ -46,24 +51,18 @@ export async function GET(request: NextRequest, { params }: PageProps) {
 
     if (!trackRes.ok) {
       const errBody = await trackRes.text().catch(() => '');
-      console.error('Spotify Track Fetch failed:', trackRes.status, trackRes.statusText, errBody);
-      return NextResponse.json(
-        { error: `Spotify Track Fetch failed: ${trackRes.status} ${trackRes.statusText}` },
-        { status: trackRes.status }
-      );
+      console.error('[getTrackData] Spotify Track Fetch failed:', trackRes.status, trackRes.statusText, errBody);
+      throw new Error(`Spotify Track Fetch failed: ${trackRes.status} ${trackRes.statusText}`);
     }
 
     const track = await trackRes.json().catch(async () => {
       const body = await trackRes.text().catch(() => '');
-      console.error('Spotify Track JSON parse error. Body was:', body);
+      console.error('[getTrackData] Spotify Track JSON parse error. Body was:', body);
       return null;
     });
 
     if (!track) {
-      return NextResponse.json(
-        { error: 'Failed to parse Spotify track JSON response.' },
-        { status: 502 }
-      );
+      throw new Error('Failed to parse Spotify track JSON response.');
     }
 
     // 4) 앨범 정보
@@ -79,29 +78,33 @@ export async function GET(request: NextRequest, { params }: PageProps) {
       if (albumRes.ok) {
         album = await albumRes.json().catch(async () => {
           const body = await albumRes.text().catch(() => '');
-          console.error('Spotify Album JSON parse error. Body was:', body);
+          console.error('[getTrackData] Spotify Album JSON parse error. Body was:', body);
           return null;
         });
       } else {
         const body = await albumRes.text().catch(() => '');
-        console.error('Spotify Album Fetch failed:', albumRes.status, albumRes.statusText, body);
+        console.error('[getTrackData] Spotify Album Fetch failed:', albumRes.status, albumRes.statusText, body);
       }
     }
 
     const response = { track, album };
+
+    // 5) 캐시 저장
     try {
       await cacheSet(cachedKey, JSON.stringify(response), ONE_DAY);
     } catch (e) {
-      console.error('cacheSet failed:', e);
+      console.error('[getTrackData] cacheSet failed:', e);
     }
 
-    return NextResponse.json(response, { headers: { 'x-cache': 'MISS' } });
+    return response;
   } catch (err) {
-    console.error('GET /api/tracks/[id] fatal error:', { id, err });
+    console.error('[getTrackData] fatal error:', { id, err });
+
+    // 에러 시 캐시 삭제
     try {
       await cacheDel?.(cachedKey);
     } catch {}
 
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    throw err;
   }
 }
