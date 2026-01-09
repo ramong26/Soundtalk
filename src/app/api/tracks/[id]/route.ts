@@ -33,16 +33,11 @@ export async function GET(request: NextRequest, context: PageProps) {
 
   try {
     // 1) Redis 캐시 확인
-    let cached: { track: Track; album: Album } | null = null;
-    try {
-      const cachedRaw = await cacheGet(cachedKey);
-      cached = safeParseJSON<{ track: Track; album: Album }>(cachedRaw);
-      if (cached?.track) {
-        console.log('[API /api/tracks/[id]] Cache HIT for:', id);
-        return NextResponse.json(cached, { headers: { 'x-cache': 'HIT' } });
-      }
-    } catch (redisError) {
-      console.warn('[API /api/tracks/[id]] Redis cacheGet failed, continuing without cache:', redisError);
+    const cachedRaw = await cacheGet(cachedKey);
+    const cached = safeParseJSON<{ track: Track; album: Album }>(cachedRaw);
+
+    if (cached?.track) {
+      return NextResponse.json(cached, { headers: { 'x-cache': 'HIT' } });
     }
 
     // 2) Spotify 토큰 발급
