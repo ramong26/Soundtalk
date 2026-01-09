@@ -21,8 +21,6 @@ function safeParseJSON<T = unknown>(raw: unknown): T | null {
 export async function getTrackData(id: string): Promise<{ track: Track | null; album: Album | null }> {
   const cachedKey = `track:${id}:withAlbum`;
 
-  console.log('[getTrackData] called with id:', id);
-
   if (!id) {
     console.error('[getTrackData] missing id parameter');
     throw new Error('Missing track ID');
@@ -34,15 +32,11 @@ export async function getTrackData(id: string): Promise<{ track: Track | null; a
     const cached = safeParseJSON<{ track: Track; album: Album }>(cachedRaw);
 
     if (cached?.track) {
-      console.log('[getTrackData] Cache HIT for id:', id);
       return cached;
     }
 
-    console.log('[getTrackData] Cache MISS for id:', id);
-
     // 2) Spotify 토큰 발급
     const token = await getClientCredentialsToken();
-    console.log('[getTrackData] token obtained');
 
     if (!token) {
       console.error('[getTrackData] Failed to obtain Spotify access token');
@@ -98,7 +92,6 @@ export async function getTrackData(id: string): Promise<{ track: Track | null; a
     // 5) 캐시 저장
     try {
       await cacheSet(cachedKey, JSON.stringify(response), ONE_DAY);
-      console.log('[getTrackData] Cached successfully for id:', id);
     } catch (e) {
       console.error('[getTrackData] cacheSet failed:', e);
     }

@@ -17,8 +17,6 @@ export const revalidate = 0;
 export default async function TrackPage({ params }: PageProps) {
   const { id } = await params;
 
-  console.log('[TrackPage] Rendering for id:', id);
-
   try {
     const { track, album } = await getTrackData(id);
 
