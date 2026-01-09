@@ -23,8 +23,17 @@ export default async function TrackPage({ params }: PageProps) {
   });
 
   if (!res.ok) {
-    console.error('Failed to fetch track data:', res);
-    throw new Error('Failed to fetch track data');
+    // 에러 메시지 추출
+    let errorMsg = '트랙 정보를 불러올 수 없습니다.';
+    try {
+      const err = await res.json();
+      if (err?.error) errorMsg = err.error;
+    } catch {}
+    return (
+      <div style={{ color: 'red', padding: 40, textAlign: 'center' }}>
+        {errorMsg} (status: {res.status})
+      </div>
+    );
   }
 
   const { track, album } = await res.json();
