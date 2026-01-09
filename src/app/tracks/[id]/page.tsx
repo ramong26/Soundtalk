@@ -8,26 +8,39 @@ export const metadata = {
   description: 'Details about the track',
 };
 
+// interface PageProps {
+//   params: Promise<{ id: string }>;
+// }
+
 interface PageProps {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 }
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function TrackPage({ params }: PageProps) {
   const baseUrl = getBaseUrl();
-  const { id } = await params;
+  const { id } = params;
 
   const res = await fetch(`${baseUrl}/api/tracks/${id}`, {
     cache: 'no-store',
   });
 
+  if (!res.ok) {
+    return <div>Failed to load track</div>;
+  }
+
   const { track, album } = await res.json();
 
-  if (!track && !album) return null;
+  if (!track) {
+    return <div>No track data</div>;
+  }
 
   return (
-    <div className="w-auto max-w-[1286px] lg:mx-auto mx-4 lg:mt-24 md:mt-16 mt-12 mb-16">
+    <div>
       {album && <TrackDescription album={album} />}
-      {album && <TrackClient trackId={track.id} album={album} />}
+      <TrackClient trackId={track.id} album={album} />
     </div>
   );
 }
