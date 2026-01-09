@@ -8,6 +8,7 @@ export async function getSpotifyAccessToken() {
   const tokenRes = await fetch(`${baseUrl}/api/spotify/spotify-token`);
 
   if (!tokenRes.ok) {
+    console.error(await tokenRes.text());
     throw new Error('Failed to fetch Spotify token in spotifyTokenManager');
   }
 

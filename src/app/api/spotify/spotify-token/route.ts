@@ -22,6 +22,7 @@ export async function GET() {
   });
 
   if (!res.ok) {
+    console.error(await res.text());
     return new Response('Spotify token error', { status: 500 });
   }
 
