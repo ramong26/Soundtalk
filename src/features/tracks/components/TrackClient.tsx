@@ -1,12 +1,12 @@
 'use client';
-// import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic';
 import { useEffect } from 'react';
 
 import { Album, TrackItem } from '@/shared/types/spotifyTrack';
 import { useTrackStore } from '@/stores/trackStore';
 import ImportTrack from '@/features/playlist/components/ImportTrack';
 
-// const TrackComments = dynamic(() => import('@/features/tracks/components/TrackComments'), { ssr: false });
+const TrackComments = dynamic(() => import('@/features/tracks/components/TrackComments'), { ssr: false });
 
 export default function TrackClient({ album, trackId }: { album: Album; trackId: string }) {
   const { setAlbum, setTrackId } = useTrackStore();
@@ -35,7 +35,7 @@ export default function TrackClient({ album, trackId }: { album: Album; trackId:
       <ImportTrack tracksList={trackItems} link={true} />
 
       {/* 댓글 */}
-      {/* <TrackComments /> */}
+      <TrackComments />
     </>
   );
 }
