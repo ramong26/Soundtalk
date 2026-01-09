@@ -12,14 +12,21 @@ export default function useHeaderAuth() {
   const { setUser } = useUserStore();
   const queryClient = useQueryClient();
 
-  const { data, isSuccess } = useQuery<User.Profile>({
+  const { data, isSuccess, isError } = useQuery<User.Profile>({
     queryKey: ['user'],
     queryFn: async () => {
       const res = await fetch('/api/profile');
       if (!res.ok) throw new Error('로그인 안 됨');
       return res.json();
     },
+    retry: false,
   });
+
+  useEffect(() => {
+    if (isError) {
+      setUser(null);
+    }
+  }, [isError, setUser]);
 
   useEffect(() => {
     if (isSuccess && data) {
