@@ -1,6 +1,6 @@
 export const getBaseUrl = () => {
   if (process.env.NODE_ENV === 'production') {
-    return process.env.BASE_URL || 'https://music-charts.vercel.app';
+    return process.env.BASE_URL || '';
   }
   return process.env.BASE_URL || 'http://127.0.0.1:3000';
 };

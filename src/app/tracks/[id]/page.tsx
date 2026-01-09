@@ -8,8 +8,6 @@ export const metadata = {
   description: 'Details about the track',
 };
 
-export const revalidate = 86400;
-
 interface PageProps {
   params: Promise<{ id: string }>;
 }
