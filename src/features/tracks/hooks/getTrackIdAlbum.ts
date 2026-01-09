@@ -1,11 +1,11 @@
 import { Track, Album } from '@/shared/types/spotifyTrack';
-import { getSpotifyAccessToken } from '@/lib/spotify/spotifyTokenManager';
+import { getClientCredentialsToken } from '@/lib/spotify/spotifyTokenManager';
 
 export default async function getTrackIdAlbum(track: Track | null): Promise<Album | null> {
   if (!track?.album?.id) return null;
 
   // 토큰 가져오기
-  const token = await getSpotifyAccessToken();
+  const token = await getClientCredentialsToken();
   // 스포티파이 API 호출
   const trackAlumRes = await fetch(`https://api.spotify.com/v1/albums/${track.album.id}`, {
     headers: {
