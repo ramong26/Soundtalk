@@ -17,9 +17,8 @@ export default async function InterviewList({ artistName, className = '', slice 
       return dateB - dateA;
     });
 
-  if (!artistName) {
-    return null;
-  }
+  if (!interviews === null && interviews.length === 0) return <>No interviews found.</>;
+  if (!artistName) return null;
 
   return (
     <div className={`pt-3 px-3  border-3 border-black ${className}`}>
