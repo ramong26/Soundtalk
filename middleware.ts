@@ -2,33 +2,35 @@ import { NextResponse } from 'next/server';
 import { NextRequest } from 'next/server';
 import jwt from 'jsonwebtoken';
 
-// JWT 미들웨어
 export function middleware(request: NextRequest) {
+  const pathname = request.nextUrl.pathname;
+
+  if (pathname.startsWith('/api/auth/')) {
+    return NextResponse.next();
+  }
+
+  const requiresAuth = pathname.startsWith('/api/profile') || pathname.startsWith('/api/comments');
+
+  if (!requiresAuth) {
+    return NextResponse.next();
+  }
+
+  // JWT 검증
   const token = request.cookies.get('jwt')?.value;
-  const isAuthPage = request.nextUrl.pathname.startsWith('/api/auth/');
 
-  if (!token && !isAuthPage) {
-    if (request.nextUrl.pathname.startsWith('/api/')) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    } else {
-      return NextResponse.redirect(new URL('/login', request.url));
-    }
+  if (!token) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  if (token) {
-    try {
-      const secret = process.env.JWT_SECRET;
-      if (!secret) throw new Error('JWT secret is not defined');
-      jwt.verify(token, secret);
-    } catch (error) {
-      if (request.nextUrl.pathname.startsWith('/api/')) {
-        console.error('JWT verification failed:', error);
-        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-      }
-      return NextResponse.redirect(new URL('/login', request.url));
-    }
+  try {
+    const secret = process.env.JWT_SECRET;
+    if (!secret) throw new Error('JWT secret is not defined');
+    jwt.verify(token, secret);
+    return NextResponse.next();
+  } catch (error) {
+    console.error('JWT verification failed:', error);
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
-  return NextResponse.next();
 }
 
 export const config = {
