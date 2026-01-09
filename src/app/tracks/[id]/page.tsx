@@ -22,9 +22,17 @@ export default async function TrackPage({ params }: PageProps) {
     cache: 'no-store',
   });
 
+  if (!res.ok) {
+    console.error('Failed to fetch track data:', res);
+    throw new Error('Failed to fetch track data');
+  }
+
   const { track, album } = await res.json();
   console.log('TrackPage album:', album);
   console.log('TrackPage track:', track);
+
+  if (!track && !album) return null;
+
   return (
     <div className="w-auto max-w-[1286px] lg:mx-auto mx-4 lg:mt-24 md:mt-16 mt-12 mb-16">
       {album && <TrackDescription album={album} />}
