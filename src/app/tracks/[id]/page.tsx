@@ -1,4 +1,4 @@
-// import { getBaseUrl } from '@/lib/utils/baseUrl';
+import { getBaseUrl } from '@/lib/utils/baseUrl';
 import TrackDescription from '@/features/tracks/components/TrackDescription/TrackDescription';
 
 import TrackClient from '@/features/tracks/components/TrackClient';
@@ -20,10 +20,10 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default async function TrackPage({ params }: PageProps) {
-  // const baseUrl = getBaseUrl();
+  const baseUrl = getBaseUrl();
   const { id } = params;
 
-  const res = await fetch(`/api/tracks/${id}`, {
+  const res = await fetch(`${baseUrl}/api/tracks/${id}`, {
     cache: 'no-store',
   });
 
