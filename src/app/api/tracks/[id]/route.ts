@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getSpotifyAccessToken } from '@/lib/spotify/spotifyTokenManager';
+import { getClientCredentialsToken } from '@/lib/spotify/spotifyTokenManager';
 import { cacheGet, cacheSet, cacheDel } from '@/lib/redis/redis';
 import { Track, Album } from '@/shared/types/spotifyTrack';
 const ONE_DAY = 86400;
@@ -41,7 +41,7 @@ export async function GET(request: NextRequest, context: PageProps) {
     }
 
     // 2) Spotify 토큰 발급
-    const token = await getSpotifyAccessToken();
+    const token = await getClientCredentialsToken();
 
     if (!token) {
       console.error('Failed to obtain Spotify access token');

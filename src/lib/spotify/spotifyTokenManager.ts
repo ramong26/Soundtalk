@@ -1,20 +1,34 @@
-import { getBaseUrl } from '@/lib/utils/baseUrl';
+let cachedToken: {
+  accessToken: string;
+  expiresAt: number;
+} | null = null;
 
-let cachedToken: string | null = null;
-
-export async function getSpotifyAccessToken() {
-  const baseUrl = getBaseUrl();
-
-  const tokenRes = await fetch(`${baseUrl}/api/spotify/spotify-token`);
-
-  if (!tokenRes.ok) {
-    console.error(await tokenRes.text());
-    throw new Error('Failed to fetch Spotify token in spotifyTokenManager');
+export async function getClientCredentialsToken() {
+  if (cachedToken && Date.now() < cachedToken.expiresAt) {
+    return cachedToken.accessToken;
   }
 
-  const data = await tokenRes.json();
+  const auth = Buffer.from(`${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`).toString('base64');
 
-  cachedToken = data.access_token;
+  const res = await fetch('https://accounts.spotify.com/api/token', {
+    method: 'POST',
+    headers: {
+      Authorization: `Basic ${auth}`,
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: new URLSearchParams({ grant_type: 'client_credentials' }),
+  });
 
-  return cachedToken;
+  if (!res.ok) {
+    throw new Error(`Spotify token error: ${await res.text()}`);
+  }
+
+  const data = await res.json();
+
+  cachedToken = {
+    accessToken: data.access_token,
+    expiresAt: Date.now() + (data.expires_in - 60) * 1000,
+  };
+
+  return cachedToken.accessToken;
 }
