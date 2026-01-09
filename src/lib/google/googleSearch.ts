@@ -27,7 +27,8 @@ export async function googleSearch(who: string): Promise<CustomSearchResult[]> {
   );
 
   if (!res.ok) {
-    throw new Error('Google API error');
+    console.error('Google Custom Search API error:', res.status, res.statusText);
+    return [];
   }
 
   const data = await res.json();
