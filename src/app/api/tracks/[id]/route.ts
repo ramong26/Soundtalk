@@ -1,3 +1,5 @@
+export const runtime = 'nodejs';
+
 import { NextRequest, NextResponse } from 'next/server';
 import { getClientCredentialsToken } from '@/lib/spotify/spotifyTokenManager';
 import { cacheGet, cacheSet, cacheDel } from '@/lib/redis/redis';
@@ -22,6 +24,7 @@ interface PageProps {
   params: Promise<{ id: string }>;
 }
 
+console.log('Route /api/tracks/[id] loaded');
 export async function GET(request: NextRequest, context: PageProps) {
   const { id } = await context.params;
   const cachedKey = `track:${id}:withAlbum`;
