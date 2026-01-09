@@ -40,11 +40,6 @@ export async function GET(request: NextRequest, { params }: PageProps) {
       return NextResponse.json(cached, { headers: { 'x-cache': 'HIT' } });
     }
 
-    if (!cached) {
-      console.error(`Cache miss for track id: ${id}`);
-      throw new Error('Cache miss');
-    }
-
     // 2) Spotify 토큰 발급
     const token = await getSpotifyAccessToken();
 
