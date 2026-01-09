@@ -17,7 +17,7 @@ interface PageProps {
 export default async function TrackPage({ params }: PageProps) {
   const baseUrl = getBaseUrl();
   const { id } = await params;
-  console.log('baseUrl:', baseUrl);
+
   const res = await fetch(`${baseUrl}/api/tracks/${id}`, {
     cache: 'no-store',
   });

@@ -26,6 +26,11 @@ export async function GET(request: NextRequest, { params }: PageProps) {
   const { id } = await params;
   const cachedKey = `track:${id}:withAlbum`;
 
+  if (!id) {
+    console.error('GET /api/tracks/[id] missing id parameter');
+    return NextResponse.json({ error: 'Missing track ID' }, { status: 400 });
+  }
+
   try {
     // 1) Redis 캐시 확인
     const cachedRaw = await cacheGet(cachedKey);
@@ -35,8 +40,18 @@ export async function GET(request: NextRequest, { params }: PageProps) {
       return NextResponse.json(cached, { headers: { 'x-cache': 'HIT' } });
     }
 
+    if (!cached) {
+      console.error(`Cache miss for track id: ${id}`);
+      throw new Error('Cache miss');
+    }
+
     // 2) Spotify 토큰 발급
     const token = await getSpotifyAccessToken();
+
+    if (!token) {
+      console.error('Failed to obtain Spotify access token');
+      return NextResponse.json({ error: 'Failed to obtain Spotify access token' }, { status: 500 });
+    }
 
     // 3) 트랙 정보 fetch
     const trackRes = await fetch(`https://api.spotify.com/v1/tracks/${id}`, {
@@ -60,10 +75,7 @@ export async function GET(request: NextRequest, { params }: PageProps) {
     });
 
     if (!track) {
-      return NextResponse.json(
-        { error: 'Failed to parse Spotify track JSON response.' },
-        { status: 502 }
-      );
+      return NextResponse.json({ error: 'Failed to parse Spotify track JSON response.' }, { status: 502 });
     }
 
     // 4) 앨범 정보
