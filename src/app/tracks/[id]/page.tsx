@@ -1,4 +1,4 @@
-import { getBaseUrl } from '@/lib/utils/baseUrl';
+// import { getBaseUrl } from '@/lib/utils/baseUrl';
 import TrackDescription from '@/features/tracks/components/TrackDescription/TrackDescription';
 
 import TrackClient from '@/features/tracks/components/TrackClient';
@@ -15,10 +15,10 @@ interface PageProps {
 }
 
 export default async function TrackPage({ params }: PageProps) {
-  const baseUrl = getBaseUrl();
+  // const baseUrl = getBaseUrl();
   const { id } = await params;
 
-  const res = await fetch(`${baseUrl}/api/tracks/${id}`, {
+  const res = await fetch(`/api/tracks/${id}`, {
     cache: 'no-store',
   });
 
@@ -37,8 +37,6 @@ export default async function TrackPage({ params }: PageProps) {
   }
 
   const { track, album } = await res.json();
-  console.log('TrackPage album:', album);
-  console.log('TrackPage track:', track);
 
   if (!track && !album) return null;
 
