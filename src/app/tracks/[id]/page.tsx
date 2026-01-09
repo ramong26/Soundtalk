@@ -12,21 +12,19 @@ interface PageProps {
   params: Promise<{ id: string }>;
 }
 
-// interface PageProps {
-//   params: { id: string };
-// }
-console.log('Track Page loaded with params:');
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default async function TrackPage({ params }: PageProps) {
   const baseUrl = getBaseUrl();
   const { id } = await params;
-  console.log('Fetching track data for ID:', id, 'from baseUrl:', baseUrl);
+
   const res = await fetch(`${baseUrl}/api/tracks/${id}`, {
     cache: 'no-store',
   });
 
+  console.log('Fetch track data response status:', res);
+  console.error('Fetch track data response status:', res);
   if (!res.ok) return null;
 
   const { track, album } = await res.json();
