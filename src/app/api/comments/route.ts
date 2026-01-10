@@ -47,6 +47,7 @@ export async function POST(request: NextRequest) {
 // 댓글 목록 가져오기
 export async function GET(request: NextRequest) {
   await connectToDB();
+  console.log('GET comments route 호출됨');
 
   const url = request.nextUrl;
   const trackId = url.searchParams.get('trackId');
