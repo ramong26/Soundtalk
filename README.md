@@ -1,3 +1,5 @@
+> [_프로젝트 하면서 겪은 문제와 생각들은 위키에 정리하고 있습니다._](https://github.com/ramong26/Soundtalk/wiki)
+
 # 🎵 Soundtalk (Spotify 기반 음악 플랫폼)
 
 ![Hompage-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/480f4c3a-9398-4f02-a9f1-babf9b406a07)
