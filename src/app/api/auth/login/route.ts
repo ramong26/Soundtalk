@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
 
     response.cookies.set('jwt', accessToken, {
       httpOnly: true,
-      sameSite: 'strict',
+      sameSite: 'lax',
       path: '/',
       secure: process.env.NODE_ENV === 'production',
       maxAge: 86400,
@@ -58,7 +58,7 @@ export async function POST(request: NextRequest) {
 
     response.cookies.set('refreshToken', refreshToken, {
       httpOnly: true,
-      sameSite: 'strict',
+      sameSite: 'lax',
       path: '/',
       secure: process.env.NODE_ENV === 'production',
       maxAge: 604800,

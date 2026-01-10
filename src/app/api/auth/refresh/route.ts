@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
   const response = NextResponse.json({ message: '토큰 갱신 성공', accessToken }, { status: 200 });
   response.cookies.set('jwt', accessToken, {
     httpOnly: true,
-    sameSite: 'strict',
+    sameSite: 'lax',
     path: '/',
     secure: process.env.NODE_ENV === 'production',
     maxAge: 86400,
