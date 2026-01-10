@@ -4,7 +4,7 @@ import { z } from 'zod';
 
 import { loginSchema } from '@/features/auth/schema/loginSchema';
 import connectToDB from '@/lib/mongo/mongo';
-import { UserModel } from '@/lib/mongo/models/UserModel';
+import '@/lib/mongo/models';
 
 export async function POST(request: NextRequest) {
   try {
@@ -46,10 +46,7 @@ export async function POST(request: NextRequest) {
     user.lastLogin = new Date();
     await user.save();
 
-    const response = NextResponse.json(
-      { message: '로그인 성공', accessToken, refreshToken },
-      { status: 200 }
-    );
+    const response = NextResponse.json({ message: '로그인 성공', accessToken, refreshToken }, { status: 200 });
 
     response.cookies.set('jwt', accessToken, {
       httpOnly: true,
@@ -70,10 +67,7 @@ export async function POST(request: NextRequest) {
     return response;
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { error: '유효하지 않은 입력값입니다.', details: error },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: '유효하지 않은 입력값입니다.', details: error }, { status: 400 });
     }
     console.error('로그인 처리 중 오류 발생:', error);
     return NextResponse.json({ error: '로그인 처리 중 오류 발생' }, { status: 500 });

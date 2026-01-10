@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import jwt from 'jsonwebtoken';
 import connectToDB from '@/lib/mongo/mongo';
-import { UserModel } from '@/lib/mongo/models/UserModel';
+import '@/lib/mongo/models';
 
 export async function POST(request: NextRequest) {
   await connectToDB();
@@ -26,10 +26,7 @@ export async function POST(request: NextRequest) {
 
   const user = await UserModel.findById(payload.userId);
   if (!user || user.refreshToken !== refreshToken) {
-    return NextResponse.json(
-      { error: '사용자를 찾을 수 없거나 토큰이 일치하지 않습니다.' },
-      { status: 401 }
-    );
+    return NextResponse.json({ error: '사용자를 찾을 수 없거나 토큰이 일치하지 않습니다.' }, { status: 401 });
   }
 
   const accessToken = jwt.sign({ userId: user._id.toString() }, jwtRefreshSecret, {

@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import connectToDB from '@/lib/mongo/mongo';
 import { getUserFromJwt } from '@/lib/auth/getUserFromJwt';
-import { UserModel } from '@/lib/mongo/models/UserModel';
+import '@/lib/mongo/models';
 
 export async function GET() {
   await connectToDB();

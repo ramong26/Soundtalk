@@ -4,7 +4,7 @@ import { z } from 'zod';
 
 import { signupSchema } from '@/features/auth/schema/signupSchema';
 import connectToDB from '@/lib/mongo/mongo';
-import { UserModel } from '@/lib/mongo/models/UserModel';
+import '@/lib/mongo/models';
 
 export async function POST(request: NextRequest) {
   try {
@@ -47,10 +47,7 @@ export async function POST(request: NextRequest) {
     const payload = { userId: user._id.toString() };
     const jwtToken = jwt.sign(payload, jwtSecret, { expiresIn: '1d' });
 
-    const response = NextResponse.json(
-      { message: '회원가입 성공', token: jwtToken },
-      { status: 201 }
-    );
+    const response = NextResponse.json({ message: '회원가입 성공', token: jwtToken }, { status: 201 });
 
     response.cookies.set('jwt', jwtToken, {
       httpOnly: true,
@@ -63,10 +60,7 @@ export async function POST(request: NextRequest) {
     return response;
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { error: '유효하지 않은 입력값입니다.', details: error },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: '유효하지 않은 입력값입니다.', details: error }, { status: 400 });
     }
 
     console.error('회원가입 처리 중 오류 발생:', error);

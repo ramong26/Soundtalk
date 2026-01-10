@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 
 import { getBaseUrl, getSpotifyRedirectUri } from '@/lib/utils/baseUrl';
 import connectToDB from '@/lib/mongo/mongo';
-import { UserModel } from '@/lib/mongo/models/UserModel';
+import '@/lib/mongo/models';
 
 export const runtime = 'nodejs'; // 몽고로 인해 nodejs 런타임 사용
 
@@ -29,10 +29,7 @@ export async function GET(request: NextRequest) {
 
   if (!clientId || !clientSecret || !redirectUri) {
     console.error('Missing Spotify environment variables');
-    return NextResponse.json(
-      { error: 'Server configuration error: missing environment variables' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Server configuration error: missing environment variables' }, { status: 500 });
   }
 
   // 토큰 요청 바디
@@ -127,9 +124,6 @@ export async function GET(request: NextRequest) {
     return response;
   } catch (error) {
     console.error('Unexpected error in auth callback:', error);
-    return NextResponse.json(
-      { error: 'Internal server error during authentication' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Internal server error during authentication' }, { status: 500 });
   }
 }

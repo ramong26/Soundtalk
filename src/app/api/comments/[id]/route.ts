@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
 
 import connectToDB from '@/lib/mongo/mongo';
-import { Comment } from '@/lib/mongo/models/Comment';
+import '@/lib/mongo/models';
 
 // 댓글 수정
 export async function PUT(request: NextRequest) {
