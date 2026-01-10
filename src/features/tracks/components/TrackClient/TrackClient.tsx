@@ -93,7 +93,7 @@ export default function TrackClient({ album, trackId }: TrackClientProps) {
       try {
         await commentsService.deleteComments(commentId);
       } catch (err) {
-        questionClient.setQueryData<Comment[]>(['track-comments', trackId], (oldComments) => {
+        queryClient.setQueryData<Comment[]>(['track-comments', trackId], (oldComments) => {
           if (deletedComment) {
             return [...(oldComments ?? []), deletedComment];
           }
