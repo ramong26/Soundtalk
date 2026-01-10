@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
 
 import connectToDB from '@/lib/mongo/mongo';
+import '@/lib/mongo/models/UserModel';
 import { Comment } from '@/lib/mongo/models/Comment';
 
 // 댓글 작성
@@ -47,12 +48,12 @@ export async function POST(request: NextRequest) {
 // 댓글 목록 가져오기
 export async function GET(request: NextRequest) {
   await connectToDB();
-  console.log('GET comments route 호출됨');
 
   const url = request.nextUrl;
   const trackId = url.searchParams.get('trackId');
-  console.log('trackId:', trackId);
+
   if (!trackId) {
+    console.error('트랙 ID가 제공되지 않았습니다');
     return new Response('트랙 ID가 필요합니다', { status: 400 });
   }
 
