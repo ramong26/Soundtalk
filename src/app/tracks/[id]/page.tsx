@@ -1,5 +1,6 @@
 import { getTrackData } from '@/features/tracks/lib/spotify/actions';
-import TrackDescription from '@/features/tracks/components/TrackDescription/TrackDescription';
+
+import TrackDescription from '@/features/tracks/components/TrackDescription';
 import TrackClient from '@/features/tracks/components/TrackClient';
 
 export const metadata = {

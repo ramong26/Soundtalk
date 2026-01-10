@@ -1,7 +1,12 @@
 export const getBaseUrl = () => {
+  if (typeof window !== 'undefined') {
+    return window.location.origin;
+  }
+
   if (process.env.NODE_ENV === 'production') {
     return process.env.BASE_URL || 'https://music-charts.vercel.app';
   }
+
   return process.env.BASE_URL || 'http://127.0.0.1:3000';
 };
 

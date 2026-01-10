@@ -3,7 +3,7 @@ import Image from 'next/image';
 import fetchWikiInfo from '@/features/tracks/hooks/TrackDescription/fetchWikiInfo';
 import { Album } from '@/shared/types/spotifyTrack';
 
-import TrackCommentsSkeleton from '@/features/tracks/components/TrackComments/TrackCommentsSkeleton';
+import TrackCommentsSkeleton from '@/features/tracks/components/TrackClient/TrackCommentsSkeleton';
 import TrackPageShare from '@/features/tracks/components/TrackDescription/TrackPageShare';
 
 export default async function TrackDescription({ album }: { album: Album }) {
@@ -45,9 +45,7 @@ export default async function TrackDescription({ album }: { album: Album }) {
             </h2>
             <TrackPageShare />
           </div>
-          <p className="lg:text-lg md:text-sm text-xs leading-relaxed italic text-gray-800">
-            {summary}
-          </p>
+          <p className="lg:text-lg md:text-sm text-xs leading-relaxed italic text-gray-800">{summary}</p>
         </div>
       </div>
     </section>

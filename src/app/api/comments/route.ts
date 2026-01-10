@@ -57,10 +57,14 @@ export async function GET(request: NextRequest) {
   const comments = await Comment.find({ trackId })
     .sort({ createdAt: -1 })
     .populate('userId', 'displayName profileImageUrl');
-  return NextResponse.json(comments, {
-    status: 200,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+
+  return NextResponse.json(
+    { comments },
+    {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+  );
 }

@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import Image from 'next/image';
 
 import useUserStore from '@/stores/userStore';
@@ -11,10 +11,13 @@ export default function CommentItem({ comment, onDelete, onEdit }: CommentItemPr
   const [isEditing, setIsEditing] = useState(false);
   const [text, setText] = useState(comment.text);
 
-  const handleSave = (newText: string) => {
-    onEdit(comment._id, newText);
-    setIsEditing(false);
-  };
+  const handleSave = useCallback(
+    (newText: string) => {
+      onEdit(comment._id, newText);
+      setIsEditing(false);
+    },
+    [comment._id, onEdit]
+  );
 
   const commentUserId = typeof comment.userId === 'string' ? comment.userId : comment.userId?._id;
   const isMyComment = user?.id === commentUserId;
