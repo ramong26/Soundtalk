@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 
 import { getBaseUrl, getSpotifyRedirectUri } from '@/lib/utils/baseUrl';
 import connectToDB from '@/lib/mongo/mongo';
-import { UserModel } from '@/lib/mongo/models/UserModel';
+import { UserModel } from '@/lib/mongo/models';
 
 export const runtime = 'nodejs'; // 몽고로 인해 nodejs 런타임 사용
 
