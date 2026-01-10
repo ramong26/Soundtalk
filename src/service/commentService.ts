@@ -30,7 +30,7 @@ const getComments = async (trackId: number | string): Promise<Comment[] | undefi
     return response?.comments || [];
   } catch (err) {
     console.error('댓글 목록 조회 실패:', err);
-    return [];
+    throw new Error('댓글 목록 조회 실패');
   }
 };
 
