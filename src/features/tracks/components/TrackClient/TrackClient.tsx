@@ -49,9 +49,9 @@ export default function TrackClient({ album, trackId }: TrackClientProps) {
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
         userId: {
-          _id: user?.id ?? 'temp-user',
-          displayName: user?.displayName ?? '익명',
-          profileImageUrl: user?.profileImageUrl ?? '',
+          _id: 'temp-user',
+          displayName: '익명',
+          profileImageUrl: '',
         },
       };
       queryClient.setQueryData<Comment[]>(['track-comments', trackId], (oldComments) => [
