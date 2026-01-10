@@ -25,13 +25,12 @@ const getComments = async (trackId: number | string): Promise<Comment[] | undefi
 
     const response = await callApi<{ comments: Comment[] }>(url, {
       method: 'GET',
-      credentials: 'include',
     });
 
     return response?.comments || [];
   } catch (err) {
     console.error('댓글 목록 조회 실패:', err);
-    throw new Error('댓글 목록 조회 실패');
+    return [];
   }
 };
 

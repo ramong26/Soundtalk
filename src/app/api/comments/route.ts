@@ -54,17 +54,25 @@ export async function GET(request: NextRequest) {
     return new Response('트랙 ID가 필요합니다', { status: 400 });
   }
 
-  const comments = await Comment.find({ trackId })
-    .sort({ createdAt: -1 })
-    .populate('userId', 'displayName profileImageUrl');
+  try {
+    const comments = await Comment.find({ trackId })
+      .sort({ createdAt: -1 })
+      .populate('userId', 'displayName profileImageUrl');
 
-  return NextResponse.json(
-    { comments },
-    {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }
-  );
+    console.log('Comments found:', comments.length);
+
+    return NextResponse.json(
+      { comments },
+      {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'Cache-Control': 'no-store',
+        },
+      }
+    );
+  } catch (error) {
+    console.error('GET comments 에러:', error);
+    return NextResponse.json({ error: '댓글 조회 실패' }, { status: 500 });
+  }
 }
