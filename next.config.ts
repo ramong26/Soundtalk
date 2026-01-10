@@ -1,14 +1,25 @@
 import type { NextConfig } from 'next';
 import withBundleAnalyzer from '@next/bundle-analyzer';
 
-const withAnalyzer = withBundleAnalyzer({
-  enabled: process.env.ANALYZE === 'true',
-});
-
 const nextConfig: NextConfig = {
-  turbopack: {},
+  async headers() {
+    return [
+      {
+        source: '/api/:path*',
+        headers: [
+          { key: 'Access-Control-Allow-Credentials', value: 'true' },
+          { key: 'Access-Control-Allow-Origin', value: '*' },
+          { key: 'Access-Control-Allow-Methods', value: 'GET,DELETE,PATCH,POST,PUT,OPTIONS' },
+          {
+            key: 'Access-Control-Allow-Headers',
+            value:
+              'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization',
+          },
+        ],
+      },
+    ];
+  },
 
-  // transpilePackages: ['@ramong26/xp-components'],
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'i.scdn.co', pathname: '/image/**' },
@@ -24,44 +35,8 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'media.pitchfork.com', pathname: '/**' },
     ],
   },
-
-  // webpack(config) {
-  //   const fileLoaderRule = config.module?.rules?.find(
-  //     (rule: object) =>
-  //       typeof rule === 'object' &&
-  //       rule !== null &&
-  //       'test' in rule &&
-  //       (rule.test as RegExp)?.test?.('.svg')
-  //   );
-
-  //   if (fileLoaderRule && typeof fileLoaderRule === 'object') {
-  //     config.module?.rules?.push(
-  //       {
-  //         ...fileLoaderRule,
-  //         test: /\.svg$/i,
-  //         resourceQuery: /url/,
-  //       },
-  //       {
-  //         test: /\.svg$/i,
-  //         issuer: fileLoaderRule.issuer,
-  //         resourceQuery: { not: [/url/] },
-  //         use: ['@svgr/webpack'],
-  //       }
-  //     );
-
-  //     if (Array.isArray(fileLoaderRule.exclude)) {
-  //       fileLoaderRule.exclude.push(/\.svg$/i);
-  //     } else {
-  //       fileLoaderRule.exclude = [/\.svg$/i];
-  //     }
-  //   }
-
-  //   if (!config.resolve) config.resolve = {};
-  //   if (!config.resolve.alias) config.resolve.alias = {};
-  //   config.resolve.alias['@'] = path.resolve(__dirname, 'src');
-
-  //   return config;
-  // },
 };
 
-export default withAnalyzer(nextConfig);
+export default withBundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+})(nextConfig);
