@@ -1,5 +1,5 @@
 import { Schema, model, models } from 'mongoose';
-import './UserModel';
+import UserModel from './UserModel';
 
 const commentSchema = new Schema(
   {
