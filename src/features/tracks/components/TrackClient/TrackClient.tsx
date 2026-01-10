@@ -49,9 +49,9 @@ export default function TrackClient({ album, trackId }: TrackClientProps) {
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
         userId: {
-          _id: 'temp-user',
-          displayName: '익명',
-          profileImageUrl: '',
+          _id: user?.id ?? 'temp-user',
+          displayName: user?.displayName ?? '익명',
+          profileImageUrl: user?.profileImageUrl ?? '',
         },
       };
       queryClient.setQueryData<Comment[]>(['track-comments', trackId], (oldComments) => [
@@ -92,8 +92,13 @@ export default function TrackClient({ album, trackId }: TrackClientProps) {
 
       try {
         await commentsService.deleteComments(commentId);
-        queryClient.invalidateQueries({ queryKey: ['track-comments', trackId] });
       } catch (err) {
+        questionClient.setQueryData<Comment[]>(['track-comments', trackId], (oldComments) => {
+          if (deletedComment) {
+            return [...(oldComments ?? []), deletedComment];
+          }
+          return oldComments ?? [];
+        });
         console.error(err);
         queryClient.invalidateQueries({ queryKey: ['track-comments', trackId] });
       }
@@ -103,14 +108,16 @@ export default function TrackClient({ album, trackId }: TrackClientProps) {
 
   const handleEdit = useCallback(
     async (commentId: string, newText: string) => {
-      queryClient.setQueryData(['track-comments', trackId], (old: Comment[] = []) =>
+      queryClient.setQueryData<Comment[]>(['track-comments', trackId], (old: Comment[] = []) =>
         old.map((c) => (c._id === commentId ? { ...c, text: newText, updatedAt: new Date().toISOString() } : c))
       );
 
       try {
         await commentsService.putComments(commentId, { text: newText });
-        queryClient.invalidateQueries({ queryKey: ['track-comments', trackId] });
       } catch (err) {
+        queryClient.setQueryData<Comment[]>(['track-comments', trackId], (old = []) =>
+          prevComment ? old.map((c) => (c._id === commentId ? prevComment! : c)) : old
+        );
         console.error(err);
         queryClient.invalidateQueries({ queryKey: ['track-comments', trackId] });
       }
@@ -118,12 +125,6 @@ export default function TrackClient({ album, trackId }: TrackClientProps) {
     [queryClient, trackId]
   );
 
-  if (!album)
-    return (
-      <>
-        <ImportTrack isLoading />
-      </>
-    );
   return (
     <>
       <ImportTrack tracksList={trackItems} link={true} />
@@ -158,16 +159,16 @@ export default function TrackClient({ album, trackId }: TrackClientProps) {
           ) : (
             <div className="mt-4">
               <h3 className="lg:text-lg md:text-md text-sm font-semibold mb-4">댓글 목록</h3>
-              {!commentsData ? (
-                <p className="text-center text-gray-600 text-4xl h-40 flex items-center justify-center">
-                  No commentsData
-                </p>
-              ) : (
+              {commentsData && commentsData.length > 0 ? (
                 <ul className="border-2 p-3 mb-10 space-y-4">
                   {commentsData.map((comment: Comment) => (
                     <CommentItem key={comment._id} comment={comment} onDelete={handleDelete} onEdit={handleEdit} />
                   ))}
                 </ul>
+              ) : (
+                <p className="text-center text-gray-600 text-4xl h-40 flex items-center justify-center">
+                  아직 등록된 댓글이 없습니다.
+                </p>
               )}
             </div>
           )}

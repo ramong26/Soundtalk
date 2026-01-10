@@ -1,13 +1,14 @@
 export const getBaseUrl = () => {
-  if (typeof window !== 'undefined') {
+  if (process.env.BASE_URL) {
+    return process.env.BASE_URL;
+  }
+  if (process.env.NODE_ENV === 'production') {
+    return 'https://music-charts.vercel.app';
+  }
+  if (typeof window !== 'undefined' && window.location?.origin) {
     return window.location.origin;
   }
-
-  if (process.env.NODE_ENV === 'production') {
-    return process.env.BASE_URL || 'https://music-charts.vercel.app';
-  }
-
-  return process.env.BASE_URL || 'http://127.0.0.1:3000';
+  return 'http://127.0.0.1:3000';
 };
 
 // 스포티파이 관련 URL을 가져오는 유틸리티 함수들
