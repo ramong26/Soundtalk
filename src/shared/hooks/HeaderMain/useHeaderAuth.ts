@@ -9,18 +9,34 @@ import DefaultProfile from '@/public/image/default-profile-image.avif';
 
 export default function useHeaderAuth() {
   const router = useRouter();
-  const { setUser } = useUserStore();
   const queryClient = useQueryClient();
+  const { setUser } = useUserStore();
 
-  const { data, isSuccess, isError } = useQuery<User.Profile>({
+  const { data, isLoading, isError } = useQuery<User.Profile>({
     queryKey: ['user'],
     queryFn: async () => {
-      const res = await fetch('/api/profile');
-      if (!res.ok) throw new Error('로그인 안 됨');
+      const res = await fetch('/api/profile', {
+        credentials: 'include',
+      });
+
+      if (!res.ok) {
+        throw new Error('Not authenticated');
+      }
+
       return res.json();
     },
     retry: false,
+    staleTime: 1000 * 60,
   });
+
+  useEffect(() => {
+    if (data) {
+      setUser({
+        ...data,
+        profileImageUrl: data.profileImageUrl ?? DefaultProfile.src,
+      });
+    }
+  }, [data, setUser]);
 
   useEffect(() => {
     if (isError) {
@@ -28,23 +44,25 @@ export default function useHeaderAuth() {
     }
   }, [isError, setUser]);
 
-  useEffect(() => {
-    if (isSuccess && data) {
-      const profileImage = data.profileImageUrl ?? DefaultProfile.src;
-
-      setUser({ ...data, profileImageUrl: profileImage });
-    }
-  }, [isSuccess, data, setUser]);
-
-  const isLogin = !!data;
-  const profile = data ? { ...data, profileImageUrl: data.profileImageUrl ?? DefaultProfile.src } : null;
-
   const handleLogout = useCallback(async () => {
-    await fetch('/api/auth/logout', { credentials: 'include' });
+    await fetch('/api/auth/logout', {
+      credentials: 'include',
+    });
+
     queryClient.removeQueries({ queryKey: ['user'] });
     setUser(null);
     router.push('/');
   }, [queryClient, router, setUser]);
 
-  return { isLogin, profile, handleLogout };
+  return {
+    isLogin: !isLoading && !!data,
+    profile: data
+      ? {
+          ...data,
+          profileImageUrl: data.profileImageUrl ?? DefaultProfile.src,
+        }
+      : null,
+    isLoading,
+    handleLogout,
+  };
 }
