@@ -38,23 +38,14 @@ export default function LoginModalMain<T extends FieldValues>({
   errors,
 }: LoginModalMainProps<T>) {
   // Spotify 로그인 함수
-  // TODO: 배포 후 도메인으로 변경 필요
   const signWithSpotify = () => {
-    window.location.href = 'https://music-charts.vercel.app/api/auth/spotify/login';
+    window.location.href = '/api/auth/spotify/login';
   };
 
   // Google 로그인 함수
   const signWithGoogle = () => {
-    window.location.href = 'https://music-charts.vercel.app/api/auth/google/login';
+    window.location.href = '/api/auth/google/login';
   };
-  // const signWithSpotify = () => {
-  //   window.location.href = '/api/auth/spotify/login';
-  // };
-
-  // // Google 로그인 함수
-  // const signWithGoogle = () => {
-  //   window.location.href = '/api/auth/google/login';
-  // };
 
   // OAuth 버튼 설정
   const oauthButtons = [
