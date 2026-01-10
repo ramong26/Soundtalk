@@ -130,7 +130,7 @@ export async function GET(request: NextRequest) {
 
     response.cookies.set('jwt', jwtToken, {
       httpOnly: true,
-      sameSite: 'strict',
+      sameSite: 'lax',
       path: '/',
       secure: process.env.NODE_ENV === 'production',
       maxAge: tokenData.expires_in ?? 3600,
