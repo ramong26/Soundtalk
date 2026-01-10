@@ -25,6 +25,7 @@ const getComments = async (trackId: number | string): Promise<Comment[] | undefi
 
     const response = await callApi<{ comments: Comment[] }>(url, {
       method: 'GET',
+      credentials: 'include',
     });
 
     return response?.comments || [];
