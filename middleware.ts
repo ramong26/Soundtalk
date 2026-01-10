@@ -3,6 +3,10 @@ import { NextResponse, NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
+  if (request.method === 'OPTIONS') {
+    return NextResponse.next();
+  }
+
   if (pathname.startsWith('/api/auth/') || (pathname.startsWith('/api/comments') && request.method === 'GET')) {
     return NextResponse.next();
   }
