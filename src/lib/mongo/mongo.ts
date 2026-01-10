@@ -12,13 +12,11 @@ export default async function connectToDB() {
   if (isConnected) {
     return;
   }
-  console.log('MongoDB에 연결하는 중...');
 
   try {
     await mongoose.connect(MONGODB_URI, {
       serverSelectionTimeoutMS: 5000,
     });
-    console.log('MongoDB에 성공적으로 연결되었습니다.');
     isConnected = true;
   } catch (error) {
     console.error(' MongoDB 연결 실패:', error);

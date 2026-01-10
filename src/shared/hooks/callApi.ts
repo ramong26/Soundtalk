@@ -20,11 +20,9 @@ export default async function callApi<T>(
     };
 
     const fullUrl = url.startsWith('http') ? url : baseUrl + url;
-    console.log('callApi 호출 URL:', fullUrl);
     const res = await fetch(fullUrl, fetchOption);
 
     if (!res.ok) {
-      console.log('callApi 호출 실패:', res.status, res.statusText);
       if (res.status === 401 && url !== '/api/auth/refresh') {
         if (!refreshPromise) {
           refreshPromise = fetch(baseUrl + '/api/auth/refresh', {

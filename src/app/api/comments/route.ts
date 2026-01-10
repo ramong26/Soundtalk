@@ -64,8 +64,6 @@ export async function GET(request: NextRequest) {
       .sort({ createdAt: -1 })
       .populate('userId', 'displayName profileImageUrl');
 
-    console.log('Comments found:', comments.length);
-
     return NextResponse.json(
       { comments },
       {
