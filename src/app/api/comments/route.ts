@@ -5,6 +5,9 @@ import mongoose from 'mongoose';
 import connectToDB from '@/lib/mongo/mongo';
 import { Comment, UserModel } from '@/lib/mongo/models';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const _ensureUserModel = UserModel;
+
 // 댓글 작성
 export async function POST(request: NextRequest) {
   await connectToDB();
