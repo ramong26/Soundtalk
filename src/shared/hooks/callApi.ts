@@ -20,7 +20,6 @@ export default async function callApi<T>(
     };
 
     const fullUrl = url.startsWith('http') ? url : baseUrl + url;
-
     const res = await fetch(fullUrl, fetchOption);
 
     if (!res.ok) {

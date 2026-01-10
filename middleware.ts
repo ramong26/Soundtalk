@@ -9,6 +9,10 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  if (pathname.startsWith('/api/comments') && request.method === 'GET') {
+    return NextResponse.next();
+  }
+
   const requiresAuth = pathname.startsWith('/api/profile') || pathname.startsWith('/api/comments');
 
   if (!requiresAuth) {

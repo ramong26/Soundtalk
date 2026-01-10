@@ -17,7 +17,6 @@ export default async function connectToDB() {
     await mongoose.connect(MONGODB_URI, {
       serverSelectionTimeoutMS: 5000,
     });
-
     isConnected = true;
   } catch (error) {
     console.error(' MongoDB 연결 실패:', error);

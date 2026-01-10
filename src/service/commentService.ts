@@ -19,19 +19,15 @@ const postComments = async (body: CreateCommentBody): Promise<Comment | undefine
 };
 
 // GET: 댓글 목록 조회 (무한 스크롤)
-const getComments = async (
-  trackId: number | string,
-  nextCursorId?: number
-): Promise<{ comments: Comment[]; nextCursorId?: number } | undefined> => {
+const getComments = async (trackId: number | string): Promise<Comment[] | undefined> => {
   try {
-    let url = `/api/comments?trackId=${trackId}`;
-    if (nextCursorId) {
-      url += `&nextCursorId=${nextCursorId}`;
-    }
-    const response = await callApi<{ comments: Comment[]; nextCursorId?: number }>(url, {
+    const url = `/api/comments?trackId=${trackId}`;
+
+    const response = await callApi<{ comments: Comment[] }>(url, {
       method: 'GET',
     });
-    return response;
+
+    return response?.comments || [];
   } catch (err) {
     console.error('댓글 목록 조회 실패:', err);
     throw new Error('댓글 목록 조회 실패');

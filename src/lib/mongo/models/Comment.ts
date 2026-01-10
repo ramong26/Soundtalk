@@ -1,4 +1,5 @@
 import { Schema, model, models } from 'mongoose';
+import UserModel from './UserModel';
 
 const commentSchema = new Schema(
   {
@@ -13,4 +14,4 @@ const commentSchema = new Schema(
   }
 );
 
-export const Comment = models.Comment || model('Comment', commentSchema); // model Comment라는 이름으로 저장, models 몽구스 모델을 전역적으로 캐시
+export const Comment = models.Comment || model('Comment', commentSchema);

@@ -3,7 +3,10 @@ import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
 
 import connectToDB from '@/lib/mongo/mongo';
-import { Comment } from '@/lib/mongo/models/Comment';
+import { Comment, UserModel } from '@/lib/mongo/models';
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const _ensureUserModel = UserModel;
 
 // 댓글 작성
 export async function POST(request: NextRequest) {
@@ -50,17 +53,29 @@ export async function GET(request: NextRequest) {
 
   const url = request.nextUrl;
   const trackId = url.searchParams.get('trackId');
+
   if (!trackId) {
+    console.error('트랙 ID가 제공되지 않았습니다');
     return new Response('트랙 ID가 필요합니다', { status: 400 });
   }
 
-  const comments = await Comment.find({ trackId })
-    .sort({ createdAt: -1 })
-    .populate('userId', 'displayName profileImageUrl');
-  return NextResponse.json(comments, {
-    status: 200,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+  try {
+    const comments = await Comment.find({ trackId })
+      .sort({ createdAt: -1 })
+      .populate('userId', 'displayName profileImageUrl');
+
+    return NextResponse.json(
+      { comments },
+      {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'Cache-Control': 'no-store',
+        },
+      }
+    );
+  } catch (error) {
+    console.error('GET comments 에러:', error);
+    return NextResponse.json({ error: '댓글 조회 실패' }, { status: 500 });
+  }
 }
