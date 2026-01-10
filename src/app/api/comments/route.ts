@@ -2,8 +2,9 @@ import { NextResponse, NextRequest } from 'next/server';
 import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
 
-import '@/lib/mongo/models';
 import connectToDB from '@/lib/mongo/mongo';
+import '@/lib/mongo/models/UserModel';
+import { Comment } from '@/lib/mongo/models/Comment';
 
 // 댓글 작성
 export async function POST(request: NextRequest) {

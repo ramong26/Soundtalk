@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import { NextRequest, NextResponse } from 'next/server';
 
 import connectToDB from '@/lib/mongo/mongo';
-import '@/lib/mongo/models';
+import { UserModel } from '@/lib/mongo/models/UserModel';
 
 export async function GET(req: NextRequest) {
   const token = req.cookies.get('jwt')?.value;

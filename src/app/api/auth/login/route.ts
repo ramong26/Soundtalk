@@ -4,7 +4,7 @@ import { z } from 'zod';
 
 import { loginSchema } from '@/features/auth/schema/loginSchema';
 import connectToDB from '@/lib/mongo/mongo';
-import '@/lib/mongo/models';
+import { UserModel } from '@/lib/mongo/models/UserModel';
 
 export async function POST(request: NextRequest) {
   try {

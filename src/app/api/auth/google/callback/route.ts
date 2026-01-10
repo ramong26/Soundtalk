@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 
 import { getBaseUrl, getGoogleRedirectUri } from '@/lib/utils/baseUrl';
 import connectToDB from '@/lib/mongo/mongo';
-import '@/lib/mongo/models';
+import { UserModel } from '@/lib/mongo/models';
 
 export const runtime = 'nodejs'; // 몽고로 인해 nodejs 런타임 사용
 

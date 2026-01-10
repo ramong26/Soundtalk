@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import jwt from 'jsonwebtoken';
 import connectToDB from '@/lib/mongo/mongo';
-import '@/lib/mongo/models';
+import { UserModel } from '@/lib/mongo/models/UserModel';
 
 export async function POST(request: NextRequest) {
   await connectToDB();
