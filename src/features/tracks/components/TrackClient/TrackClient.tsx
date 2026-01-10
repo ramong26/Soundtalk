@@ -94,10 +94,7 @@ export default function TrackClient({ album, trackId }: TrackClientProps) {
         await commentsService.deleteComments(commentId);
       } catch (err) {
         queryClient.setQueryData<Comment[]>(['track-comments', trackId], (oldComments) => {
-          if (deletedComment) {
-            return [...(oldComments ?? []), deletedComment];
-          }
-          return oldComments ?? [];
+          return [...(oldComments ?? [])];
         });
         console.error(err);
         queryClient.invalidateQueries({ queryKey: ['track-comments', trackId] });
@@ -108,6 +105,8 @@ export default function TrackClient({ album, trackId }: TrackClientProps) {
 
   const handleEdit = useCallback(
     async (commentId: string, newText: string) => {
+      let prevComment: Comment | undefined;
+
       queryClient.setQueryData<Comment[]>(['track-comments', trackId], (old: Comment[] = []) =>
         old.map((c) => (c._id === commentId ? { ...c, text: newText, updatedAt: new Date().toISOString() } : c))
       );
