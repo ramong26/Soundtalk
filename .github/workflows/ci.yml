@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [main, develop]
+    branches: [master, develop]
   pull_request:
-    branches: [main, develop]
+    branches: [master, develop]
 
 jobs:
   build:
@@ -18,29 +18,22 @@ jobs:
         with:
           node-version: 20
 
-      - name: Ensure Corepack is available
-        run: |
-          if ! command -v corepack &> /dev/null; then
-            npm i -g corepack
-          fi
-
-      - name: Enable Corepack
-        run: corepack enable
-
-      - name: Prepare Yarn 4.10.3
-        run: corepack prepare yarn@4.10.3 --activate
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
 
       - name: Install dependencies
-        run: yarn install
+        run: pnpm install
 
       - name: Run ESLint
-        run: yarn run lint
+        run: pnpm run lint
 
       - name: Run TypeScript check
-        run: yarn run typecheck || echo "TypeScript check not configured"
+        run: pnpm run typecheck || echo "TypeScript check not configured"
 
       - name: Run tests
-        run: yarn test || echo "Tests not configured"
+        run: pnpm test || echo "Tests not configured"
 
       - name: Build project
-        run: yarn build
+        run: pnpm build

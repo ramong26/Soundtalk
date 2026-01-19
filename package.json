@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "sideEffects": false,
+  "packageManager": "pnpm@8.15.4",
   "scripts": {
     "dev": "next dev -H 127.0.0.1",
     "analyze": "cross-env ANALYZE=true next build",
