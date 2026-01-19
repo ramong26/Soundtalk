@@ -1,23 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react';
+'use client';
+
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 
-interface SortDownProps {
-  className?: string;
-  label: string | string[];
-  onSelect?: (value: string) => void;
-  title?: string;
-  link?: string | string[];
-  dropdownPosition?: string;
-}
+import { SortDownProps } from './types';
 
-export default function SortDown({
-  className = '',
-  label,
-  onSelect,
-  title,
-  link,
-  dropdownPosition,
-}: SortDownProps) {
+export default function SortDown({ className, label, onSelect, title, link, dropdownPosition }: SortDownProps) {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 

@@ -1,23 +1,7 @@
-import React from 'react';
-
 import * as svg from '@/public/icons';
+import { IconProps } from './types';
 
-export type IconName = keyof typeof svg | 'NONE';
-
-interface IconProps extends React.SVGProps<SVGSVGElement> {
-  name: IconName;
-  size?: number;
-  className?: string;
-  color?: string;
-}
-
-export default function IconsComponet({
-  name,
-  size = 24,
-  className,
-  color = 'currentColor',
-  ...props
-}: IconProps) {
+export default function IconsComponet({ name, size = 24, className, color = 'currentColor', ...props }: IconProps) {
   if (name === 'NONE') return null;
 
   const IconComponent = svg[name];

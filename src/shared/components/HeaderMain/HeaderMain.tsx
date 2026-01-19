@@ -1,32 +1,76 @@
 'use client';
-import dynamic from 'next/dynamic';
+import { useState } from 'react';
 
 import HeaderLayout from '@/shared/components/HeaderMain/HeaderLayout';
-import useHeaderModal from '@/shared/hooks/HeaderMain/useHeaderModal';
 import useHeaderAuth from '@/shared/hooks/HeaderMain/useHeaderAuth';
+import LoginModalMain from '@/features/auth/components/LoginModalMain';
 
-const AuthModal = dynamic(() => import('@/features/auth/components/AuthModal'), {
-  ssr: false,
-});
+import useSignupSubmit from '@/features/auth/hooks/useSignupSubmit';
+import useLoginSubmit from '@/features/auth/hooks/useLoginSubmit';
+import { LoginFormData } from '@/features/auth/schema/loginSchema';
+import { SignupFormData } from '@/features/auth/schema/signupSchema';
+
+type AuthModalType = 'login' | 'signup' | null;
 
 export default function HeaderMain() {
-  const { modalType, setModalType, handleOpenModal } = useHeaderModal();
+  const [modalType, setModalType] = useState<AuthModalType>(null);
   const { isLogin, profile, handleLogout } = useHeaderAuth();
+
+  // Login form submit hook
+  const login = useLoginSubmit({
+    onClose: () => {
+      setModalType(null);
+    },
+  });
+  const { handleSubmit: handleLoginSubmit, errors: loginErrors, isSubmitting: isLoginSubmitting, loginField } = login;
+  const loginErrorMessages = loginErrors
+    ? Object.fromEntries(Object.entries(loginErrors).map(([key, value]) => [key, value?.message]))
+    : undefined;
+  const loginFields = [loginField.email, loginField.password];
+
+  const signup = useSignupSubmit({
+    onClose: () => {
+      setModalType(null);
+    },
+  });
+
+  // Signup form submit hook
+  const { handleSubmit, errors, isSubmitting, signupField } = signup;
+  const errorMessages = errors
+    ? Object.fromEntries(Object.entries(errors).map(([key, value]) => [key, value?.message]))
+    : undefined;
+  const signupFields = [signupField.username, signupField.email, signupField.password, signupField.confirmPassword];
 
   return (
     <>
-      <HeaderLayout handleOpenModal={handleOpenModal} handleLogout={handleLogout} profile={profile} isLogin={isLogin} />
-      {/* 모달 */}
-      {modalType && (
-        <AuthModal
-          onClose={() => {
-            setModalType(null);
-            document.body.style.overflow = 'auto';
-          }}
-          onChangeModal={(type) => setModalType(type)}
-          type={modalType}
+      <HeaderLayout handleOpenModal={setModalType} handleLogout={handleLogout} profile={profile} isLogin={isLogin} />
+      {modalType === 'login' ? (
+        <LoginModalMain<LoginFormData>
+          key={'login-modal'}
+          title="Log in to your account."
+          submitLabel="Log in"
+          fields={loginFields}
+          onClose={() => setModalType(null)}
+          onSubmit={handleLoginSubmit}
+          isSubmitting={isLoginSubmitting}
+          errors={loginErrorMessages}
+          switchLabel="Create an account"
+          onSwitch={() => setModalType('signup')}
         />
-      )}
+      ) : modalType === 'signup' ? (
+        <LoginModalMain<SignupFormData>
+          key={'signup-modal'}
+          title="Sign up to Soundtalk"
+          submitLabel="Sign Up"
+          fields={signupFields}
+          onClose={() => setModalType(null)}
+          onSubmit={handleSubmit}
+          isSubmitting={isSubmitting}
+          errors={errorMessages}
+          switchLabel="Log in Here"
+          onSwitch={() => setModalType('login')}
+        />
+      ) : null}
     </>
   );
 }
