@@ -10,7 +10,7 @@
     "analyze": "cross-env ANALYZE=true next build",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint ."
   },
   "dependencies": {
     "@google/genai": "^1.9.0",
