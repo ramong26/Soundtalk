@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import HeaderLayout from '@/shared/components/HeaderMain/HeaderLayout';
 import useHeaderAuth from '@/shared/hooks/HeaderMain/useHeaderAuth';
@@ -7,9 +7,13 @@ import LoginModalMain from '@/features/auth/components/LoginModalMain';
 
 import useSignupSubmit from '@/features/auth/hooks/useSignupSubmit';
 import useLoginSubmit from '@/features/auth/hooks/useLoginSubmit';
-import { LoginFormData } from '@/features/auth/schema/loginSchema';
-import { SignupFormData } from '@/features/auth/schema/signupSchema';
+import type { LoginFormData } from '@/features/auth/schema/loginSchema';
+import type { SignupFormData } from '@/features/auth/schema/signupSchema';
 
+/**
+ * TODO: useLoginSubmit과 useSignupSubmit 훅이 HeaderMain 컴포넌트가 렌더링될 때마다 항상 호출되므로,
+ * 분리하여 모달이 열릴 때만 훅이 호출되도록 최적화 필요.
+ */
 type AuthModalType = 'login' | 'signup' | null;
 
 export default function HeaderMain() {
@@ -40,6 +44,18 @@ export default function HeaderMain() {
     ? Object.fromEntries(Object.entries(errors).map(([key, value]) => [key, value?.message]))
     : undefined;
   const signupFields = [signupField.username, signupField.email, signupField.password, signupField.confirmPassword];
+
+  useEffect(() => {
+    if (modalType) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    // 컴포넌트 언마운트 시 스크롤을 다시 활성화합니다.
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [modalType]);
 
   return (
     <>

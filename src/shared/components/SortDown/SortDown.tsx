@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 import { SortDownProps } from './types';
 
-export default function SortDown({ className, label, onSelect, title, link, dropdownPosition }: SortDownProps) {
+export default function SortDown({ className = '', label, onSelect, title, link, dropdownPosition }: SortDownProps) {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
