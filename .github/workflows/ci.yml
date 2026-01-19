@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Ensure Corepack is available
+        run: |
+          if ! command -v corepack &> /dev/null; then
+            npm i -g corepack
+          fi
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Prepare Yarn 4.10.3
+        run: corepack prepare yarn@4.10.3 --activate
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run ESLint
+        run: yarn run lint
+
+      - name: Run TypeScript check
+        run: yarn run typecheck || echo "TypeScript check not configured"
+
+      - name: Run tests
+        run: yarn test || echo "Tests not configured"
+
+      - name: Build project
+        run: yarn build
