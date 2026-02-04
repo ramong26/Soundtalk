@@ -17,7 +17,7 @@ export default function HeaderLayout({ handleOpenModal, handleLogout, profile, i
     else if (type === 'SIGNUP') handleOpenModal('signup');
   };
 
-  const menuLabel = ['CHART', 'PLAYLIST', 'CHANNEL', 'RECOMMEND'];
+  const menuLabel = ['CHART', 'PLAYLIST', 'CHANNEL', 'GRAMMYS'];
   const menuLink = ['/charts', '/playlist', '/channel', '/recommend'];
 
   // 로그인 전 버튼 렌더링
