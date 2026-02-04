@@ -53,7 +53,7 @@ export async function collectArtistsFromPlaylistForScript(
     const track = item.track;
     if (!track || !track.artists) return;
 
-    (track.artists as unknown as ArtistSimplified[]).forEach((artist) => {
+    track.artists.forEach((artist: ArtistSimplified) => {
       if (artist.id && !artistMap.has(artist.id)) {
         artistMap.set(artist.id, {
           id: artist.id,

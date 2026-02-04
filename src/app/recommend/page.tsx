@@ -1,5 +1,5 @@
 import ArtistMap from '@/features/recommend/components/ArtistMap';
-import fs from 'fs';
+import { promises as fs } from 'fs';
 import path from 'path';
 import type { ArtistMapData } from '@/features/recommend/types/artistMap';
 
@@ -10,12 +10,12 @@ export const metadata = {
 
 export const revalidate = 86400; // 24시간
 
-export default function RecommendPage() {
+export default async function RecommendPage() {
   const dataPath = path.join(process.cwd(), 'public', 'data', 'artist-map.json');
   let artistData: ArtistMapData;
 
   try {
-    const fileContent = fs.readFileSync(dataPath, 'utf-8');
+    const fileContent = await fs.readFile(dataPath, 'utf-8');
     artistData = JSON.parse(fileContent);
   } catch (error) {
     console.error('Failed to load artist map data:', error);

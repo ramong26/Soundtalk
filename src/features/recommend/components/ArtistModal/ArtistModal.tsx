@@ -1,16 +1,16 @@
 'use client';
 
-import type { ArtistMapItem } from '../types/artistMap';
 import Image from 'next/image';
+import type { ArtistModalProps } from './types';
 
-interface Props {
-  artist: ArtistMapItem;
-  onClose: () => void;
-}
-
-export default function ArtistModal({ artist, onClose }: Props) {
+export default function ArtistModal({ artist, onClose }: ArtistModalProps) {
   return (
-    <div className="fixed inset-0 bg-black/30 z-50 flex items-center justify-center" onClick={onClose}>
+    <div
+      className="fixed inset-0 bg-black/30 z-50 flex items-center justify-center"
+      aria-modal="true"
+      aria-labelledby="artist-modal-title"
+      onClick={onClose}
+    >
       <div className="bg-white p-6 rounded-xl w-[400px] shadow-2xl" onClick={(e) => e.stopPropagation()}>
         {artist.imageUrl && (
           <Image
@@ -55,7 +55,11 @@ export default function ArtistModal({ artist, onClose }: Props) {
           </a>
         </div>
 
-        <button onClick={onClose} className="mt-4 w-full text-sm text-neutral-500 hover:text-white transition-colors">
+        <button
+          onClick={onClose}
+          aria-label="Close modal"
+          className="mt-4 w-full text-sm text-neutral-500 hover:text-white transition-colors"
+        >
           닫기
         </button>
       </div>

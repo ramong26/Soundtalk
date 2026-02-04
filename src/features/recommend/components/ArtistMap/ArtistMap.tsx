@@ -2,22 +2,18 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-import ArtistModal from './ArtistModal';
+import ArtistModal from '../ArtistModal';
 
-import type { ArtistMapItem } from '../types/artistMap';
+import type { ArtistMapItem } from '../../types/artistMap';
+import { ArtistMapProps } from './types';
 
-interface Props {
-  artists: ArtistMapItem[];
-  canvasWidth: number;
-  canvasHeight: number;
-}
-
-export default function ArtistMap({ artists, canvasWidth, canvasHeight }: Props) {
+export default function ArtistMap({ artists, canvasWidth, canvasHeight }: ArtistMapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(canvasWidth);
   const [selectedArtist, setSelectedArtist] = useState<ArtistMapItem | null>(null);
 
-  const fixedHeight = 1500;
+  const aspectRatio = canvasHeight / canvasWidth;
+  const height = width * aspectRatio;
 
   useEffect(() => {
     function handleResize() {
@@ -31,19 +27,20 @@ export default function ArtistMap({ artists, canvasWidth, canvasHeight }: Props)
   }, []);
 
   const scaleX = width / canvasWidth;
-  const scaleY = fixedHeight / canvasHeight;
+  const scaleY = height / canvasHeight;
 
   return (
     <div
       ref={containerRef}
       className="relative w-full bg-[#fdfbf7] overflow-hidden"
       style={{
-        height: fixedHeight,
+        height: height,
       }}
     >
       {artists.map((artist) => (
         <button
           key={artist.id}
+          aria-label={`View details for ${artist.name}`}
           className="absolute text-xs text-purple-400 hover:text-purple-600"
           style={{
             left: artist.x * scaleX,

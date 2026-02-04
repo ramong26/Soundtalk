@@ -21,10 +21,14 @@ async function fetchArtistDetails(artistIds: string[]): Promise<ArtistsDetail[]>
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    if (res.ok) {
-      const data = await res.json();
-      artists.push(...data.artists);
+    if (!res.ok) {
+      const errorText = await res.text();
+      console.error(`Failed to fetch artist details: ${res.status} ${res.statusText} - ${errorText}`);
+      throw new Error(`Spotify API error: ${res.status} ${res.statusText}`);
     }
+
+    const data = await res.json();
+    artists.push(...data.artists);
   }
 
   return artists;
@@ -32,6 +36,7 @@ async function fetchArtistDetails(artistIds: string[]): Promise<ArtistsDetail[]>
 
 /**
  * Spotify 토큰 가져오기 (기존 로직 활용)
+ * TODO: 공통 훅으로 분리 필요
  */
 async function getSpotifyToken(): Promise<string> {
   const auth = Buffer.from(`${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`).toString('base64');

@@ -1,11 +1,12 @@
 /**
  * @description 스크립트용 Spotify 플레이리스트 트랙 조회
  */
+import { ArtistSimplified } from '../types/artistMap';
 
 export interface fetchPlaylistTracksForScriptParams {
   added_at: string;
   added_by: {
-    external_urls: Array<[]>;
+    external_urls: { spotify: string };
     href: string;
     id: string;
     type: string;
@@ -18,8 +19,14 @@ export interface fetchPlaylistTracksForScriptParams {
     available_markets: string[];
     explicit: boolean;
     type: string;
-    album: Array<[]>;
-    artists: Array<[]>;
+    album: {
+      images: Array<{
+        url: string;
+        height: number;
+        width: number;
+      }>;
+    };
+    artists: ArtistSimplified[];
     disc_number: number;
     track_number: number;
     duration_ms: number;

@@ -104,9 +104,8 @@ export function generateArtistPositions(
       attempts++;
     }
 
-    // 100번 시도해도 못 넣으면 그냥 넣기 (겹쳐도)
     if (!positioned) {
-      console.warn(`⚠️  Failed to place artist: ${artist.name} (too crowded)`);
+      console.warn(`Failed to place artist: ${artist.name} (too crowded)`);
       placed.push({
         ...artist,
         x: config.padding + Math.random() * (config.width - config.padding * 2),
