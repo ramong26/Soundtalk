@@ -1,0 +1,1741 @@
+{
+  "generatedAt": "2026-02-04T11:59:56.761Z",
+  "totalArtists": 115,
+  "canvasWidth": 1200,
+  "canvasHeight": 1000,
+  "artists": [
+    {
+      "id": "4q3ewBCX7sLwd24euuV69X",
+      "name": "Bad Bunny",
+      "spotifyUrl": "https://open.spotify.com/artist/4q3ewBCX7sLwd24euuV69X",
+      "popularity": 99,
+      "genres": [
+        "reggaeton",
+        "trap latino",
+        "urbano latino",
+        "latin"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb81f47f44084e0a09b5f0fa13",
+      "x": 709.87116825504,
+      "y": 708.5359626374332,
+      "width": 106.92,
+      "height": 23.8,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Bad%20Bunny%20official"
+    },
+    {
+      "id": "3TVXtAsR1Inumwj472S9r4",
+      "name": "Drake",
+      "spotifyUrl": "https://open.spotify.com/artist/3TVXtAsR1Inumwj472S9r4",
+      "popularity": 99,
+      "genres": [
+        "rap"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb4293385d324db8558179afd9",
+      "x": 1146.1816016802848,
+      "y": 616.2826545693903,
+      "width": 59.400000000000006,
+      "height": 23.8,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Drake%20official"
+    },
+    {
+      "id": "0du5cEVh5yTK9QJze8zA0C",
+      "name": "Bruno Mars",
+      "spotifyUrl": "https://open.spotify.com/artist/0du5cEVh5yTK9QJze8zA0C",
+      "popularity": 95,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebc7688aad1bf03986934d7e26",
+      "x": 199.13655947975988,
+      "y": 585.8314511453824,
+      "width": 114,
+      "height": 23,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Bruno%20Mars%20official"
+    },
+    {
+      "id": "1uNFoZAHBGtllmzznpCI3s",
+      "name": "Justin Bieber",
+      "spotifyUrl": "https://open.spotify.com/artist/1uNFoZAHBGtllmzznpCI3s",
+      "popularity": 94,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebaf20f7db5288bce9beede034",
+      "x": 914.8569579979375,
+      "y": 550.2009612866516,
+      "width": 146.64,
+      "height": 22.8,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Justin%20Bieber%20official"
+    },
+    {
+      "id": "66CXWjxzNUsdJxJ2JdwvnR",
+      "name": "Ariana Grande",
+      "spotifyUrl": "https://open.spotify.com/artist/66CXWjxzNUsdJxJ2JdwvnR",
+      "popularity": 94,
+      "genres": [
+        "pop"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb6725802588d7dc1aba076ca5",
+      "x": 504.81902376288366,
+      "y": 184.1992593967072,
+      "width": 146.64,
+      "height": 22.8,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Ariana%20Grande%20official"
+    },
+    {
+      "id": "0ys2OFYzWYB5hRDLCsBqxt",
+      "name": "Fuerza Regida",
+      "spotifyUrl": "https://open.spotify.com/artist/0ys2OFYzWYB5hRDLCsBqxt",
+      "popularity": 93,
+      "genres": [
+        "corrido",
+        "corridos tumbados",
+        "corridos bélicos",
+        "sierreño",
+        "música mexicana",
+        "banda",
+        "sad sierreño",
+        "electro corridos"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebce436c411ab2436c7ab2c04d",
+      "x": 138.07221571653554,
+      "y": 378.54940781253583,
+      "width": 145.08,
+      "height": 22.6,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Fuerza%20Regida%20official"
+    },
+    {
+      "id": "2YZyLoL8N0Wb9xBt1NhZWg",
+      "name": "Kendrick Lamar",
+      "spotifyUrl": "https://open.spotify.com/artist/2YZyLoL8N0Wb9xBt1NhZWg",
+      "popularity": 92,
+      "genres": [
+        "hip hop",
+        "west coast hip hop"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb39ba6dcd4355c03de0b50918",
+      "x": 673.4265985446053,
+      "y": 426.13857539131914,
+      "width": 154.56,
+      "height": 22.4,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Kendrick%20Lamar%20official"
+    },
+    {
+      "id": "74KM79TiuVKeVCqs8QtB0B",
+      "name": "Sabrina Carpenter",
+      "spotifyUrl": "https://open.spotify.com/artist/74KM79TiuVKeVCqs8QtB0B",
+      "popularity": 92,
+      "genres": [
+        "pop"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb78e45cfa4697ce3c437cb455",
+      "x": 834.2022815515143,
+      "y": 927.3440400850571,
+      "width": 187.67999999999998,
+      "height": 22.4,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Sabrina%20Carpenter%20official"
+    },
+    {
+      "id": "1HY2Jd0NmPuamShAr6KMms",
+      "name": "Lady Gaga",
+      "spotifyUrl": "https://open.spotify.com/artist/1HY2Jd0NmPuamShAr6KMms",
+      "popularity": 91,
+      "genres": [
+        "art pop",
+        "pop"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebaadc18cac8d48124357c38e6",
+      "x": 1131.5795786358328,
+      "y": 688.8889985885522,
+      "width": 98.28,
+      "height": 22.2,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Lady%20Gaga%20official"
+    },
+    {
+      "id": "45dkTj5sMRSjrmBSBeiHym",
+      "name": "Tate McRae",
+      "spotifyUrl": "https://open.spotify.com/artist/45dkTj5sMRSjrmBSBeiHym",
+      "popularity": 91,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebbed8016bd64422793ff3bc75",
+      "x": 489.9156777520742,
+      "y": 936.7791972632465,
+      "width": 109.2,
+      "height": 22.2,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Tate%20McRae%20official"
+    },
+    {
+      "id": "7bXgB6jMjp9ATFy66eO08Z",
+      "name": "Chris Brown",
+      "spotifyUrl": "https://open.spotify.com/artist/7bXgB6jMjp9ATFy66eO08Z",
+      "popularity": 91,
+      "genres": [
+        "r&b"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb01513fbafb66a3ca4f28b299",
+      "x": 660.8909830982022,
+      "y": 238.30923455511078,
+      "width": 120.12,
+      "height": 22.2,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Chris%20Brown%20official"
+    },
+    {
+      "id": "6XyY86QOPPrYVGvF9ch6wz",
+      "name": "Linkin Park",
+      "spotifyUrl": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz",
+      "popularity": 91,
+      "genres": [
+        "nu metal",
+        "rap metal",
+        "rock",
+        "alternative metal"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb527d95dabbe8b8b527e8136f",
+      "x": 578.4929453083829,
+      "y": 340.0772623792664,
+      "width": 120.12,
+      "height": 22.2,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Linkin%20Park%20official"
+    },
+    {
+      "id": "1mcTU81TzQhprhouKaTkpq",
+      "name": "Rauw Alejandro",
+      "spotifyUrl": "https://open.spotify.com/artist/1mcTU81TzQhprhouKaTkpq",
+      "popularity": 91,
+      "genres": [
+        "reggaeton",
+        "urbano latino",
+        "trap latino",
+        "latin"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb43ea45ccf08451d2511d33fa",
+      "x": 945.1890190036153,
+      "y": 434.55173286439265,
+      "width": 152.88,
+      "height": 22.2,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Rauw%20Alejandro%20official"
+    },
+    {
+      "id": "7tYKF4w9nC0nq9CsPZTHyP",
+      "name": "SZA",
+      "spotifyUrl": "https://open.spotify.com/artist/7tYKF4w9nC0nq9CsPZTHyP",
+      "popularity": 90,
+      "genres": [
+        "r&b"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebfd0a9fb6c252a3ba44079acf",
+      "x": 565.9981664483328,
+      "y": 802.9354198995541,
+      "width": 32.4,
+      "height": 22,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=SZA%20official"
+    },
+    {
+      "id": "55Aa2cqylxrFIXC767Z865",
+      "name": "Lil Wayne",
+      "spotifyUrl": "https://open.spotify.com/artist/55Aa2cqylxrFIXC767Z865",
+      "popularity": 89,
+      "genres": [
+        "rap",
+        "hip hop"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb998010cd1075921b5faf16b2",
+      "x": 75.94533511756394,
+      "y": 823.6176570017716,
+      "width": 96.12,
+      "height": 21.8,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Lil%20Wayne%20official"
+    },
+    {
+      "id": "790FomKkXshlbRYZFtlgla",
+      "name": "KAROL G",
+      "spotifyUrl": "https://open.spotify.com/artist/790FomKkXshlbRYZFtlgla",
+      "popularity": 89,
+      "genres": [
+        "reggaeton",
+        "latin",
+        "urbano latino"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb66041ce9eb4497057cbc3496",
+      "x": 751.0434532759045,
+      "y": 583.7772869035026,
+      "width": 74.75999999999999,
+      "height": 21.8,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=KAROL%20G%20official"
+    },
+    {
+      "id": "4V8LLVI7PbaPR0K2TGSxFF",
+      "name": "Tyler, The Creator",
+      "spotifyUrl": "https://open.spotify.com/artist/4V8LLVI7PbaPR0K2TGSxFF",
+      "popularity": 88,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebdf2728294ff77dd11eeb18fb",
+      "x": 894.0863167109436,
+      "y": 85.32598049730376,
+      "width": 190.08,
+      "height": 21.6,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Tyler%2C%20The%20Creator%20official"
+    },
+    {
+      "id": "7mW7Tv7NvywKKXqafZo0Lc",
+      "name": "KPop Demon Hunters Cast",
+      "spotifyUrl": "https://open.spotify.com/artist/7mW7Tv7NvywKKXqafZo0Lc",
+      "popularity": 88,
+      "genres": [
+        "k-pop"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2736c1334650ced0e28f0b2e13f",
+      "x": 144.72556473189906,
+      "y": 778.1915119082958,
+      "width": 242.88000000000002,
+      "height": 21.6,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=KPop%20Demon%20Hunters%20Cast%20official"
+    },
+    {
+      "id": "4G9NDjRyZFDlJKMRL8hx3S",
+      "name": "sombr",
+      "spotifyUrl": "https://open.spotify.com/artist/4G9NDjRyZFDlJKMRL8hx3S",
+      "popularity": 87,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb78edaa6468cae153565c2c97",
+      "x": 260.48733052930055,
+      "y": 387.1036366649813,
+      "width": 52.199999999999996,
+      "height": 21.4,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=sombr%20official"
+    },
+    {
+      "id": "5INjqkS1o8h1imAzPqGZBb",
+      "name": "Tame Impala",
+      "spotifyUrl": "https://open.spotify.com/artist/5INjqkS1o8h1imAzPqGZBb",
+      "popularity": 86,
+      "genres": [
+        "neo-psychedelic",
+        "indie"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebe412a782245eb20d9626c601",
+      "x": 565.010405351536,
+      "y": 277.3280939611941,
+      "width": 113.51999999999998,
+      "height": 21.2,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Tame%20Impala%20official"
+    },
+    {
+      "id": "2yNNYQBChuox9A5Ka93BIn",
+      "name": "HUNTR/X",
+      "spotifyUrl": "https://open.spotify.com/artist/2yNNYQBChuox9A5Ka93BIn",
+      "popularity": 86,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b2736c1334650ced0e28f0b2e13f",
+      "x": 857.8709108806448,
+      "y": 315.53438038501827,
+      "width": 72.24,
+      "height": 21.2,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=HUNTR%2FX%20official"
+    },
+    {
+      "id": "0RMJOzHDhAKY1o2j0W0vxY",
+      "name": "EJAE",
+      "spotifyUrl": "https://open.spotify.com/artist/0RMJOzHDhAKY1o2j0W0vxY",
+      "popularity": 86,
+      "genres": [
+        "k-pop"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb126261d917be27ceaf9046e3",
+      "x": 828.6346181116796,
+      "y": 493.42778349176416,
+      "width": 41.279999999999994,
+      "height": 21.2,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=EJAE%20official"
+    },
+    {
+      "id": "2HPaUgqeutzr3jx5a9WyDV",
+      "name": "PARTYNEXTDOOR",
+      "spotifyUrl": "https://open.spotify.com/artist/2HPaUgqeutzr3jx5a9WyDV",
+      "popularity": 86,
+      "genres": [
+        "dark r&b",
+        "r&b",
+        "trap soul"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb957320981e31e862bc2fb844",
+      "x": 1074.4890747282868,
+      "y": 914.2892119378425,
+      "width": 134.15999999999997,
+      "height": 21.2,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=PARTYNEXTDOOR%20official"
+    },
+    {
+      "id": "33qOK5uJ8AR2xuQQAhHump",
+      "name": "Teddy Swims",
+      "spotifyUrl": "https://open.spotify.com/artist/33qOK5uJ8AR2xuQQAhHump",
+      "popularity": 86,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebf9cf783eb03eb66aa43943ba",
+      "x": 480.7080888569654,
+      "y": 382.5192248113217,
+      "width": 113.51999999999998,
+      "height": 21.2,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Teddy%20Swims%20official"
+    },
+    {
+      "id": "6XkjpgcEsYab502Vr1bBeW",
+      "name": "Grupo Frontera",
+      "spotifyUrl": "https://open.spotify.com/artist/6XkjpgcEsYab502Vr1bBeW",
+      "popularity": 86,
+      "genres": [
+        "cumbia norteña",
+        "banda",
+        "norteño",
+        "música mexicana",
+        "corrido",
+        "corridos tumbados",
+        "grupera",
+        "tejano",
+        "ranchera"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebb8bb50dc787d5893156689f6",
+      "x": 657.5429201861507,
+      "y": 485.5238443517776,
+      "width": 144.48,
+      "height": 21.2,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Grupo%20Frontera%20official"
+    },
+    {
+      "id": "0Wwji82sLA0Hcvtuak3omb",
+      "name": "AUDREY NUNA",
+      "spotifyUrl": "https://open.spotify.com/artist/0Wwji82sLA0Hcvtuak3omb",
+      "popularity": 85,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb2e9ac1a1188624174e9c86a3",
+      "x": 209.3935293553893,
+      "y": 727.1302394423723,
+      "width": 112.19999999999999,
+      "height": 21,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=AUDREY%20NUNA%20official"
+    },
+    {
+      "id": "6U1dV7aL68N7Gb0Naq34V5",
+      "name": "REI AMI",
+      "spotifyUrl": "https://open.spotify.com/artist/6U1dV7aL68N7Gb0Naq34V5",
+      "popularity": 85,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebeb39ded0900c3e50e3d7ba68",
+      "x": 337.16542947905793,
+      "y": 840.3221543213858,
+      "width": 71.39999999999999,
+      "height": 21,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=REI%20AMI%20official"
+    },
+    {
+      "id": "3tVQdUvClmAT7URs9V3rsp",
+      "name": "Wizkid",
+      "spotifyUrl": "https://open.spotify.com/artist/3tVQdUvClmAT7URs9V3rsp",
+      "popularity": 85,
+      "genres": [
+        "afrobeats",
+        "afrobeat",
+        "afropop",
+        "azonto",
+        "afroswing",
+        "afro r&b",
+        "afropiano"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebe6ef803356b45ee5a9fa7a8a",
+      "x": 756.0946615978164,
+      "y": 748.0299302680286,
+      "width": 61.199999999999996,
+      "height": 21,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Wizkid%20official"
+    },
+    {
+      "id": "7gW0r5CkdEUMm42w9XpyZO",
+      "name": "Laufey",
+      "spotifyUrl": "https://open.spotify.com/artist/7gW0r5CkdEUMm42w9XpyZO",
+      "popularity": 84,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb98c2527b85500f68f53084f2",
+      "x": 400.29877705801226,
+      "y": 739.802792736939,
+      "width": 60.480000000000004,
+      "height": 20.8,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Laufey%20official"
+    },
+    {
+      "id": "7c0XG5cIJTrrAgEC3ULPiq",
+      "name": "Ty Dolla $ign",
+      "spotifyUrl": "https://open.spotify.com/artist/7c0XG5cIJTrrAgEC3ULPiq",
+      "popularity": 84,
+      "genres": [
+        "trap soul"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebdeccf223fe80d308aba91b64",
+      "x": 558.1548169471982,
+      "y": 125.69826035222889,
+      "width": 131.04,
+      "height": 20.8,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Ty%20Dolla%20%24ign%20official"
+    },
+    {
+      "id": "6Ghvu1VvMGScGpOUJBAHNH",
+      "name": "Deftones",
+      "spotifyUrl": "https://open.spotify.com/artist/6Ghvu1VvMGScGpOUJBAHNH",
+      "popularity": 84,
+      "genres": [
+        "nu metal",
+        "alternative metal",
+        "rap metal",
+        "shoegaze",
+        "rock"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebe3ac5eb948e78d9285d1dbdb",
+      "x": 680.033662647969,
+      "y": 653.0457924243316,
+      "width": 80.64,
+      "height": 20.8,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Deftones%20official"
+    },
+    {
+      "id": "5YGY8feqx7naU7z4HrwZM6",
+      "name": "Miley Cyrus",
+      "spotifyUrl": "https://open.spotify.com/artist/5YGY8feqx7naU7z4HrwZM6",
+      "popularity": 84,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebf4cccd14ec026038d713e353",
+      "x": 336.46123775412883,
+      "y": 331.65187254712697,
+      "width": 110.88,
+      "height": 20.8,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Miley%20Cyrus%20official"
+    },
+    {
+      "id": "4YLtscXsxbVgi031ovDDdh",
+      "name": "Chris Stapleton",
+      "spotifyUrl": "https://open.spotify.com/artist/4YLtscXsxbVgi031ovDDdh",
+      "popularity": 84,
+      "genres": [
+        "country",
+        "outlaw country"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eba0c87c8f329b436eac8b9784",
+      "x": 1128.7327652356807,
+      "y": 137.6541296007772,
+      "width": 151.2,
+      "height": 20.8,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Chris%20Stapleton%20official"
+    },
+    {
+      "id": "3PhoLpVuITZKcymswpck5b",
+      "name": "Elton John",
+      "spotifyUrl": "https://open.spotify.com/artist/3PhoLpVuITZKcymswpck5b",
+      "popularity": 84,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb0dc33a1c53bb58a84b45d6a7",
+      "x": 1094.7718944672454,
+      "y": 88.06428806281735,
+      "width": 100.8,
+      "height": 20.8,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Elton%20John%20official"
+    },
+    {
+      "id": "7GlBOeep6PqTfFi59PTUUN",
+      "name": "Chappell Roan",
+      "spotifyUrl": "https://open.spotify.com/artist/7GlBOeep6PqTfFi59PTUUN",
+      "popularity": 83,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebd258ecb0d66244e6300bcf64",
+      "x": 273.87741623185883,
+      "y": 114.31606489208879,
+      "width": 129.48000000000002,
+      "height": 20.6,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Chappell%20Roan%20official"
+    },
+    {
+      "id": "0C8ZW7ezQVs4URX5aX7Kqx",
+      "name": "Selena Gomez",
+      "spotifyUrl": "https://open.spotify.com/artist/0C8ZW7ezQVs4URX5aX7Kqx",
+      "popularity": 83,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb815e520e3ce7fe210046ba66",
+      "x": 1007.838710399534,
+      "y": 391.6204822237795,
+      "width": 119.52000000000001,
+      "height": 20.6,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Selena%20Gomez%20official"
+    },
+    {
+      "id": "3SozjO3Lat463tQICI9LcE",
+      "name": "Tyla",
+      "spotifyUrl": "https://open.spotify.com/artist/3SozjO3Lat463tQICI9LcE",
+      "popularity": 83,
+      "genres": [
+        "afrobeats"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb7977176556d71cbc7fcbe6b4",
+      "x": 334.4584216156031,
+      "y": 423.03769072302435,
+      "width": 39.84,
+      "height": 20.6,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Tyla%20official"
+    },
+    {
+      "id": "78rUTD7y6Cy67W1RVzYs7t",
+      "name": "PinkPantheress",
+      "spotifyUrl": "https://open.spotify.com/artist/78rUTD7y6Cy67W1RVzYs7t",
+      "popularity": 82,
+      "genres": [
+        "bedroom pop"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb6bf10d74063b45938f5d8656",
+      "x": 706.0068080977771,
+      "y": 793.8038249593781,
+      "width": 137.75999999999996,
+      "height": 20.4,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=PinkPantheress%20official"
+    },
+    {
+      "id": "4oLeXFyACqeem2VImYeBFe",
+      "name": "Fred again..",
+      "spotifyUrl": "https://open.spotify.com/artist/4oLeXFyACqeem2VImYeBFe",
+      "popularity": 82,
+      "genres": [
+        "stutter house",
+        "house"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb381c41adc678e4ce864eb274",
+      "x": 361.9784485131052,
+      "y": 792.0671847232021,
+      "width": 118.07999999999998,
+      "height": 20.4,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Fred%20again..%20official"
+    },
+    {
+      "id": "2RdwBSPQiwcmiDo9kixcl8",
+      "name": "Pharrell Williams",
+      "spotifyUrl": "https://open.spotify.com/artist/2RdwBSPQiwcmiDo9kixcl8",
+      "popularity": 82,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebf0789cd783c20985ec3deb4e",
+      "x": 654.7651052162768,
+      "y": 76.03452350573885,
+      "width": 167.27999999999997,
+      "height": 20.4,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Pharrell%20Williams%20official"
+    },
+    {
+      "id": "0cGUm45nv7Z6M6qdXYQGTX",
+      "name": "Kehlani",
+      "spotifyUrl": "https://open.spotify.com/artist/0cGUm45nv7Z6M6qdXYQGTX",
+      "popularity": 82,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb57082fd22d755e80a648fac3",
+      "x": 394.7680536000504,
+      "y": 278.61292636017026,
+      "width": 68.87999999999998,
+      "height": 20.4,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Kehlani%20official"
+    },
+    {
+      "id": "2EMAnMvWE2eb56ToJVfCWs",
+      "name": "Bryson Tiller",
+      "spotifyUrl": "https://open.spotify.com/artist/2EMAnMvWE2eb56ToJVfCWs",
+      "popularity": 82,
+      "genres": [
+        "trap soul",
+        "r&b"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebb0ff28b9d4bed74c66901b2b",
+      "x": 225.60965281329769,
+      "y": 266.97348584840404,
+      "width": 127.91999999999997,
+      "height": 20.4,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Bryson%20Tiller%20official"
+    },
+    {
+      "id": "4fxd5Ee7UefO4CUXgwJ7IP",
+      "name": "GIVĒON",
+      "spotifyUrl": "https://open.spotify.com/artist/4fxd5Ee7UefO4CUXgwJ7IP",
+      "popularity": 81,
+      "genres": [
+        "r&b"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb48769fa9ef3b5f24af90a09d",
+      "x": 409.49431706128036,
+      "y": 90.94900579576915,
+      "width": 58.31999999999999,
+      "height": 20.2,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=GIV%C4%92ON%20official"
+    },
+    {
+      "id": "2n2RSaZqBuUUukhbLlpnE6",
+      "name": "Sleep Token",
+      "spotifyUrl": "https://open.spotify.com/artist/2n2RSaZqBuUUukhbLlpnE6",
+      "popularity": 81,
+      "genres": [
+        "progressive metal",
+        "metalcore"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebd00c2ff422829437e6b5f1e0",
+      "x": 880.3332755882492,
+      "y": 673.2543391582283,
+      "width": 106.91999999999999,
+      "height": 20.2,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Sleep%20Token%20official"
+    },
+    {
+      "id": "3eVa5w3URK5duf6eyVDbu9",
+      "name": "ROSÉ",
+      "spotifyUrl": "https://open.spotify.com/artist/3eVa5w3URK5duf6eyVDbu9",
+      "popularity": 81,
+      "genres": [
+        "k-pop"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebcfb4350222919670128ff2dc",
+      "x": 471.7567537928952,
+      "y": 828.1403839547227,
+      "width": 38.879999999999995,
+      "height": 20.2,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=ROS%C3%89%20official"
+    },
+    {
+      "id": "19k8AgwwTSxeaxkOuCQEJs",
+      "name": "Jelly Roll",
+      "spotifyUrl": "https://open.spotify.com/artist/19k8AgwwTSxeaxkOuCQEJs",
+      "popularity": 81,
+      "genres": [
+        "country hip hop",
+        "country"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb27901c1c025fa90f5dc007ef",
+      "x": 835.6607268881745,
+      "y": 188.8214599088274,
+      "width": 97.19999999999999,
+      "height": 20.2,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Jelly%20Roll%20official"
+    },
+    {
+      "id": "57LYzLEk2LcFghVwuWbcuS",
+      "name": "Summer Walker",
+      "spotifyUrl": "https://open.spotify.com/artist/57LYzLEk2LcFghVwuWbcuS",
+      "popularity": 80,
+      "genres": [
+        "r&b"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb7dccb6280ed3402110d43ce3",
+      "x": 144.81324948079373,
+      "y": 327.6977358434133,
+      "width": 124.8,
+      "height": 20,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Summer%20Walker%20official"
+    },
+    {
+      "id": "4E2rKHVDssGJm2SCDOMMJB",
+      "name": "Doechii",
+      "spotifyUrl": "https://open.spotify.com/artist/4E2rKHVDssGJm2SCDOMMJB",
+      "popularity": 80,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebca2fee52c41d3f58ceb6474b",
+      "x": 104.94113390483255,
+      "y": 674.9763276469699,
+      "width": 67.2,
+      "height": 20,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Doechii%20official"
+    },
+    {
+      "id": "7bu3H8JO7d0UbMoVzbo70s",
+      "name": "The Cure",
+      "spotifyUrl": "https://open.spotify.com/artist/7bu3H8JO7d0UbMoVzbo70s",
+      "popularity": 80,
+      "genres": [
+        "new wave",
+        "post-punk",
+        "gothic rock",
+        "darkwave"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebdd427c765c409ec02dc3a868",
+      "x": 1094.9340503988774,
+      "y": 530.0387609152715,
+      "width": 76.8,
+      "height": 20,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=The%20Cure%20official"
+    },
+    {
+      "id": "45TgXXqMDdF8BkjA83OM7z",
+      "name": "Rod Wave",
+      "spotifyUrl": "https://open.spotify.com/artist/45TgXXqMDdF8BkjA83OM7z",
+      "popularity": 80,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb8674f92cf33931fa4cd298c2",
+      "x": 475.9967214200021,
+      "y": 622.2576925864915,
+      "width": 76.8,
+      "height": 20,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Rod%20Wave%20official"
+    },
+    {
+      "id": "3jK9MiCrA42lLAdMGUZpwa",
+      "name": "Anderson .Paak",
+      "spotifyUrl": "https://open.spotify.com/artist/3jK9MiCrA42lLAdMGUZpwa",
+      "popularity": 79,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb96287bd47570ff13f0c01496",
+      "x": 83.40521358463914,
+      "y": 170.14983924222346,
+      "width": 132.72,
+      "height": 19.8,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Anderson%20.Paak%20official"
+    },
+    {
+      "id": "1scVfBymTr3CeZ4imMj1QJ",
+      "name": "Forrest Frank",
+      "spotifyUrl": "https://open.spotify.com/artist/1scVfBymTr3CeZ4imMj1QJ",
+      "popularity": 79,
+      "genres": [
+        "christian",
+        "christian pop",
+        "christian hip hop",
+        "worship",
+        "christian lo-fi",
+        "christian r&b"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebfc23429951b765040e928baf",
+      "x": 121.7206513018932,
+      "y": 127.69717316384967,
+      "width": 123.24000000000001,
+      "height": 19.8,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Forrest%20Frank%20official"
+    },
+    {
+      "id": "2qoQgPAilErOKCwE2Y8wOG",
+      "name": "GloRilla",
+      "spotifyUrl": "https://open.spotify.com/artist/2qoQgPAilErOKCwE2Y8wOG",
+      "popularity": 78,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebc33cf3ad025517202d8efbc0",
+      "x": 814.0406713921585,
+      "y": 367.2062984463662,
+      "width": 74.88,
+      "height": 19.6,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=GloRilla%20official"
+    },
+    {
+      "id": "2p1fiYHYiXz9qi0JJyxBzN",
+      "name": "Skepta",
+      "spotifyUrl": "https://open.spotify.com/artist/2p1fiYHYiXz9qi0JJyxBzN",
+      "popularity": 78,
+      "genres": [
+        "grime",
+        "uk grime"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebdb7e42a0c4dced06214fcdb6",
+      "x": 1070.8350704547654,
+      "y": 447.32675416517753,
+      "width": 56.16,
+      "height": 19.6,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Skepta%20official"
+    },
+    {
+      "id": "67FB4n52MgexGQIG8s0yUH",
+      "name": "Lola Young",
+      "spotifyUrl": "https://open.spotify.com/artist/67FB4n52MgexGQIG8s0yUH",
+      "popularity": 78,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb0d191f6192fd3690e7aefcc3",
+      "x": 871.588844479157,
+      "y": 277.4797398910623,
+      "width": 93.6,
+      "height": 19.6,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Lola%20Young%20official"
+    },
+    {
+      "id": "5yOvAmpIR7hVxiS6Ls5DPO",
+      "name": "Omah Lay",
+      "spotifyUrl": "https://open.spotify.com/artist/5yOvAmpIR7hVxiS6Ls5DPO",
+      "popularity": 78,
+      "genres": [
+        "afrobeats",
+        "afrobeat",
+        "afropop",
+        "afro r&b",
+        "afropiano",
+        "afro soul"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb212e0b674da993b1a0cacb16",
+      "x": 275.95640530320617,
+      "y": 493.73089475466327,
+      "width": 74.88,
+      "height": 19.6,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Omah%20Lay%20official"
+    },
+    {
+      "id": "5y2Xq6xcjJb2jVM54GHK3t",
+      "name": "John Legend",
+      "spotifyUrl": "https://open.spotify.com/artist/5y2Xq6xcjJb2jVM54GHK3t",
+      "popularity": 77,
+      "genres": [
+        "soft pop",
+        "neo soul"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb01784e44ffd1a339350f4417",
+      "x": 232.68109715932576,
+      "y": 634.9610273522023,
+      "width": 101.64,
+      "height": 19.4,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=John%20Legend%20official"
+    },
+    {
+      "id": "6U3ybJ9UHNKEdsH7ktGBZ7",
+      "name": "JID",
+      "spotifyUrl": "https://open.spotify.com/artist/6U3ybJ9UHNKEdsH7ktGBZ7",
+      "popularity": 77,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb02e4e47e711e07e363ecc6e0",
+      "x": 174.1367114054982,
+      "y": 214.9261720919744,
+      "width": 27.72,
+      "height": 19.4,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=JID%20official"
+    },
+    {
+      "id": "4LEiUm1SRbFMgfqnQTwUbQ",
+      "name": "Bon Iver",
+      "spotifyUrl": "https://open.spotify.com/artist/4LEiUm1SRbFMgfqnQTwUbQ",
+      "popularity": 77,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb1a0c1f04c95539fd55ef0ebb",
+      "x": 506.0449529832925,
+      "y": 468.9797638745672,
+      "width": 73.92,
+      "height": 19.4,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Bon%20Iver%20official"
+    },
+    {
+      "id": "3y2cIKLjiOlp1Np37WiUdH",
+      "name": "Shaboozey",
+      "spotifyUrl": "https://open.spotify.com/artist/3y2cIKLjiOlp1Np37WiUdH",
+      "popularity": 77,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb2361ab73b5a386e2522790e8",
+      "x": 1124.6991983547655,
+      "y": 837.7568940743542,
+      "width": 83.16,
+      "height": 19.4,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Shaboozey%20official"
+    },
+    {
+      "id": "5he5w2lnU9x7JFhnwcekXX",
+      "name": "Skrillex",
+      "spotifyUrl": "https://open.spotify.com/artist/5he5w2lnU9x7JFhnwcekXX",
+      "popularity": 77,
+      "genres": [
+        "dubstep",
+        "edm",
+        "electro",
+        "electronic"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb077a808cd0b0ffd30213eb3f",
+      "x": 1017.8646356970056,
+      "y": 495.04630387767935,
+      "width": 73.92,
+      "height": 19.4,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Skrillex%20official"
+    },
+    {
+      "id": "3ZpEKRjHaHANcpk10u6Ntq",
+      "name": "Ayra Starr",
+      "spotifyUrl": "https://open.spotify.com/artist/3ZpEKRjHaHANcpk10u6Ntq",
+      "popularity": 77,
+      "genres": [
+        "afrobeats",
+        "afrobeat",
+        "afropop",
+        "afro r&b",
+        "afropiano",
+        "afro soul"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebc13fddc19aa18159f95ab020",
+      "x": 834.7316730378025,
+      "y": 237.1874868993827,
+      "width": 92.4,
+      "height": 19.4,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Ayra%20Starr%20official"
+    },
+    {
+      "id": "5Pb27ujIyYb33zBqVysBkj",
+      "name": "RÜFÜS DU SOL",
+      "spotifyUrl": "https://open.spotify.com/artist/5Pb27ujIyYb33zBqVysBkj",
+      "popularity": 77,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebdbe0d58f538b7d18e324af5e",
+      "x": 911.9449877827886,
+      "y": 753.1347369334771,
+      "width": 110.88,
+      "height": 19.4,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=R%C3%9CF%C3%9CS%20DU%20SOL%20official"
+    },
+    {
+      "id": "13ZEDW6vyBF12HYcZRr4EV",
+      "name": "Tyler Childers",
+      "spotifyUrl": "https://open.spotify.com/artist/13ZEDW6vyBF12HYcZRr4EV",
+      "popularity": 77,
+      "genres": [
+        "country",
+        "outlaw country",
+        "red dirt",
+        "alt country",
+        "texas country",
+        "bluegrass"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebf4e08c9a3cea561e8f3332a5",
+      "x": 1142.4858217343835,
+      "y": 251.93186019430433,
+      "width": 129.36,
+      "height": 19.4,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Tyler%20Childers%20official"
+    },
+    {
+      "id": "0Y3agQaa6g2r0YmHPOO9rh",
+      "name": "Davido",
+      "spotifyUrl": "https://open.spotify.com/artist/0Y3agQaa6g2r0YmHPOO9rh",
+      "popularity": 77,
+      "genres": [
+        "afrobeats",
+        "afrobeat",
+        "afropop",
+        "afropiano",
+        "azonto",
+        "amapiano",
+        "hiplife",
+        "afroswing",
+        "afro r&b"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb057fdb13352beee124b79051",
+      "x": 244.92322293527056,
+      "y": 61.19415532230321,
+      "width": 55.44,
+      "height": 19.4,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Davido%20official"
+    },
+    {
+      "id": "3DbwFQlvLxRSi2uX8mf81A",
+      "name": "Sexyy Red",
+      "spotifyUrl": "https://open.spotify.com/artist/3DbwFQlvLxRSi2uX8mf81A",
+      "popularity": 76,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebd341871daa2c688ea24dcf02",
+      "x": 680.3665073571971,
+      "y": 852.1815336843778,
+      "width": 82.08,
+      "height": 19.2,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Sexyy%20Red%20official"
+    },
+    {
+      "id": "0nnBZ8FXWjG9wZgM2cpfeb",
+      "name": "Leon Thomas",
+      "spotifyUrl": "https://open.spotify.com/artist/0nnBZ8FXWjG9wZgM2cpfeb",
+      "popularity": 76,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebc6c4f4aaf40ebee92b8a8228",
+      "x": 1143.574058217453,
+      "y": 488.67258126868774,
+      "width": 100.32,
+      "height": 19.2,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Leon%20Thomas%20official"
+    },
+    {
+      "id": "3aly4xJOy3LVznzvRIvFYC",
+      "name": "F1 The Album",
+      "spotifyUrl": "https://open.spotify.com/artist/3aly4xJOy3LVznzvRIvFYC",
+      "popularity": 76,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb7f4f23b9eba34d35ac86e6a8",
+      "x": 580.2885354647857,
+      "y": 540.5875557593449,
+      "width": 109.44,
+      "height": 19.2,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=F1%20The%20Album%20official"
+    },
+    {
+      "id": "6Ad91Jof8Niiw0lGLLi3NW",
+      "name": "YUNGBLUD",
+      "spotifyUrl": "https://open.spotify.com/artist/6Ad91Jof8Niiw0lGLLi3NW",
+      "popularity": 76,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb7c9287712c4355e54c94e0d0",
+      "x": 361.6396062704968,
+      "y": 175.51138038191908,
+      "width": 72.96,
+      "height": 19.2,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=YUNGBLUD%20official"
+    },
+    {
+      "id": "6nS5roXSAGhTGr34W6n7Et",
+      "name": "Disclosure",
+      "spotifyUrl": "https://open.spotify.com/artist/6nS5roXSAGhTGr34W6n7Et",
+      "popularity": 76,
+      "genres": [
+        "house"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb3faf416d3be99d63fec18baa",
+      "x": 100.14581920534364,
+      "y": 512.522111343132,
+      "width": 91.19999999999999,
+      "height": 19.2,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Disclosure%20official"
+    },
+    {
+      "id": "3Y7RZ31TRPVadSFVy1o8os",
+      "name": "H.E.R.",
+      "spotifyUrl": "https://open.spotify.com/artist/3Y7RZ31TRPVadSFVy1o8os",
+      "popularity": 76,
+      "genres": [
+        "r&b"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb417db49cde3ed1c5a65e3514",
+      "x": 702.1083577965894,
+      "y": 333.83540733011057,
+      "width": 54.72,
+      "height": 19.2,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=H.E.R.%20official"
+    },
+    {
+      "id": "0ONHkAv9pCAFxb0zJwDNTy",
+      "name": "Pusha T",
+      "spotifyUrl": "https://open.spotify.com/artist/0ONHkAv9pCAFxb0zJwDNTy",
+      "popularity": 75,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebc5b88a3924d8318f25f20594",
+      "x": 404.6192576882579,
+      "y": 227.11122547267755,
+      "width": 63,
+      "height": 19,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Pusha%20T%20official"
+    },
+    {
+      "id": "5CiGnKThu5ctn9pBxv7DGa",
+      "name": "benny blanco",
+      "spotifyUrl": "https://open.spotify.com/artist/5CiGnKThu5ctn9pBxv7DGa",
+      "popularity": 75,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb9e339e423b680759b0006a63",
+      "x": 819.8220021112141,
+      "y": 844.3240404797971,
+      "width": 108,
+      "height": 19,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=benny%20blanco%20official"
+    },
+    {
+      "id": "1Qp56T7n950O3EGMsSl81D",
+      "name": "Ghost",
+      "spotifyUrl": "https://open.spotify.com/artist/1Qp56T7n950O3EGMsSl81D",
+      "popularity": 75,
+      "genres": [
+        "metal",
+        "hard rock"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb2d972470f1f8110be7c07017",
+      "x": 452.8640347581264,
+      "y": 570.8036829090727,
+      "width": 45,
+      "height": 19,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Ghost%20official"
+    },
+    {
+      "id": "4IVAbR2w4JJNJDDRFP3E83",
+      "name": "6LACK",
+      "spotifyUrl": "https://open.spotify.com/artist/4IVAbR2w4JJNJDDRFP3E83",
+      "popularity": 74,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebf8e7a2d1a01fd98e43ee57dc",
+      "x": 101.8910104447693,
+      "y": 620.3026402967604,
+      "width": 44.400000000000006,
+      "height": 18.8,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=6LACK%20official"
+    },
+    {
+      "id": "46UMQ0cW8ToR8egkBRwAxZ",
+      "name": "Cynthia Erivo",
+      "spotifyUrl": "https://open.spotify.com/artist/46UMQ0cW8ToR8egkBRwAxZ",
+      "popularity": 74,
+      "genres": [
+        "musicals"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb65199ed238bc45231cd3cba7",
+      "x": 341.83168947829796,
+      "y": 457.74210571016334,
+      "width": 115.44000000000001,
+      "height": 18.8,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Cynthia%20Erivo%20official"
+    },
+    {
+      "id": "6Rx1JKzBrSzoKQtmbVmBnM",
+      "name": "Hayley Williams",
+      "spotifyUrl": "https://open.spotify.com/artist/6Rx1JKzBrSzoKQtmbVmBnM",
+      "popularity": 73,
+      "genres": [
+        "art pop"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb195bd87b60599b7a3f19abf1",
+      "x": 695.3697817149053,
+      "y": 188.76116090907405,
+      "width": 131.4,
+      "height": 18.6,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Hayley%20Williams%20official"
+    },
+    {
+      "id": "6qgnBH6iDM91ipVXv28OMu",
+      "name": "KAYTRANADA",
+      "spotifyUrl": "https://open.spotify.com/artist/6qgnBH6iDM91ipVXv28OMu",
+      "popularity": 73,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb9b9d4fdf5e4cf58e2fa93167",
+      "x": 1008.389300753286,
+      "y": 297.42015588903905,
+      "width": 87.6,
+      "height": 18.6,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=KAYTRANADA%20official"
+    },
+    {
+      "id": "79NDEw5QWlDC9KaIbogNhS",
+      "name": "Plaqueboymax",
+      "spotifyUrl": "https://open.spotify.com/artist/79NDEw5QWlDC9KaIbogNhS",
+      "popularity": 72,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebd674befbf25b268b36e4a1a4",
+      "x": 935.4601604281339,
+      "y": 709.982709110855,
+      "width": 103.68,
+      "height": 18.4,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Plaqueboymax%20official"
+    },
+    {
+      "id": "0X380XXQSNBYuleKzav5UO",
+      "name": "Nine Inch Nails",
+      "spotifyUrl": "https://open.spotify.com/artist/0X380XXQSNBYuleKzav5UO",
+      "popularity": 71,
+      "genres": [
+        "industrial rock",
+        "industrial",
+        "industrial metal",
+        "alternative metal",
+        "nu metal"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb752fca27c5b839ea47d5100d",
+      "x": 303.99835564942356,
+      "y": 683.4701996678843,
+      "width": 127.8,
+      "height": 18.2,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Nine%20Inch%20Nails%20official"
+    },
+    {
+      "id": "6nB0iY1cjSY1KyhYyuIIKH",
+      "name": "FKA twigs",
+      "spotifyUrl": "https://open.spotify.com/artist/6nB0iY1cjSY1KyhYyuIIKH",
+      "popularity": 69,
+      "genres": [
+        "art pop",
+        "alternative r&b"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb3f6b8973be0344896d8680ab",
+      "x": 770.934969870884,
+      "y": 140.86746053914558,
+      "width": 74.52,
+      "height": 17.8,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=FKA%20twigs%20official"
+    },
+    {
+      "id": "2TwOrUcYnAlIiKmVQkkoSZ",
+      "name": "Wet Leg",
+      "spotifyUrl": "https://open.spotify.com/artist/2TwOrUcYnAlIiKmVQkkoSZ",
+      "popularity": 69,
+      "genres": [
+        "indie rock",
+        "indie"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eba4e6cf8b3d6ea5a6b4b5fb8f",
+      "x": 126.43576990308021,
+      "y": 868.002302712993,
+      "width": 57.959999999999994,
+      "height": 17.8,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Wet%20Leg%20official"
+    },
+    {
+      "id": "1jiZvw42D4oquLl24x2VWV",
+      "name": "Lefty Gunplay",
+      "spotifyUrl": "https://open.spotify.com/artist/1jiZvw42D4oquLl24x2VWV",
+      "popularity": 69,
+      "genres": [
+        "mexican hip hop"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebacba798c2aa187d30770ed5a",
+      "x": 354.79498184288985,
+      "y": 568.7458871776503,
+      "width": 107.63999999999999,
+      "height": 17.8,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Lefty%20Gunplay%20official"
+    },
+    {
+      "id": "6I8TDGeUmmLom8auKPzMdX",
+      "name": "CA7RIEL & Paco Amoroso",
+      "spotifyUrl": "https://open.spotify.com/artist/6I8TDGeUmmLom8auKPzMdX",
+      "popularity": 69,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebde82abad26397105340f6c8c",
+      "x": 1095.649945551903,
+      "y": 787.7743119434998,
+      "width": 182.16,
+      "height": 17.8,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=CA7RIEL%20%26%20Paco%20Amoroso%20official"
+    },
+    {
+      "id": "2qnpHrOzdmOo1S4ox3j17x",
+      "name": "Turnstile",
+      "spotifyUrl": "https://open.spotify.com/artist/2qnpHrOzdmOo1S4ox3j17x",
+      "popularity": 68,
+      "genres": [
+        "hardcore punk",
+        "hardcore"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eba4c3fd0017b42344516dc16c",
+      "x": 215.97892357598687,
+      "y": 448.6339699713041,
+      "width": 73.44,
+      "height": 17.6,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Turnstile%20official"
+    },
+    {
+      "id": "4MzJMcHQBl9SIYSjwWn8QW",
+      "name": "Spiritbox",
+      "spotifyUrl": "https://open.spotify.com/artist/4MzJMcHQBl9SIYSjwWn8QW",
+      "popularity": 68,
+      "genres": [
+        "metalcore",
+        "djent",
+        "metal"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb501369c8b24b71bb2dcca603",
+      "x": 570.3833462341894,
+      "y": 682.1925592132351,
+      "width": 73.44,
+      "height": 17.6,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Spiritbox%20official"
+    },
+    {
+      "id": "2J257euzcjnDLipsyJH3F2",
+      "name": "Clipse",
+      "spotifyUrl": "https://open.spotify.com/artist/2J257euzcjnDLipsyJH3F2",
+      "popularity": 66,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb7d6973a4df776665c9852f26",
+      "x": 577.8476571806729,
+      "y": 381.86054160012816,
+      "width": 47.519999999999996,
+      "height": 17.2,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Clipse%20official"
+    },
+    {
+      "id": "4Ui2kfOqGujY81UcPrb5KE",
+      "name": "HAIM",
+      "spotifyUrl": "https://open.spotify.com/artist/4Ui2kfOqGujY81UcPrb5KE",
+      "popularity": 65,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb09f7ea29906a367f0648e0bc",
+      "x": 338.599652257393,
+      "y": 722.180659870693,
+      "width": 31.2,
+      "height": 17,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=HAIM%20official"
+    },
+    {
+      "id": "4DHLoiIqFYYFjH09WduvFd",
+      "name": "Coco Jones",
+      "spotifyUrl": "https://open.spotify.com/artist/4DHLoiIqFYYFjH09WduvFd",
+      "popularity": 65,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb2d9ad9587f724ff6649cb8f9",
+      "x": 883.546705957148,
+      "y": 630.0929156255893,
+      "width": 78,
+      "height": 17,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Coco%20Jones%20official"
+    },
+    {
+      "id": "2sG4zTOLvjKG1PSoOyf5Ej",
+      "name": "Brandi Carlile",
+      "spotifyUrl": "https://open.spotify.com/artist/2sG4zTOLvjKG1PSoOyf5Ej",
+      "popularity": 65,
+      "genres": [
+        "folk",
+        "americana"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb0d9c8ef7691538cac0b336b3",
+      "x": 1107.6046517995694,
+      "y": 355.19863654239043,
+      "width": 109.2,
+      "height": 17,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Brandi%20Carlile%20official"
+    },
+    {
+      "id": "4P4gZvRYiVpvtCkmd37jRM",
+      "name": "Malice",
+      "spotifyUrl": "https://open.spotify.com/artist/4P4gZvRYiVpvtCkmd37jRM",
+      "popularity": 64,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/82bcab3123cf13a4882b59be6cd3c8c10ae447b6",
+      "x": 668.6237036868125,
+      "y": 142.6042658968597,
+      "width": 46.08,
+      "height": 16.8,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Malice%20official"
+    },
+    {
+      "id": "7jmTilWYlKOuavFfmQAcu6",
+      "name": "Barbra Streisand",
+      "spotifyUrl": "https://open.spotify.com/artist/7jmTilWYlKOuavFfmQAcu6",
+      "popularity": 64,
+      "genres": [
+        "adult standards"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebf78341630056283b6d617753",
+      "x": 86.4520523761899,
+      "y": 60.06429905301893,
+      "width": 122.88,
+      "height": 16.8,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Barbra%20Streisand%20official"
+    },
+    {
+      "id": "0s4kXsjYeH0S1xRyVGN4NO",
+      "name": "FLO",
+      "spotifyUrl": "https://open.spotify.com/artist/0s4kXsjYeH0S1xRyVGN4NO",
+      "popularity": 63,
+      "genres": [
+        "uk r&b"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb5177c1239724039d09090788",
+      "x": 1059.6193985755312,
+      "y": 725.5288411151016,
+      "width": 22.68,
+      "height": 16.6,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=FLO%20official"
+    },
+    {
+      "id": "0SBtkuQnoKrDFqsMNrFzhU",
+      "name": "Sinners Movie",
+      "spotifyUrl": "https://open.spotify.com/artist/0SBtkuQnoKrDFqsMNrFzhU",
+      "popularity": 63,
+      "genres": [
+        "southern gothic"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb77f04aa0dbb581d07145f8ca",
+      "x": 959.3682449346531,
+      "y": 339.0437457489237,
+      "width": 98.28,
+      "height": 16.6,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Sinners%20Movie%20official"
+    },
+    {
+      "id": "3HQyFCFFfJO3KKBlUfZsyW",
+      "name": "Randy Newman",
+      "spotifyUrl": "https://open.spotify.com/artist/3HQyFCFFfJO3KKBlUfZsyW",
+      "popularity": 62,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6772690000c46cce7143d8941faa26b2bea7aa",
+      "x": 417.87647160715824,
+      "y": 534.3225803925093,
+      "width": 89.28,
+      "height": 16.4,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Randy%20Newman%20official"
+    },
+    {
+      "id": "6l7R1jntPahGxwJt7Tky8h",
+      "name": "Obongjayar",
+      "spotifyUrl": "https://open.spotify.com/artist/6l7R1jntPahGxwJt7Tky8h",
+      "popularity": 61,
+      "genres": [
+        "alté"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb4ab5fcccf89128dd98b0b815",
+      "x": 372.2916901214562,
+      "y": 892.8582484722787,
+      "width": 73.19999999999999,
+      "height": 16.2,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Obongjayar%20official"
+    },
+    {
+      "id": "3NqV2DJoAWsjl787bWaHW7",
+      "name": "Amyl and The Sniffers",
+      "spotifyUrl": "https://open.spotify.com/artist/3NqV2DJoAWsjl787bWaHW7",
+      "popularity": 60,
+      "genres": [
+        "riot grrrl",
+        "punk"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebee3647a3cd61071b0ca362e8",
+      "x": 59.94512206578966,
+      "y": 902.0759464799536,
+      "width": 151.2,
+      "height": 16,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Amyl%20and%20The%20Sniffers%20official"
+    },
+    {
+      "id": "0eRbECAGCLLiTyVXPBRexU",
+      "name": "Jon Batiste",
+      "spotifyUrl": "https://open.spotify.com/artist/0eRbECAGCLLiTyVXPBRexU",
+      "popularity": 60,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb32dbd892217b0bde9e29562e",
+      "x": 942.2116593737151,
+      "y": 201.33140952880746,
+      "width": 79.19999999999999,
+      "height": 16,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Jon%20Batiste%20official"
+    },
+    {
+      "id": "4jwROPSUkTkohLCRiyjiZZ",
+      "name": "DESTIN CONRAD",
+      "spotifyUrl": "https://open.spotify.com/artist/4jwROPSUkTkohLCRiyjiZZ",
+      "popularity": 58,
+      "genres": [
+        "alternative r&b"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb9c533fa13662e7753fb56e8b",
+      "x": 665.8759177153784,
+      "y": 927.6130342657963,
+      "width": 90.48,
+      "height": 15.6,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=DESTIN%20CONRAD%20official"
+    },
+    {
+      "id": "366xgdzfRGQoiDRGidGlDJ",
+      "name": "Jesse Welles",
+      "spotifyUrl": "https://open.spotify.com/artist/366xgdzfRGQoiDRGidGlDJ",
+      "popularity": 58,
+      "genres": [
+        "folk punk",
+        "folk"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb7746015c7c118e51d7e1570a",
+      "x": 1012.0770655017244,
+      "y": 665.3893586366909,
+      "width": 83.52,
+      "height": 15.6,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Jesse%20Welles%20official"
+    },
+    {
+      "id": "7MNEVabc4cs19CbzAFZmXz",
+      "name": "Terrace Martin",
+      "spotifyUrl": "https://open.spotify.com/artist/7MNEVabc4cs19CbzAFZmXz",
+      "popularity": 57,
+      "genres": [
+        "neo soul"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb24e5471018f7ab943d3672ea",
+      "x": 476.4076259153275,
+      "y": 885.5980487894257,
+      "width": 95.75999999999999,
+      "height": 15.4,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Terrace%20Martin%20official"
+    },
+    {
+      "id": "0EEwD5PTnNLxUfAS22mErL",
+      "name": "Miles Caton",
+      "spotifyUrl": "https://open.spotify.com/artist/0EEwD5PTnNLxUfAS22mErL",
+      "popularity": 56,
+      "genres": [
+        "southern gothic"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebfc368a2a57b953ec4fbb60ab",
+      "x": 657.7866114767575,
+      "y": 598.6113905562321,
+      "width": 73.92,
+      "height": 15.2,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Miles%20Caton%20official"
+    },
+    {
+      "id": "5LkbTSqXfMBjFSGi9LOGjq",
+      "name": "Samara Joy",
+      "spotifyUrl": "https://open.spotify.com/artist/5LkbTSqXfMBjFSGi9LOGjq",
+      "popularity": 54,
+      "genres": [
+        "vocal jazz",
+        "jazz"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb001d9473b78c00aeb1f35074",
+      "x": 73.92116482179401,
+      "y": 716.3213389727567,
+      "width": 64.80000000000001,
+      "height": 14.8,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Samara%20Joy%20official"
+    },
+    {
+      "id": "6NL31G53xThQXkFs7lDpL5",
+      "name": "Rapsody",
+      "spotifyUrl": "https://open.spotify.com/artist/6NL31G53xThQXkFs7lDpL5",
+      "popularity": 54,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb8b0de5dd3b01cc6774fde591",
+      "x": 720.6479126290457,
+      "y": 540.6947182236638,
+      "width": 45.36,
+      "height": 14.8,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Rapsody%20official"
+    },
+    {
+      "id": "2d6ggH1oVt4z2zCuY2u5DW",
+      "name": "Durand Bernarr",
+      "spotifyUrl": "https://open.spotify.com/artist/2d6ggH1oVt4z2zCuY2u5DW",
+      "popularity": 52,
+      "genres": [
+        "neo soul",
+        "alternative r&b"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebb6f813bbf413ca4864b8c5aa",
+      "x": 372.97180196674725,
+      "y": 51.8017275094377,
+      "width": 87.36,
+      "height": 14.4,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Durand%20Bernarr%20official"
+    },
+    {
+      "id": "0uAUrmEQbwcDFzg0v7VicO",
+      "name": "Lila Iké",
+      "spotifyUrl": "https://open.spotify.com/artist/0uAUrmEQbwcDFzg0v7VicO",
+      "popularity": 51,
+      "genres": [
+        "reggae",
+        "lovers rock",
+        "dancehall"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb6de796bfe7d55b72adb3337b",
+      "x": 873.935347820472,
+      "y": 148.1252525934421,
+      "width": 48.959999999999994,
+      "height": 14.2,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Lila%20Ik%C3%A9%20official"
+    },
+    {
+      "id": "5hMr1UPWUlLzQmHpE45EpH",
+      "name": "Voices of Fire",
+      "spotifyUrl": "https://open.spotify.com/artist/5hMr1UPWUlLzQmHpE45EpH",
+      "popularity": 49,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb6974441fa7c508471e81fd99",
+      "x": 448.0733413523279,
+      "y": 690.9736131812095,
+      "width": 84,
+      "height": 14,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Voices%20of%20Fire%20official"
+    },
+    {
+      "id": "0uNEy4544VZq2KOl7BsLuo",
+      "name": "Lalah Hathaway",
+      "spotifyUrl": "https://open.spotify.com/artist/0uNEy4544VZq2KOl7BsLuo",
+      "popularity": 48,
+      "genres": [
+        "neo soul",
+        "smooth jazz",
+        "quiet storm"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5ebef120fc867637c7a03a57a0e",
+      "x": 1049.5343464516436,
+      "y": 569.9068870533231,
+      "width": 84,
+      "height": 14,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Lalah%20Hathaway%20official"
+    },
+    {
+      "id": "3konlNIREmuxZRIFKSPKmK",
+      "name": "Nuno Bettencourt",
+      "spotifyUrl": "https://open.spotify.com/artist/3konlNIREmuxZRIFKSPKmK",
+      "popularity": 47,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/c1d2066aabf76ce8554d632f49702dc47b58a757",
+      "x": 921.8490425908323,
+      "y": 888.5561670132971,
+      "width": 96,
+      "height": 14,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Nuno%20Bettencourt%20official"
+    },
+    {
+      "id": "722seNrup2GdGVhFRlkDwp",
+      "name": "Frank Bello",
+      "spotifyUrl": "https://open.spotify.com/artist/722seNrup2GdGVhFRlkDwp",
+      "popularity": 46,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab67616d0000b273eb61baca7314789cb6b69333",
+      "x": 883.9510957328756,
+      "y": 597.4769059492497,
+      "width": 66,
+      "height": 14,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Frank%20Bello%20official"
+    },
+    {
+      "id": "7KOt1Tbe2piq9ZRcyz8SOG",
+      "name": "Adam Wakeman",
+      "spotifyUrl": "https://open.spotify.com/artist/7KOt1Tbe2piq9ZRcyz8SOG",
+      "popularity": 46,
+      "genres": [
+        "arena rock",
+        "aor",
+        "progressive rock"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb5c0dc345a75011106977113d",
+      "x": 803.5760198776576,
+      "y": 880.1798974093329,
+      "width": 72,
+      "height": 14,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Adam%20Wakeman%20official"
+    },
+    {
+      "id": "6eANS9h19SCocZ79kuYbJA",
+      "name": "II",
+      "spotifyUrl": "https://open.spotify.com/artist/6eANS9h19SCocZ79kuYbJA",
+      "popularity": 46,
+      "genres": [],
+      "x": 197.0530174793959,
+      "y": 526.6615103027352,
+      "width": 12,
+      "height": 14,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=II%20official"
+    },
+    {
+      "id": "5AzjednUL6MFJP0dBic3be",
+      "name": "Kenyon Dixon",
+      "spotifyUrl": "https://open.spotify.com/artist/5AzjednUL6MFJP0dBic3be",
+      "popularity": 43,
+      "genres": [],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb97667766a50739299c517c8e",
+      "x": 233.07136806787946,
+      "y": 159.69358462742247,
+      "width": 72,
+      "height": 14,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Kenyon%20Dixon%20official"
+    },
+    {
+      "id": "6sjYs9G2TY5CqCxp3N9XmK",
+      "name": "Jayme Lawson",
+      "spotifyUrl": "https://open.spotify.com/artist/6sjYs9G2TY5CqCxp3N9XmK",
+      "popularity": 41,
+      "genres": [
+        "southern gothic"
+      ],
+      "x": 493.08996703359617,
+      "y": 421.0171201580421,
+      "width": 72,
+      "height": 14,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Jayme%20Lawson%20official"
+    },
+    {
+      "id": "5GPxGRe2IglKP3ZiwwJbP4",
+      "name": "Michael Mayo",
+      "spotifyUrl": "https://open.spotify.com/artist/5GPxGRe2IglKP3ZiwwJbP4",
+      "popularity": 36,
+      "genres": [
+        "vocal jazz"
+      ],
+      "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb25f3e779f348263b7cfd7757",
+      "x": 236.60570501656196,
+      "y": 942.6189729526886,
+      "width": 72,
+      "height": 14,
+      "youtubeSearchUrl": "https://www.youtube.com/results?search_query=Michael%20Mayo%20official"
+    }
+  ]
+}

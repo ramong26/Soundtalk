@@ -19,7 +19,6 @@ export default async function getTopTrackPlaylist({
     if (cachedToken && tokenExpiresAt > now) {
       return cachedToken;
     }
-
     if (!process.env.SPOTIFY_CLIENT_ID || !process.env.SPOTIFY_CLIENT_SECRET) {
       console.error('Spotify environment variables are missing');
       throw new Error('Spotify environment variables are missing');
