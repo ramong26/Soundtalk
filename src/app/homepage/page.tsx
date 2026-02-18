@@ -15,7 +15,7 @@ export const metadata = {
 export const revalidate = 86400;
 
 export default async function HomePage() {
-  const tracksList = await getTopTrackPlaylist({ playlistId: '1PcB3QM5sGbzFU5D9CbEGB', limit: 5 });
+  const tracksList = await getTopTrackPlaylist({ playlistId: '0TyhU3nPbWY8BNObcPXt4u', limit: 5 });
   const track = tracksList[0].track;
 
   if (!track) return null;
