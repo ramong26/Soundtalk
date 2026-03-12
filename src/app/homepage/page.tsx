@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Suspense } from 'react';
+import { ErrorBoundary,Suspense } from '@suspensive/react'
 
 import InterviewList from '@/features/homepage/components/InterviewList';
 import getTopTrackPlaylist from '@/features/chart/hooks/getTopTrackPlaylist';
@@ -107,9 +107,11 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <Suspense fallback={<div className="h-[700px] w-full bg-gray-200 animate-pulse mt-10" />}>
-        <YoutubePlaylist />
-      </Suspense>
+      <ErrorBoundary fallback={<div className="h-[700px] w-full bg-red-300 animate-pulse mt-10" />}>
+        <Suspense fallback={<div className="h-[700px] w-full bg-red-300 animate-pulse mt-10" />}>
+          <YoutubePlaylist />
+        </Suspense>
+      </ErrorBoundary>
 
       {/* Footer */}
       <footer className="md:h-[200px] h-[150px] md:py-12 md:px-12 py-6 px-6 flex flex-col md:flex-row items-center justify-between md:gap-4 gap-2 bg-[#F0EADC] text-black  ">
