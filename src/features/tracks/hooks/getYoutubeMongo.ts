@@ -4,7 +4,6 @@ import { Youtube } from '@/lib/mongo/models/Youtube';
 import { getBaseUrl } from '@/lib/utils/baseUrl';
 import { YouTubeItem } from '@/shared/types/youtube';
 
-// 유튜브 뮤직비디오 가져오기(몽고)
 export async function getYoutubeTrackIdVideo(trackName: string) {
   try {
     await connectToDB();

@@ -66,6 +66,7 @@ export default function YoutubeChannelClient({ channels }: { channels: YouTubeCh
     update();
     return () => cancelAnimationFrame(animationFrame);
   }, [activeCenter]);
+
   if (!channels || channels.length === 0) {
     return null;
   }
@@ -140,6 +141,7 @@ export default function YoutubeChannelClient({ channels }: { channels: YouTubeCh
               alt={channel.snippet.title}
               width={96}
               height={96}
+              loading="lazy"
               className="lg:w-[96px] lg:h-[96px] md:w-[70px] md:h-[70px] w-[50px] h-[50px] rounded-full"
             />
           </Link>
