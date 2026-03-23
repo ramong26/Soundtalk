@@ -20,6 +20,10 @@ export default async function HomePage() {
   const tracksList = await getTopTrackPlaylist({ playlistId: '0TyhU3nPbWY8BNObcPXt4u', limit: 5 });
   const track = tracksList[0].track;
 
+  if (!track) {
+    return null;
+  }
+
   return (
     <>
       <ErrorBoundary fallback={<div className="h-[300px] lg:h-[700px] w-full bg-[#f0eadc] animate-pulse mt-10" />}>

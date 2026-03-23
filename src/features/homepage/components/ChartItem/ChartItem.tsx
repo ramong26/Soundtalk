@@ -5,7 +5,7 @@ import { ChartItemProps } from './types';
 
 const ChartItem = ({ track, index }: ChartItemProps) => {
   return (
-    <Link key={track?.track?.id} href={`/tracks/${track?.track?.id}`} className="w-1/5">
+    <Link href={`/tracks/${track?.track?.id}`} className="w-1/5">
       <div
         className={`md:px-3 px-2 flex flex-col items-center gap-4 cursor-pointer  hover:rotate-1 hover:-translate-y-2 transition-transform duration-300 ${
           index !== 4 ? 'border-r-2 border-dashed border-black/50' : ''
