@@ -21,7 +21,6 @@ export default async function callApi<T>(
 
     const fullUrl = url.startsWith('http') ? url : baseUrl + url;
     const res = await fetch(fullUrl, fetchOption);
-
     if (!res.ok) {
       if (res.status === 401 && url !== '/api/auth/refresh') {
         if (!refreshPromise) {
@@ -41,7 +40,7 @@ export default async function callApi<T>(
           const retryRes = await fetch(fullUrl, fetchOption);
           if (!retryRes.ok) {
             const errorText = await retryRes.text();
-            console.error('API 호출 실패:', res.status, res.statusText, errorText);
+            console.error('API 호출 실패:', retryRes.status, retryRes.statusText, errorText);
             throw new Error('API 호출 실패');
           }
           const retryData = await retryRes.json();
